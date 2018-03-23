@@ -7,18 +7,18 @@ using YapartStore.DL.Entities;
 
 namespace YapartStore.DAL.Repositories
 {
-    public class BrandRepository : IBrandRepository
+    public class GroupRepository : IGroupRepository
     {
         private readonly YapartStoreContext _yapartStoreContext;
-        public BrandRepository(YapartStoreContext yapartStoreContext)
+        public GroupRepository(YapartStoreContext yapartStoreContext)
         {
             _yapartStoreContext = yapartStoreContext;
         }
-        public void Create(Brand item)
+        public void Create(Group item)
         {
             try
             {
-                _yapartStoreContext.Brands.Add(item);
+                _yapartStoreContext.Groups.Add(item);
                 _yapartStoreContext.SaveChanges();
             }
             catch (Exception e)
@@ -29,19 +29,19 @@ namespace YapartStore.DAL.Repositories
 
         public void Delete(int id)
         {
-            var brand = _yapartStoreContext.Brands.FirstOrDefault(i => i.Id == id);
-            if (brand != null)
+            var group = _yapartStoreContext.Groups.FirstOrDefault(i => i.Id == id);
+            if (group != null)
             {
-                _yapartStoreContext.Brands.Remove(brand);
+                _yapartStoreContext.Groups.Remove(group);
                 _yapartStoreContext.SaveChanges();
             }
         }
 
-        public IQueryable<Brand> GetAll()
+        public IQueryable<Group> GetAll()
         {
             try
             {
-                return _yapartStoreContext.Brands.Include("Products").AsQueryable();
+                return _yapartStoreContext.Groups.AsQueryable();
             }
             catch (Exception e)
             {
@@ -49,13 +49,13 @@ namespace YapartStore.DAL.Repositories
             }
         }
 
-        public Brand GetItemById(int id)
+        public Group GetItemById(int id)
         {
             try
             {
-                var brand = _yapartStoreContext.Brands.FirstOrDefault(br => br.Id == id);
-                if (brand != null)
-                    return brand;
+                var group = _yapartStoreContext.Groups.FirstOrDefault(br => br.Id == id);
+                if (group != null)
+                    return group;
                 else
                     return null;
             }
@@ -65,23 +65,23 @@ namespace YapartStore.DAL.Repositories
             }
         }
 
-        public void Update(Brand item)
+        public void Update(Group item)
         {
             try
             {
-                var brand = _yapartStoreContext.Brands.FirstOrDefault(br => br.Id == item.Id);
-                if (brand != null)
+                var group = _yapartStoreContext.Groups.FirstOrDefault(br => br.Id == item.Id);
+                if (group != null)
                 {
                     bool isModefied = false;
-                    if (brand.Name == item.Name)
+                    if (group.Name == item.Name)
                     {
-                        brand.Name = item.Name;
+                        group.Name = item.Name;
                         isModefied = true;
                     }
-
+                    
                     if (isModefied)
                     {
-                        _yapartStoreContext.Entry(brand).State = EntityState.Modified;
+                        _yapartStoreContext.Entry(group).State = EntityState.Modified;
                         _yapartStoreContext.SaveChanges();
                     }
                 }

@@ -7,18 +7,18 @@ using YapartStore.DL.Entities;
 
 namespace YapartStore.DAL.Repositories
 {
-    public class BrandRepository : IBrandRepository
+    public class SectionRepository : ISectionRepository
     {
         private readonly YapartStoreContext _yapartStoreContext;
-        public BrandRepository(YapartStoreContext yapartStoreContext)
+        public SectionRepository(YapartStoreContext yapartStoreContext)
         {
             _yapartStoreContext = yapartStoreContext;
         }
-        public void Create(Brand item)
+        public void Create(Section item)
         {
             try
             {
-                _yapartStoreContext.Brands.Add(item);
+                _yapartStoreContext.Sections.Add(item);
                 _yapartStoreContext.SaveChanges();
             }
             catch (Exception e)
@@ -29,19 +29,19 @@ namespace YapartStore.DAL.Repositories
 
         public void Delete(int id)
         {
-            var brand = _yapartStoreContext.Brands.FirstOrDefault(i => i.Id == id);
-            if (brand != null)
+            var section = _yapartStoreContext.Sections.FirstOrDefault(i => i.Id == id);
+            if (section != null)
             {
-                _yapartStoreContext.Brands.Remove(brand);
+                _yapartStoreContext.Sections.Remove(section);
                 _yapartStoreContext.SaveChanges();
             }
         }
 
-        public IQueryable<Brand> GetAll()
+        public IQueryable<Section> GetAll()
         {
             try
             {
-                return _yapartStoreContext.Brands.Include("Products").AsQueryable();
+                return _yapartStoreContext.Sections.Include("Group").Include("Categories").AsQueryable();
             }
             catch (Exception e)
             {
@@ -49,13 +49,13 @@ namespace YapartStore.DAL.Repositories
             }
         }
 
-        public Brand GetItemById(int id)
+        public Section GetItemById(int id)
         {
             try
             {
-                var brand = _yapartStoreContext.Brands.FirstOrDefault(br => br.Id == id);
-                if (brand != null)
-                    return brand;
+                var section = _yapartStoreContext.Sections.FirstOrDefault(br => br.Id == id);
+                if (section != null)
+                    return section;
                 else
                     return null;
             }
@@ -65,23 +65,29 @@ namespace YapartStore.DAL.Repositories
             }
         }
 
-        public void Update(Brand item)
+        public void Update(Section item)
         {
             try
             {
-                var brand = _yapartStoreContext.Brands.FirstOrDefault(br => br.Id == item.Id);
-                if (brand != null)
+                var section = _yapartStoreContext.Sections.FirstOrDefault(br => br.Id == item.Id);
+                if (section != null)
                 {
                     bool isModefied = false;
-                    if (brand.Name == item.Name)
+                    if (section.Name == item.Name)
                     {
-                        brand.Name = item.Name;
+                        section.Name = item.Name;
                         isModefied = true;
                     }
 
+                    if (section.GroupId== item.GroupId)
+                    {
+                        section.GroupId = item.GroupId;
+                        isModefied = true;
+                    }
+                    
                     if (isModefied)
                     {
-                        _yapartStoreContext.Entry(brand).State = EntityState.Modified;
+                        _yapartStoreContext.Entry(section).State = EntityState.Modified;
                         _yapartStoreContext.SaveChanges();
                     }
                 }

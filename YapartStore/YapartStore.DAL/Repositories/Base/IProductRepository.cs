@@ -2,7 +2,7 @@
 
 namespace YapartStore.DAL.Repositories.Base
 {
-    public interface ICategoryRepository : IBaseRepository<Category>
+    public interface IProductRepository : IBaseRepository<Product>
     {
     }
 }
