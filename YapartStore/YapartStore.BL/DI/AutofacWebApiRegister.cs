@@ -10,10 +10,12 @@ namespace YapartStore.BL.DI
     {
         public static void RegisterWebApiServices(ContainerBuilder builder)
         {
-            builder.RegisterType<UnitOfWork>()
-                .As<IUnitOfWork>();
-            builder.RegisterType<BrandService>()
-                .As<IBrandService>();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
+            builder.RegisterType<BrandService>().As<IBrandService>();
+            builder.RegisterType<CategoryService>().As<ICategoryService>();
+            builder.RegisterType<GroupService>().As<IGroupService>();
+            builder.RegisterType<ProductService>().As<IProductService>();
+            builder.RegisterType<SectionService>().As<ISectionService>();
         }
 
     }

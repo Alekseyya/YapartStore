@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using AutoMapper;
 using YapartStore.BL.Entities;
 using YapartStore.BL.Services.Base;
 using YapartStore.DAL.Repositories.Base;
@@ -18,22 +19,44 @@ namespace YapartStore.BL.Services
 
         public void AddItem(BrandDTO item)
         {
-            throw new NotImplementedException();
+            var brand = Mapper.Map<BrandDTO, Brand>(item);
+            _unitOfWork.BrandRepository.Create(brand);
         }
 
         public void DeleteItem(BrandDTO item)
         {
-            throw new NotImplementedException();
+            var brand = Mapper.Map<BrandDTO, Brand>(item);
+            var findBrand = _unitOfWork.BrandRepository.GetAll().FirstOrDefault(brName => brName.Name == item.Name);
+            if (findBrand != null)
+            {
+                _unitOfWork.BrandRepository.Delete(findBrand.Id);
+            }
         }
 
         public IQueryable<BrandDTO> GetAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var brands = Mapper.Map<IQueryable<Brand>, IQueryable<BrandDTO>>(_unitOfWork.BrandRepository.GetAll());
+                return brands;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
         public BrandDTO GetItemById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var brand = _unitOfWork.BrandRepository.GetAll().FirstOrDefault(br => br.Id == id);
+                return Mapper.Map<Brand, BrandDTO>(brand);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
         public void UpdateItem(BrandDTO item)

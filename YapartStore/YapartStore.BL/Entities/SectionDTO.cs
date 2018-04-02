@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using YapartStore.DL.Entities;
+﻿using System.Collections.Generic;
+
 
 namespace YapartStore.BL.Entities
 {

@@ -1,34 +1,86 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using AutoMapper;
 using YapartStore.BL.Entities;
 using YapartStore.BL.Services.Base;
+using YapartStore.DAL.Repositories.Base;
+using YapartStore.DL.Entities;
 
 namespace YapartStore.BL.Services
 {
     public class ProductService : IProductService
     {
+        private readonly IUnitOfWork _unitOfWork;
+        public ProductService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
         public void AddItem(ProductDTO item)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var product = Mapper.Map<ProductDTO, Product>(item);
+                _unitOfWork.ProductRepository.Create(product);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void DeleteItem(ProductDTO item)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var product = Mapper.Map<ProductDTO, Product>(item);
+                var findProduct = _unitOfWork.ProductRepository.GetAll().FirstOrDefault(prod => prod.Article == item.Article && prod.Brand.Name == item.Brand.Name);
+                if (findProduct != null)
+                {
+                    _unitOfWork.ProductRepository.Delete(findProduct.Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public IQueryable<ProductDTO> GetAll()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var products = Mapper.Map<IQueryable<Product>, IQueryable<ProductDTO>>(_unitOfWork.ProductRepository.GetAll());
+                if (products != null)
+                    return products;
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public ProductDTO GetItemById(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var product = _unitOfWork.ProductRepository.GetAll().FirstOrDefault(car => car.Id == id);
+                if (product != null)
+                    return Mapper.Map<Product, ProductDTO>(product);
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void UpdateItem(ProductDTO item)
         {
-            throw new System.NotImplementedException();
+            var product = Mapper.Map<ProductDTO, Product>(item);
+            _unitOfWork.ProductRepository.Update(product);
         }
     }
 }
