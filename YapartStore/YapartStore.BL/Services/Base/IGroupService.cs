@@ -4,5 +4,6 @@ namespace YapartStore.BL.Services.Base
 {
     public interface IGroupService : IBaseService<GroupDTO>
     {
+        void DeleteItem(string groupName);
     }
 }

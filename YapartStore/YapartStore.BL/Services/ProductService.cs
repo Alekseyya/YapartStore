@@ -45,6 +45,23 @@ namespace YapartStore.BL.Services
             }
         }
 
+        public void DeleteItem(string article)
+        {
+            try
+            {
+                var findProduct = _unitOfWork.ProductRepository.GetAll()
+                    .FirstOrDefault(prod => prod.Article == article);
+                if (findProduct != null)
+                {
+                    _unitOfWork.ProductRepository.Delete(findProduct.Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public IQueryable<ProductDTO> GetAll()
         {
             try

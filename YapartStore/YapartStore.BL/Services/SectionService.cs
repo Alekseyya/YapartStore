@@ -46,6 +46,22 @@ namespace YapartStore.BL.Services
             }
         }
 
+        public void DeleteItem(string sectionName)
+        {
+            try
+            {
+                var findSection = _unitOfWork.SectionRepository.GetAll().FirstOrDefault(gr => gr.Name == sectionName);
+                if (findSection != null)
+                {
+                    _unitOfWork.GroupRepository.Delete(findSection.Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public IQueryable<SectionDTO> GetAll()
         {
             try

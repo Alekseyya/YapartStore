@@ -45,6 +45,22 @@ namespace YapartStore.BL.Services
             }
         }
 
+        public void DeleteItem(string categoryName)
+        {
+            try
+            {
+                var findCategory = _unitOfWork.CategoryRepository.GetAll().FirstOrDefault(catName => catName.Name == categoryName);
+                if (findCategory != null)
+                {
+                    _unitOfWork.CategoryRepository.Delete(findCategory.Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public IQueryable<CategoryDTO> GetAll()
         {
             try

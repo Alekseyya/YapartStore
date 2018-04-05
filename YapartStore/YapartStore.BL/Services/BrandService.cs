@@ -23,6 +23,20 @@ namespace YapartStore.BL.Services
             _unitOfWork.BrandRepository.Create(brand);
         }
 
+        public void DeleteByName(string brandName)
+        {
+            try
+            {
+                var brand = _unitOfWork.BrandRepository.GetAll().FirstOrDefault(brName => brName.Name == brandName);
+                if (brand != null)
+                    _unitOfWork.BrandRepository.Delete(brand.Id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void DeleteItem(BrandDTO item)
         {
             var brand = Mapper.Map<BrandDTO, Brand>(item);
