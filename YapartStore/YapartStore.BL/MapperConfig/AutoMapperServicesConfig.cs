@@ -4,13 +4,27 @@ using YapartStore.DL.Entities;
 
 namespace YapartStore.BL.MapperConfig
 {
-    public class AutoMapperServicesConfig
+    public static class AutoMapperServicesConfig
     {
+        public static void Configure()
+        {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile(new BrandProfile());
+                cfg.AddProfile(new CategoryProfile());
+                cfg.AddProfile(new ProductProfile());
+                cfg.AddProfile(new GroupProfile());
+                cfg.AddProfile(new SectionProfile());                
+            });
+
+        }
+
         public class BrandProfile :Profile
         {
             public BrandProfile()
             {
                 CreateMap<BrandDTO, Brand>();
+                CreateMap<Brand, BrandDTO>();
             }
         }
 
@@ -19,6 +33,7 @@ namespace YapartStore.BL.MapperConfig
             public CategoryProfile()
             {
                 CreateMap<CategoryDTO, Category>();
+                CreateMap<Category, CategoryDTO>();
             }
         }
         public class ProductProfile : Profile
@@ -26,6 +41,7 @@ namespace YapartStore.BL.MapperConfig
             public ProductProfile()
             {
                 CreateMap<ProductDTO, Product>();
+                CreateMap<Product, ProductDTO>();
             }
         }
         public class GroupProfile : Profile
@@ -33,6 +49,7 @@ namespace YapartStore.BL.MapperConfig
             public GroupProfile()
             {
                 CreateMap<GroupDTO, Group>();
+                CreateMap<Group, GroupDTO>();
             }
         }
 
@@ -41,6 +58,7 @@ namespace YapartStore.BL.MapperConfig
             public SectionProfile()
             {
                 CreateMap<SectionDTO, Section>();
+                CreateMap<Section, SectionDTO>();
             }
         }
     }

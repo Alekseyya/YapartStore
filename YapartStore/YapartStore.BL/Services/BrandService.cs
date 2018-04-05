@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using YapartStore.BL.Entities;
@@ -47,11 +48,11 @@ namespace YapartStore.BL.Services
             }
         }
 
-        public IQueryable<BrandDTO> GetAll()
+        public IList<BrandDTO> GetAll()
         {
             try
             {
-                var brands = Mapper.Map<IQueryable<Brand>, IQueryable<BrandDTO>>(_unitOfWork.BrandRepository.GetAll());
+                var brands = Mapper.Map<IQueryable<Brand>, IList<BrandDTO>>(_unitOfWork.BrandRepository.GetAll());
                 return brands;
             }
             catch (Exception e)

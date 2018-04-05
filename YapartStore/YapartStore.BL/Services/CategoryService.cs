@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using YapartStore.BL.Entities;
@@ -61,11 +62,11 @@ namespace YapartStore.BL.Services
             }
         }
 
-        public IQueryable<CategoryDTO> GetAll()
+        public IList<CategoryDTO> GetAll()
         {
             try
             {
-                var categories = Mapper.Map<IQueryable<Category>, IQueryable<CategoryDTO>>(_unitOfWork.CategoryRepository.GetAll());
+                var categories = Mapper.Map<IQueryable<Category>, IList<CategoryDTO>>(_unitOfWork.CategoryRepository.GetAll());
                 if (categories != null)
                     return categories;
                 else

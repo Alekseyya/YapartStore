@@ -40,7 +40,7 @@ namespace YapartStore.DAL.Repositories
         public IQueryable<Brand> GetAll()
         {
             try
-            {
+            {                
                 return _yapartStoreContext.Brands.Include("Products").AsQueryable();
             }
             catch (Exception e)

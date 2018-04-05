@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using YapartStore.BL.Entities;
@@ -62,11 +63,11 @@ namespace YapartStore.BL.Services
             }
         }
 
-        public IQueryable<GroupDTO> GetAll()
+        public IList<GroupDTO> GetAll()
         {
             try
             {
-                var groups = Mapper.Map<IQueryable<Group>, IQueryable<GroupDTO>>(_unitOfWork.GroupRepository.GetAll());
+                var groups = Mapper.Map<IQueryable<Group>, IList<GroupDTO>>(_unitOfWork.GroupRepository.GetAll());
                 if (groups != null)
                     return groups;
                 else

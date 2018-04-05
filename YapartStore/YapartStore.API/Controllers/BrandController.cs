@@ -63,8 +63,10 @@ namespace YapartStore.API.Controllers
         [HttpGet]
         public IEnumerable<BrandDTO> GetBrands()
         {
-            var brands = _brandService.GetAll().AsEnumerable();
-            return brands;
+            var brands = _brandService.GetAll();
+            return new List<BrandDTO>() { new BrandDTO { Id = 1, Name = "name" }, new BrandDTO { Id = 2, Name = "Aaaaa"} };
+            
+            //return brands;
         }
     }
 }
