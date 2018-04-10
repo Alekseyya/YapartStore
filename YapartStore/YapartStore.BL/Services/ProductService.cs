@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using YapartStore.BL.Entities;
+using YapartStore.BL.MapperConfig;
 using YapartStore.BL.Services.Base;
 using YapartStore.DAL.Repositories.Base;
 using YapartStore.DL.Entities;
@@ -67,11 +68,41 @@ namespace YapartStore.BL.Services
         {
             try
             {
-                var products = Mapper.Map<IQueryable<Product>, IList<ProductDTO>>(_unitOfWork.ProductRepository.GetAll());
+                var configurate = new MapperConfiguration(cfg =>
+                {
+                    cfg.AddProfile(new AutoMapperServicesConfig.ProductWithoutBrandAndCategoryProfile());
+                }).CreateMapper();
+
+                var products = configurate.Map<IQueryable<Product>, IList<ProductDTO>>(_unitOfWork.ProductRepository.GetAll());
                 if (products != null)
                     return products;
                 else
                     return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public IList<ProductDTO> GetAllProductsOfBrand(string nameBrand)
+        {
+            try
+            {
+                var products =_unitOfWork.ProductRepository.GetAll().Where(br => br.Brand.Name == nameBrand);
+                if (products != null)
+                {
+                    var configurate = new MapperConfiguration(cfg =>
+                    {
+                        cfg.AddProfile(new AutoMapperServicesConfig.ProductWithoutBrandAndCategoryProfile());
+                    }).CreateMapper();
+
+                    var productsDTO = configurate.Map<IQueryable<Product>, IList<ProductDTO>>(products);
+                    return productsDTO;
+                }
+
+                return null;
+
             }
             catch (Exception ex)
             {

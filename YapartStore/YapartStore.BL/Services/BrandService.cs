@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using YapartStore.BL.Entities;
+using YapartStore.BL.Helpers;
 using YapartStore.BL.Services.Base;
 using YapartStore.DAL.Repositories.Base;
 using YapartStore.DL.Entities;
@@ -60,6 +61,8 @@ namespace YapartStore.BL.Services
                 return null;
             }
         }
+
+        
 
         public BrandDTO GetItemById(int id)
         {

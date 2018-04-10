@@ -24,7 +24,8 @@ namespace YapartStore.BL.MapperConfig
             public BrandProfile()
             {
                 CreateMap<BrandDTO, Brand>();
-                CreateMap<Brand, BrandDTO>();
+                CreateMap<Brand, BrandDTO>()
+                    .ForMember(br => br.Products, opt => opt.Ignore()).ReverseMap();
             }
         }
 
@@ -44,6 +45,36 @@ namespace YapartStore.BL.MapperConfig
                 CreateMap<Product, ProductDTO>();
             }
         }
+
+        public class ProductWithoutBrandProfile : Profile
+        {
+            public ProductWithoutBrandProfile()
+            {
+                CreateMap<Product, ProductDTO>()
+                    .ForMember(x => x.Brand, opt => opt.Ignore());
+            }
+        }
+
+        public class ProductWithoutCategoryProfile : Profile
+        {
+            public ProductWithoutCategoryProfile()
+            {
+                CreateMap<Product, ProductDTO>()
+                    .ForMember(x => x.Category, opt => opt.Ignore()).PreserveReferences();
+            }
+        }
+
+        public class ProductWithoutBrandAndCategoryProfile: Profile
+        {
+            public ProductWithoutBrandAndCategoryProfile()
+            {
+                CreateMap<Product, ProductDTO>()
+                    .ForMember(x => x.Brand, opt => opt.Ignore())
+                    .ForMember(x => x.Category, opt => opt.Ignore())
+                    .PreserveReferences();
+            }
+        }
+
         public class GroupProfile : Profile
         {
             public GroupProfile()

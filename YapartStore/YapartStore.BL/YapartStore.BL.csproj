@@ -63,6 +63,7 @@
     <Compile Include="Entities\GroupDTO.cs" />
     <Compile Include="Entities\ProductDTO.cs" />
     <Compile Include="Entities\SectionDTO.cs" />
+    <Compile Include="Helpers\MapperExtensions.cs" />
     <Compile Include="MapperConfig\AutoMapperServicesConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Base\IBaseService.cs" />

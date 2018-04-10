@@ -1,0 +1,15 @@
+﻿@model IEnumerable<YapartStore.UI.ViewModels.ProductViewModel>
+
+@{
+    ViewBag.Title = "GetProductsOfBrand";
+}
+
+<h2>GetProductsOfBrand</h2>
+
+@foreach (var item in Model)
+{
+    <div>@item.Article</div>
+    <div>@item.Descriptions</div>
+    <div>@item.Price</div>
+}
+
