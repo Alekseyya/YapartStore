@@ -1,24 +1,21 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿
+.header__autorization-ul{
+    list-style-type: none;
+    padding: 0;
+}
+.header__autorization ul div{
+    padding: 0;
+}
+ 
+.cart-image{
+    background: url("/Content/Images/icons-new.png") -5px -232px no-repeat;    
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.cart-text{
+    padding: 0;
+    vertical-align: text-bottom;
 }
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.header-search_submit{
+    background: url("/Content/Images/icons-new.png") -4px -1133px no-repeat;
+    background-color: midnightblue;  
 }
