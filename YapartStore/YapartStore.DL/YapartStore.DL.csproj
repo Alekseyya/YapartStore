@@ -75,6 +75,8 @@
     <Compile Include="Entities\Brand.cs" />
     <Compile Include="Entities\Identity\Claim.cs" />
     <Compile Include="Entities\Group.cs" />
+    <Compile Include="Entities\Identity\CustomRoleStore.cs" />
+    <Compile Include="Entities\Identity\CustomUserStore.cs" />
     <Compile Include="Entities\Identity\Login.cs" />
     <Compile Include="Entities\Identity\Role.cs" />
     <Compile Include="Entities\Picture.cs" />

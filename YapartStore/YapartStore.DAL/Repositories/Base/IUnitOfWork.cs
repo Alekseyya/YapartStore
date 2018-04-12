@@ -7,6 +7,10 @@
         IGroupRepository GroupRepository { get; set; }
         IProductRepository ProductRepository { get; set; }
         ISectionRepository SectionRepository { get; set; }
+
+
+        IUserRepository UserRepository { get; set; }
+        IRoleRepository RoleRepository { get; set; }
         void Save();
     }
 }

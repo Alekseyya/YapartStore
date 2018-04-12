@@ -12,6 +12,7 @@ namespace YapartStore.DL.Entities.Identity
     {
         public CustomRole() { }
         public CustomRole(string name) { Name = name; }
+        
     }
 
     public class RoleConfiguration : EntityTypeConfiguration<CustomRole>
