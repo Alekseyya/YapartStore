@@ -12,8 +12,6 @@ namespace YapartStore.Tests.UI
         [TestMethod]
         public void TestGetAllProducts()
         {
-            var products = new HomeController();
-            products.Index();
         }
     }
 }

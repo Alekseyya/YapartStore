@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using YapartStore.UI.Models;
 using YapartStore.UI.Services;
 using YapartStore.UI.Services.Base;
 using YapartStore.UI.ViewModels;
@@ -18,13 +19,18 @@ namespace YapartStore.UI.Controllers
     public class HomeController : Controller
     {
         private readonly IProductService _productService;
-        public HomeController()
+        public HomeController(IProductService productService)
         {
-            _productService = new ProductService();
+            _productService = productService;
         }
-        public ActionResult Index()
+        public async Task<ActionResult> Index(int page=1)
         {
-            return View();
+            int pageSize = 3;
+            var products = await _productService.GetAllProducts();
+            var productPerPage = products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var pageInfo = new PageInfo {PageNumber = page, PageSize = pageSize, TotalItems = products.Count};
+            var catalog = new CatalogViewModel {PageInfo = pageInfo, Products = productPerPage};
+            return View(catalog);
         }
 
         public ActionResult About()

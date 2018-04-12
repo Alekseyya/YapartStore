@@ -9,6 +9,8 @@ namespace YapartStore.DL.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<Product> Products { get; set; } = new List<Product>();
+        
+        public virtual Picture Picture { get; set; }
     }
     public class BrandConfiguration : EntityTypeConfiguration<Brand>
     {
@@ -24,6 +26,7 @@ namespace YapartStore.DL.Entities
                 .IsRequired();
 
             HasMany(x => x.Products);
+            HasOptional(p => p.Picture).WithOptionalPrincipal(p=>p.Brand);
         }
     }
 }

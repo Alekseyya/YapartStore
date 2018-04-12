@@ -17,6 +17,23 @@ namespace YapartStore.DL.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Pictures",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        Path = c.String(nullable: false),
+                        UpdateTimestamp = c.DateTime(nullable: false),
+                        ProductId = c.Int(),
+                        Brand_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Products", t => t.ProductId)
+                .ForeignKey("dbo.Brands", t => t.Brand_Id)
+                .Index(t => t.ProductId)
+                .Index(t => t.Brand_Id);
+            
+            CreateTable(
                 "dbo.Products",
                 c => new
                     {
@@ -71,6 +88,8 @@ namespace YapartStore.DL.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Products", "BrandId", "dbo.Brands");
+            DropForeignKey("dbo.Pictures", "Brand_Id", "dbo.Brands");
+            DropForeignKey("dbo.Pictures", "ProductId", "dbo.Products");
             DropForeignKey("dbo.Sections", "GroupId", "dbo.Groups");
             DropForeignKey("dbo.Categories", "SectionId", "dbo.Sections");
             DropForeignKey("dbo.Products", "CategoryId", "dbo.Categories");
@@ -78,10 +97,13 @@ namespace YapartStore.DL.Migrations
             DropIndex("dbo.Categories", new[] { "SectionId" });
             DropIndex("dbo.Products", new[] { "CategoryId" });
             DropIndex("dbo.Products", new[] { "BrandId" });
+            DropIndex("dbo.Pictures", new[] { "Brand_Id" });
+            DropIndex("dbo.Pictures", new[] { "ProductId" });
             DropTable("dbo.Groups");
             DropTable("dbo.Sections");
             DropTable("dbo.Categories");
             DropTable("dbo.Products");
+            DropTable("dbo.Pictures");
             DropTable("dbo.Brands");
         }
     }
