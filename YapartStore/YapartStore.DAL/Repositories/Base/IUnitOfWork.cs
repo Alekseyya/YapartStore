@@ -7,7 +7,7 @@
         IGroupRepository GroupRepository { get; set; }
         IProductRepository ProductRepository { get; set; }
         ISectionRepository SectionRepository { get; set; }
-
+        IPictureRepository PictureRepository { get; set; }
 
         IUserRepository UserRepository { get; set; }
         IRoleRepository RoleRepository { get; set; }

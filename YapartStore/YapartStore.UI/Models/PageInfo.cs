@@ -16,9 +16,4 @@ namespace YapartStore.UI.Models
         }
     }
 
-    public class CatalogViewModel
-    {
-        public IEnumerable<ProductViewModel> Products { get; set; }
-        public PageInfo PageInfo { get; set; }
-    }
 }

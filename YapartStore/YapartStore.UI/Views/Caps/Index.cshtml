@@ -1,0 +1,21 @@
+﻿@model YapartStore.UI.ViewModels.CapsCatalogViewModel
+@using YapartStore.UI.Helpers
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="catalog container">
+    @foreach (var product in Model.Products)
+    {
+        <div class="product row">
+            <a class="product__image col-md-4"></a>
+            <div class="product__article">@product.Article</div>
+            <div class="product__descriptions">@product.Descriptions</div>
+            <div class="product__price">@product.Price</div>
+        </div>
+    }
+    <div class="pagination">
+        @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+    </div>
+</div>
+

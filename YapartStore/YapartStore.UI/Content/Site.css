@@ -1,12 +1,11 @@
-﻿
-.header__autorization-ul{
+﻿.header__autorization-ul{
     list-style-type: none;
     padding: 0;
 }
 .header__autorization ul div{
     padding: 0;
 }
- 
+
 .cart-image{
     background: url("/Content/Images/icons-new.png") -5px -232px no-repeat;    
 }
@@ -18,4 +17,16 @@
 .header-search_submit{
     background: url("/Content/Images/icons-new.png") -4px -1133px no-repeat;
     background-color: midnightblue;  
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.filter-menu__additional-sorting {
+    background-color: green;
+}
+
+.main-menu {
+    background: #256892;
 }

@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="~/Content/Site.css" type="text/css">
-
+    <link type="text/css" rel="stylesheet" href="../../Content/site.css" />
 </head>
 <body>
     <div class="header">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="header-search col-md-6 row align-items-center">
                     <div class="header-search-button">
-                        @using (Html.BeginForm("Find", "Home", FormMethod.Get, new{@class ="row"}))
+                        @using (Html.BeginForm("Find", "Home", FormMethod.Get, new { @class = "row" }))
                         {
                             <div class="header-search__input col-md-10">
                                 @Html.TextBox("query", "Введите название колпака")
@@ -52,6 +52,18 @@
                         <a href="" class="cart-text col-md-3">Корзина</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-menu">
+        <div class="main-manu__inner container">
+            <div class="row">
+                <span id="main-catalog" class="col-md-2">
+                    @Html.ActionLink("Каталог", "Index", "Catalog")
+                </span>
+                <span id="cars-caps">
+                    @Html.ActionLink("Колпаки", "Index", "Caps")
+                </span>
             </div>
         </div>
     </div>
