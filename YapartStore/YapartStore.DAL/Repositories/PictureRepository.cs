@@ -17,7 +17,7 @@ namespace YapartStore.DAL.Repositories
         {
             _yapartStoreContext = yapartStoreContext;
         }
-        public Task Create(Picture item)
+        public Task CreateAsync(Picture item)
         {
             try
             {
@@ -29,22 +29,11 @@ namespace YapartStore.DAL.Repositories
                 throw e;
             }
         }
+        
 
-        public Task Delete(int id)
+        public Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IQueryable<Picture>> GetAll()
-        {
-            try
-            {
-                return Task.Run(() => { return _yapartStoreContext.Pictures.AsQueryable(); });
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            throw new NotImplementedException();
         }
 
         public async Task<List<Picture>> GetAllAsync()
@@ -62,14 +51,14 @@ namespace YapartStore.DAL.Repositories
             }
         }
 
-        public Task<Picture> GetItemById(int id)
+        public Task<Picture> GetItemByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
-
-        public Task Update(Picture item)
+        
+        public Task UpdateAsync(Picture item)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

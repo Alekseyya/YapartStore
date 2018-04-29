@@ -16,6 +16,7 @@ namespace YapartStore.BL.DI
             builder.RegisterType<GroupService>().As<IGroupService>();
             builder.RegisterType<ProductService>().As<IProductService>();
             builder.RegisterType<SectionService>().As<ISectionService>();
+            builder.RegisterType<PictureService>().As<IPictureService>();
         }
 
     }

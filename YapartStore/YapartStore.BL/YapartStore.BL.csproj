@@ -61,6 +61,7 @@
     <Compile Include="Entities\BrandDTO.cs" />
     <Compile Include="Entities\CategoryDTO.cs" />
     <Compile Include="Entities\GroupDTO.cs" />
+    <Compile Include="Entities\PictureDTO.cs" />
     <Compile Include="Entities\ProductDTO.cs" />
     <Compile Include="Entities\SectionDTO.cs" />
     <Compile Include="Helpers\MapperExtensions.cs" />
@@ -70,11 +71,13 @@
     <Compile Include="Services\Base\IBrandService.cs" />
     <Compile Include="Services\Base\ICategoryService.cs" />
     <Compile Include="Services\Base\IGroupService.cs" />
+    <Compile Include="Services\Base\IPictureService.cs" />
     <Compile Include="Services\Base\IProductService.cs" />
     <Compile Include="Services\Base\ISectionService.cs" />
     <Compile Include="Services\BrandService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\GroupService.cs" />
+    <Compile Include="Services\PictureService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SectionService.cs" />
   </ItemGroup>

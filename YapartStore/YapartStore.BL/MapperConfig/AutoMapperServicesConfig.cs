@@ -14,7 +14,8 @@ namespace YapartStore.BL.MapperConfig
                 cfg.AddProfile(new CategoryProfile());
                 cfg.AddProfile(new ProductProfile());
                 cfg.AddProfile(new GroupProfile());
-                cfg.AddProfile(new SectionProfile());                
+                cfg.AddProfile(new SectionProfile());  
+                cfg.AddProfile(new PictureProfile());
             });
 
         }
@@ -35,6 +36,14 @@ namespace YapartStore.BL.MapperConfig
             {
                 CreateMap<CategoryDTO, Category>();
                 CreateMap<Category, CategoryDTO>();
+            }
+        }
+
+        public class PictureProfile : Profile
+        {
+            public PictureProfile()
+            {
+                CreateMap<Picture, PictureDTO>();
             }
         }
         public class ProductProfile : Profile
