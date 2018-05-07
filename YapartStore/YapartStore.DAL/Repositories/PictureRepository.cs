@@ -51,9 +51,19 @@ namespace YapartStore.DAL.Repositories
             }
         }
 
-        public Task<Picture> GetItemByIdAsync(int id)
+        public async Task<Picture> GetItemByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await Task.Run(() =>
+                {
+                    return _yapartStoreContext.Pictures.FirstOrDefault(i=> i.Id == id);
+                });
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
         
         public Task UpdateAsync(Picture item)

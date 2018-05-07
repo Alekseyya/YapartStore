@@ -10,9 +10,12 @@ namespace YapartStore.API.Controllers
     public class ProductController : ApiController
     {
         private readonly IProductService _productService;
-        public ProductController(IProductService productService)
+        private readonly IPictureService _pictureService;
+
+        public ProductController(IProductService productService, IPictureService pictureService)
         {
             _productService = productService;
+            _pictureService = pictureService;
         }
 
         [HttpGet]

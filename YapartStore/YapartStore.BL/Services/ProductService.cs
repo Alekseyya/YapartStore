@@ -70,10 +70,31 @@ namespace YapartStore.BL.Services
             {
                 var configurate = new MapperConfiguration(cfg =>
                 {
-                    cfg.AddProfile(new AutoMapperServicesConfig.ProductWithoutBrandAndCategoryProfile());
+                    cfg.AddProfile(new AutoMapperServicesConfig.ProductProfile());
                 }).CreateMapper();
 
                 var products = configurate.Map<IQueryable<Product>, IList<ProductDTO>>(_unitOfWork.ProductRepository.GetAll());
+                if (products != null)
+                    return products;
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public IList<ProductDTO> GetAllProductsIncludeBrand()
+        {
+            try
+            {
+                var configurate = new MapperConfiguration(cfg =>
+                {
+                    cfg.AddProfile(new AutoMapperServicesConfig.ProductWithoutCategoryProfile());
+                }).CreateMapper();
+                var products = Mapper.Map<IQueryable<Product>, IList<ProductDTO>>
+                                        (_unitOfWork.ProductRepository.GetAllProductsIncludeBrand());
                 if (products != null)
                     return products;
                 else

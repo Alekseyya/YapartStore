@@ -10,5 +10,6 @@ namespace YapartStore.UI.ViewModels
         public string Article { get; set; }
         public string Descriptions { get; set; }
         public decimal Price { get; set; }
+        public ICollection<PictureViewModel> Pictures { get; set; }
     }
 }

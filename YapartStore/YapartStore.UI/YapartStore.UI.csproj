@@ -228,6 +228,7 @@
     <Compile Include="ViewModels\BrandViewModel.cs" />
     <Compile Include="ViewModels\CapsCatalogViewModel.cs" />
     <Compile Include="ViewModels\CapViewModel.cs" />
+    <Compile Include="ViewModels\PictureViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

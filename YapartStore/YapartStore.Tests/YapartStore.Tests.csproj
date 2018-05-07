@@ -77,6 +77,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\BLUnitTest.cs" />
+    <Compile Include="BL\ProductUnitTest.cs" />
     <Compile Include="DAL\PictureUnitTest.cs" />
     <Compile Include="DAL\ProductUnitTest.cs" />
     <Compile Include="UI\HomeTestUI.cs" />
@@ -88,6 +90,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\YapartStore.BL\YapartStore.BL.csproj">
+      <Project>{b0d29d7a-37d6-41cd-a376-91ca7d901231}</Project>
+      <Name>YapartStore.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YapartStore.DAL\YapartStore.DAL.csproj">
       <Project>{3f1bc032-bcaa-48a9-9713-6f8246dd5c84}</Project>
       <Name>YapartStore.DAL</Name>

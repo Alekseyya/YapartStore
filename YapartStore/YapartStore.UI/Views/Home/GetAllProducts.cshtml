@@ -11,5 +11,9 @@
     <div>@item.Article</div>
     <div>@item.Descriptions</div>
     <div>@item.Price</div>
+    foreach (var picture in item.Pictures)
+     {
+         <img src="@picture.Path"/>
+     }
 }
 

@@ -7,5 +7,6 @@ namespace YapartStore.BL.Services.Base
     {
         void DeleteItem(string article);
         IList<ProductDTO> GetAllProductsOfBrand(string nameBrand);
+        IList<ProductDTO> GetAllProductsIncludeBrand();
     }
 }

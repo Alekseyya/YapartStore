@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace YapartStore.BL.Entities
 {
@@ -20,6 +21,8 @@ namespace YapartStore.BL.Entities
 
         public BrandDTO Brand { get; set; }
         public CategoryDTO Category { get; set; }
+
+        public ICollection<PictureDTO> Pictures { get; set; } = new List<PictureDTO>();
     }
 
 }

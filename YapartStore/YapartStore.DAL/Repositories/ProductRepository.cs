@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using YapartStore.DAL.Repositories.Base;
 using YapartStore.DL.Context;
 using YapartStore.DL.Entities;
@@ -18,7 +19,26 @@ namespace YapartStore.DAL.Repositories
         {
             try
             {
-                return _yapartStoreContext.Products.Include("Brand").Include("Category").AsQueryable();
+                return _yapartStoreContext.Products.Select(ob => new
+                    {
+                        id = ob.Id,
+                        article = ob.Article,
+                        descriptions = ob.Descriptions,
+                        price = ob.Price,
+                        brandName = ob.Brand.Name,
+                        categoryName = ob.Category.Name,
+                        pictures = ob.Pictures
+                    }).AsEnumerable()
+                    .Select(pr => new Product
+                    {
+                        Id = pr.id,
+                        Article = pr.article,
+                        Descriptions = pr.descriptions,
+                        Price = pr.price,
+                        Brand = new Brand { Name = pr.brandName },
+                        Category = new Category { Name = pr.categoryName},
+                        Pictures = pr.pictures
+                    }).AsQueryable();
             }
             catch (Exception e)
             {
@@ -110,6 +130,34 @@ namespace YapartStore.DAL.Repositories
             {
                 _yapartStoreContext.Products.Remove(product);
                 _yapartStoreContext.SaveChanges();
+            }
+        }
+
+        public IQueryable<Product> GetAllProductsIncludeBrand()
+        {
+            try
+            {
+                return _yapartStoreContext.Products
+                    .Select(ob => new
+                    {
+                        id = ob.Id,
+                        article = ob.Article,
+                        descriptions = ob.Descriptions,
+                        price = ob.Price,
+                        brandName = ob.Brand.Name
+                    }).AsEnumerable()
+                    .Select(pr => new Product
+                    {
+                        Id = pr.id,
+                        Article = pr.article,
+                        Descriptions = pr.descriptions,
+                        Price = pr.price,
+                        Brand = new Brand {Name = pr.brandName}
+                    }).AsQueryable();
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
     }
