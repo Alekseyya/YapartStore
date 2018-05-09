@@ -30,3 +30,8 @@
 .main-menu {
     background: #256892;
 }
+
+.caps__image img {
+    max-width: 100%;
+    height: auto;
+}

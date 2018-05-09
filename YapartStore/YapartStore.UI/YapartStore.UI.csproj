@@ -239,6 +239,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\a_logo.png" />
+    <Content Include="Content\Images\Caps\Ares ring Prestige.jpg" />
+    <Content Include="Content\Images\Caps\Aura ring Black Prestige.jpg" />
+    <Content Include="Content\Images\Caps\Aura ring Prestige.jpg" />
+    <Content Include="Content\Images\Caps\Cosmos ring.jpg" />
+    <Content Include="Content\Images\Caps\Fame mix.jpg" />
+    <Content Include="Content\Images\Caps\Glory ring.jpg" />
+    <Content Include="Content\Images\Caps\Meridian ring.jpg" />
+    <Content Include="Content\Images\Caps\Raven ring.jpg" />
     <Content Include="Content\Images\icons-new.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

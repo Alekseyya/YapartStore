@@ -60,9 +60,27 @@ namespace YapartStore.UI.Services
 
         }
 
-        //public async Task AddProduc(ProductViewModel)
-        //{
+        public async Task<List<ProductViewModel>> GetAllCaps()
+        {
+            try
+            {
+                string url = ConfigurationManager.AppSettings["WebApiUrl"];
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + "/product/GetAllCaps");
+                request.ContentType = "application/json; charset=utf-8";
+                request.Method = "GET";
 
-        //}
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return JsonConvert.DeserializeObject<List<ProductViewModel>>(await reader.ReadToEndAsync());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

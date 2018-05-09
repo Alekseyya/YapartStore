@@ -6,7 +6,7 @@ namespace YapartStore.UI.ViewModels
 {
     public class CapsCatalogViewModel
     {
-        public IEnumerable<CapViewModel> Products { get; set; }
+        public IEnumerable<ProductViewModel> Products { get; set; }
         public PageInfo PageInfo { get; set; }
     }
 }

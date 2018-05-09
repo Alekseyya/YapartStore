@@ -160,5 +160,36 @@ namespace YapartStore.DAL.Repositories
                 throw e;
             }
         }
+
+        public IQueryable<Product> GetAllCaps()
+        {
+            try
+            {
+                return _yapartStoreContext.Products
+                    .Where(w=> w.Category.Name == "Колпак").Include(p=>p.Pictures)
+                    .Select(ob => new
+                    {
+                        id = ob.Id,
+                        article = ob.Article,
+                        descriptions = ob.Descriptions,
+                        price = ob.Price,
+                        brandName = ob.Brand.Name,
+                        pictures = ob.Pictures
+                    }).AsEnumerable()
+                    .Select(pr => new Product
+                    {
+                        Id = pr.id,
+                        Article = pr.article,
+                        Descriptions = pr.descriptions,
+                        Price = pr.price,
+                        Brand = new Brand { Name = pr.brandName },
+                        Pictures = pr.pictures
+                    }).AsQueryable();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

@@ -22,5 +22,13 @@ namespace YapartStore.Tests.DAL
             var productRepository = new ProductRepository(new YapartStoreContext());
             var result = productRepository.GetAllProductsIncludeBrand().ToList();
         }
+
+        [TestMethod]
+        public void ProductGetCapsTest()
+        {
+            var productRepository = new ProductRepository(new YapartStoreContext());
+            var result = productRepository.GetAllCaps().ToList();
+        }
+
     }
 }

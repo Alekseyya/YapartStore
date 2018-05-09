@@ -20,13 +20,12 @@ namespace YapartStore.UI.Controllers
 
         public async Task<ActionResult> Index(int page=1)
         {
-            //int pageSize = 3;
-            //var products = await _productService.GetAllProducts();
-            //var productPerPage = products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
-            //var pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = products.Count };
-            //var catalog = new CapsCatalogViewModel { PageInfo = pageInfo, Products = productPerPage };
-            //return View(catalog);
-            return View();
+            int pageSize = 7;
+            var products = await _productService.GetAllCaps();
+            var productPerPage = products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = products.Count };
+            var catalog = new CapsCatalogViewModel { PageInfo = pageInfo, Products = productPerPage };
+            return View(catalog);
         }
     }
 }

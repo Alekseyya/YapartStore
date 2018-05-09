@@ -77,6 +77,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\HelperTest.cs" />
     <Compile Include="BL\BLUnitTest.cs" />
     <Compile Include="BL\ProductUnitTest.cs" />
     <Compile Include="DAL\PictureUnitTest.cs" />
@@ -90,6 +91,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\YapartStore.API\YapartStore.API.csproj">
+      <Project>{6161EB34-E3BF-4934-AD92-12D55C34CEF0}</Project>
+      <Name>YapartStore.API</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YapartStore.BL\YapartStore.BL.csproj">
       <Project>{b0d29d7a-37d6-41cd-a376-91ca7d901231}</Project>
       <Name>YapartStore.BL</Name>

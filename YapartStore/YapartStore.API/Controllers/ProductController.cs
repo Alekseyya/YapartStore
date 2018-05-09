@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using YapartStore.API.Helpers;
 using YapartStore.BL.Entities;
 using YapartStore.BL.Services.Base;
 
@@ -21,7 +22,18 @@ namespace YapartStore.API.Controllers
         [HttpGet]
         public IEnumerable<ProductDTO> GetProducts()
         {
-            var products = _productService.GetAll();
+            var products = _productService.GetAll().ChangePath();
+            if (products == null)
+                return null;
+            return products;
+        }
+
+        [HttpGet]
+        public IEnumerable<ProductDTO> GetAllCaps()
+        {
+            var products = _productService.GetAllCaps().ChangePath();
+            if (products == null)
+                return null;
             return products;
         }
 

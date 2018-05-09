@@ -85,6 +85,27 @@ namespace YapartStore.BL.Services
             }
         }
 
+        public IList<ProductDTO> GetAllCaps()
+        {
+            try
+            {
+                var configurate = new MapperConfiguration(cfg =>
+                {
+                    cfg.AddProfile(new AutoMapperServicesConfig.ProductProfile());
+                }).CreateMapper();
+
+                var products = configurate.Map<IQueryable<Product>, IList<ProductDTO>>(_unitOfWork.ProductRepository.GetAllCaps());
+                if (products != null)
+                    return products;
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public IList<ProductDTO> GetAllProductsIncludeBrand()
         {
             try
