@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.Web.Mvc;
 using YapartStore.UI.Models;
 
 namespace YapartStore.UI.ViewModels
@@ -8,5 +9,7 @@ namespace YapartStore.UI.ViewModels
     {
         public IEnumerable<ProductViewModel> Products { get; set; }
         public PageInfo PageInfo { get; set; }
+        public int SelectedId { get; set; }
+        public IEnumerable<SelectListItem> CapsSize { get; set; }
     }
 }

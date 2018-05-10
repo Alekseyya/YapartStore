@@ -38,6 +38,18 @@ namespace YapartStore.API.Controllers
         }
 
         [HttpGet]
+        public IEnumerable<ProductDTO> GetSizeCaps()
+        {
+            return null;
+        }
+
+        [HttpPost]
+        public IEnumerable<ProductDTO> GetSizeCaps(int size)
+        {
+            return _productService.GetSizeOfCaps(size).ChangePath();
+        }
+
+        [HttpGet]
         public IEnumerable<ProductDTO> GetProductsOfBrand(string brand)
         {
             var products = _productService.GetAllProductsOfBrand(brand).AsEnumerable();

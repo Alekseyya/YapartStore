@@ -7,6 +7,6 @@ namespace YapartStore.DAL.Repositories.Base
     {
         IQueryable<Product> GetAllProductsIncludeBrand();
         IQueryable<Product> GetAllCaps();
-
+        IQueryable<Product> GetCapsOfSize(int size);
     }
 }

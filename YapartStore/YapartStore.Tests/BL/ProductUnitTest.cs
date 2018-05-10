@@ -16,7 +16,17 @@ namespace YapartStore.Tests.BL
             var productService = new ProductService(unitOfWork);
 
             var result = productService.GetAll();
+        }
+
+        [TestMethod]
+        public void GetSizeOfCapsTest()
+        {
+            var unitOfWork = (IUnitOfWork)new UnitOfWork();
+            var productService = new ProductService(unitOfWork);
+
+            var result = productService.GetSizeOfCaps(14);
 
         }
+
     }
 }

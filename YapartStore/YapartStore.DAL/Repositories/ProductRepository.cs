@@ -191,5 +191,11 @@ namespace YapartStore.DAL.Repositories
                 throw e;
             }
         }
+
+        public IQueryable<Product> GetCapsOfSize(int size)
+        {
+            throw new NotImplementedException();
+        }
+        
     }
 }

@@ -168,6 +168,29 @@ namespace YapartStore.BL.Services
             }
         }
 
+        public IList<ProductDTO> GetSizeOfCaps(int size)
+        {
+            try
+            {
+                var configurate = new MapperConfiguration(cfg =>
+                {
+                    cfg.AddProfile(new AutoMapperServicesConfig.ProductProfile());
+                }).CreateMapper();
+                var listCapsOfCurSize = _unitOfWork.ProductRepository.GetAllCaps()
+                    .Where(item => item.Article.Contains(size.ToString()));
+
+                var products = configurate.Map<IQueryable<Product>, IList<ProductDTO>>(listCapsOfCurSize);
+                if (products != null)
+                    return products;
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void UpdateItem(ProductDTO item)
         {
             var product = Mapper.Map<ProductDTO, Product>(item);

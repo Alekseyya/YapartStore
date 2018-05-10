@@ -7,9 +7,13 @@
 
 <div class="filter-menu row">
     <div class="filter-dropdown">
-
+        @using (Html.BeginForm("Index", "Caps", FormMethod.Post))
+        {
+           @Html.DropDownListFor(x => x.SelectedId, Model.CapsSize, new {onchange = "this.form.submit();"})
+        }
     </div>
 </div>
+ 
 
 <div class="container">
     <div class="caps row">

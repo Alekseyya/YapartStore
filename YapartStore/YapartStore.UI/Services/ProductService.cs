@@ -82,5 +82,29 @@ namespace YapartStore.UI.Services
                 throw ex;
             }
         }
+
+        public async Task<List<ProductViewModel>> GetSizeOfCaps(int size)
+        {
+            try
+            {
+                string url = ConfigurationManager.AppSettings["WebApiUrl"];
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + "/product/GetSizeCaps?=" + size.ToString());
+                request.ContentType = "application/json; charset=utf-8";
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return JsonConvert.DeserializeObject<List<ProductViewModel>>(await reader.ReadToEndAsync());
+                }
+                return null;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
