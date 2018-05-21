@@ -19,7 +19,7 @@
     <div class="caps row">
         @foreach (var cap in Model.Products)
         {
-            <div class="caps__image col-md-5">
+            <div class="caps__image col-md-4">
                 @foreach (var picture in cap.Pictures)
                 {
 
@@ -30,6 +30,9 @@
             <div class="col-md-1">@cap.Article</div>
             <div class="col-md-4">@cap.Descriptions</div>
             <div class="col-md-2">@cap.Price</div>
+            <div class="col-md-1">
+                <a href="@Url.Action("AddToCart", "Cart", new {article = cap.Article})">В корзину</a>
+            </div>
         }
     </div>
     <div class="pagination">

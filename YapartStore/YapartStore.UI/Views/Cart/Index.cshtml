@@ -1,0 +1,48 @@
+﻿@model YapartStore.UI.ViewModels.CartViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Model != null)
+{
+    <div class="container cart">
+        <div class="row cart__list-product">
+            @{
+                decimal totalPrice = 0;
+                foreach (var cartLine in Model.Lines)
+                {
+                    totalPrice += cartLine.Price * cartLine.Quantity;
+
+                    <div class="cart__list-image col-md-3">
+                        @foreach (var picture in cartLine.Pictures)
+                        {
+                            <img src="@picture.Path" />
+                        }
+                    </div>
+                    <div class="col-md-1">@cartLine.Article</div>
+                    <div class="col-md-4">@cartLine.Descriptions</div>
+                    <div class="col-md-2">@cartLine.Price</div>
+                    <div class="col-md-1">@cartLine.Quantity</div>
+                    <a href="@Url.Action("RemoteItem", "Cart", new {article = cartLine.Article})" class="col-md-1">
+                        Удалить
+                    </a>
+                }
+            }
+        </div>
+        <div class="row">
+            <div class="cart__print col-md">
+                <button type="button" class="btn btn-primary">Распечатать</button>
+            </div>
+            <div class="cart__continue-shopping col-md">
+                <button type="button" class="btn btn-warning">Продолжить покупки</button>
+            </div>
+            <div class="cart__send-order col-md">
+                <button onclick="" type="button" class="btn btn-success">Отправить заказ</button>
+            </div>
+            <div class="cart__total-price col-md-1 offset-md-11">
+                Общая сумма: @totalPrice
+            </div>
+        </div>
+    </div>
+}
+

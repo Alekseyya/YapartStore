@@ -168,6 +168,22 @@ namespace YapartStore.BL.Services
             }
         }
 
+        public ProductDTO GetProductByArticle(string article)
+        {
+            try
+            {
+                var product = _unitOfWork.ProductRepository.GetAll().FirstOrDefault(car => car.Article == article);
+                if (product != null)
+                    return Mapper.Map<Product, ProductDTO>(product);
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public IList<ProductDTO> GetSizeOfCaps(int size)
         {
             try

@@ -17,7 +17,7 @@ namespace YapartStore.Tests.API
             var productService = new ProductService(unitOfWork);
 
             var result = productService.GetAll();
-            var aa = result.ChangePath();
+            var aa = result.ChangePathImage();
         }
     }
 }

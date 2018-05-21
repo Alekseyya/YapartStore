@@ -106,5 +106,27 @@ namespace YapartStore.UI.Services
                 throw ex;
             }
         }
+
+        public async Task<ProductViewModel> GetProductByArticle(string article)
+        {
+            try
+            {
+                string url = ConfigurationManager.AppSettings["WebApiUrl"];
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + "/product/GetProductByArticle?article=" + article);
+                request.ContentType = "application/json; charset=utf-8";
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return JsonConvert.DeserializeObject<ProductViewModel>(await reader.ReadToEndAsync());
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

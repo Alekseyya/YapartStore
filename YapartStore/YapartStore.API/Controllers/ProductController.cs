@@ -22,7 +22,7 @@ namespace YapartStore.API.Controllers
         [HttpGet]
         public IEnumerable<ProductDTO> GetProducts()
         {
-            var products = _productService.GetAll().ChangePath();
+            var products = _productService.GetAll().ChangePathImage();
             if (products == null)
                 return null;
             return products;
@@ -31,7 +31,7 @@ namespace YapartStore.API.Controllers
         [HttpGet]
         public IEnumerable<ProductDTO> GetAllCaps()
         {
-            var products = _productService.GetAllCaps().ChangePath();
+            var products = _productService.GetAllCaps().ChangePathImage();
             if (products == null)
                 return null;
             return products;
@@ -46,7 +46,13 @@ namespace YapartStore.API.Controllers
         [HttpPost]
         public IEnumerable<ProductDTO> GetSizeCaps(int size)
         {
-            return _productService.GetSizeOfCaps(size).ChangePath();
+            return _productService.GetSizeOfCaps(size).ChangePathImage();
+        }
+
+        [HttpGet]
+        public ProductDTO GetProductByArticle(string article)
+        {
+            return _productService.GetProductByArticle(article).ChangePathImage();
         }
 
         [HttpGet]

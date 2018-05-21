@@ -10,5 +10,6 @@ namespace YapartStore.BL.Services.Base
         IList<ProductDTO> GetAllProductsIncludeBrand();
         IList<ProductDTO> GetAllCaps();
         IList<ProductDTO> GetSizeOfCaps(int size);
+        ProductDTO GetProductByArticle(string article);
     }
 }

@@ -48,8 +48,9 @@
                 </div>
                 <div class="shop-function col-md-3 row align-items-center">
                     <div class="shop-function-cart row">
-                        <div class="cart-image col-md-1"></div>
-                        <a href="" class="cart-text col-md-3">Корзина</a>
+                        <a href="@Url.Action("Index", "Cart")" class="cart-image col-md-1"></a>
+                        <a href="@Url.Action("Index", "Cart")" class="cart-text col-md-3">Корзина</a>
+                        <span>@Session["CountInCart"]</span>
                     </div>
                 </div>
             </div>
