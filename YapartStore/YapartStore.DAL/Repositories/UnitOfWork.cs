@@ -18,6 +18,9 @@ namespace YapartStore.DAL.Repositories
             SectionRepository = new SectionRepository(_yapartStoreContext);
             ProductRepository = new ProductRepository(_yapartStoreContext);
             PictureRepository = new PictureRepository(_yapartStoreContext);
+            OrderRepository = new OrderRepository(_yapartStoreContext);
+            OrderItemRepository = new OrderItemRepository(_yapartStoreContext);
+
             UserRepository = new UserRepository(_yapartStoreContext,
                 new UserManager<User, Guid>
                 (
@@ -35,9 +38,12 @@ namespace YapartStore.DAL.Repositories
         public IProductRepository ProductRepository { get; set; }
         public ISectionRepository SectionRepository { get; set; }
         public IPictureRepository PictureRepository { get; set; }
+        public IOrderRepository OrderRepository { get; set; }
+        public IOrderItemRepository OrderItemRepository { get; set; }
 
         public IUserRepository UserRepository { get; set; }
         public IRoleRepository RoleRepository { get; set; }
+        
 
         public void Save()
         {

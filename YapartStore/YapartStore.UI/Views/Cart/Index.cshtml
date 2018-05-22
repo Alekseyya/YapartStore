@@ -34,7 +34,9 @@
                 <button type="button" class="btn btn-primary">Распечатать</button>
             </div>
             <div class="cart__continue-shopping col-md">
-                <button type="button" class="btn btn-warning">Продолжить покупки</button>
+                <button type="button" class="btn btn-warning">
+                    @Html.ActionLink("Продолжить покупки", "Index", "Caps")
+                </button>
             </div>
             <div class="cart__send-order col-md">
                 <button onclick="" type="button" class="btn btn-success">Отправить заказ</button>
@@ -44,5 +46,9 @@
             </div>
         </div>
     </div>
+}
+else
+{
+    <h3>Ваша корзина пуста</h3>
 }
 

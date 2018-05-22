@@ -36,7 +36,6 @@ namespace YapartStore.UI.Controllers
                 cart.Lines = new List<ProductViewModel>();
                 Session["Cart"] = cart;
                 Session["CountInCart"] = 1;
-                // <-------------------- доделат вставку в корзину товаров
                 var product = await _productService.GetProductByArticle(article);
                 product.Quantity = 1;
                 cart.Lines.Add(product);
@@ -61,6 +60,29 @@ namespace YapartStore.UI.Controllers
             
             return RedirectToAction("Index", "Caps");
         }
+
+        [HttpGet]
+        public ActionResult RemoteItem(string article)
+        {
+            var cart = (CartViewModel) Session["Cart"];
+            var product = cart.Lines.First(res => res.Article == article);
+            var countInCart = (int)Session["CountInCart"];
+            if (product.Quantity >= 2)
+            {
+                product.Quantity--;
+                countInCart--;
+            }
+            else
+            {
+                cart.Lines.Remove(product);
+                countInCart--;
+            }
+
+            Session["CountInCart"] = countInCart;
+            return RedirectToAction("Index", "Cart");
+        }
+
+       
 
         public async Task<ActionResult> GetUserCart()
         {

@@ -17,6 +17,8 @@ namespace YapartStore.DL.Context
         public DbSet<Group> Groups { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Picture> Pictures { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -31,6 +33,8 @@ namespace YapartStore.DL.Context
             modelBuilder.Configurations.Add(new LoginConfiguration());
             modelBuilder.Configurations.Add(new RoleConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new OrderConfiguration());
+            modelBuilder.Configurations.Add(new OrderItemConfiguration());
         }
         public class DatabaseInitializer
             : CreateDatabaseIfNotExists<YapartStoreContext>
