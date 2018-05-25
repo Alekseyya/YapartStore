@@ -6,7 +6,7 @@ namespace YapartStore.DAL.Repositories.Base
 {
      public interface IBaseAsyncRepository<T> where T : class
     {
-        Task<List<T>> GetAllAsync();
+        Task<IQueryable<T>> GetAllAsync();
         Task<T> GetItemByIdAsync(int id);
         Task CreateAsync(T item);
         Task UpdateAsync(T item);

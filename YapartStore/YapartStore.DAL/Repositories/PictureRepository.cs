@@ -36,13 +36,13 @@ namespace YapartStore.DAL.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<List<Picture>> GetAllAsync()
+        public async Task<IQueryable<Picture>> GetAllAsync()
         {
             try
             {
                 return await Task.Run(() =>
                 {
-                    return _yapartStoreContext.Pictures.Include("Brand").ToListAsync();
+                    return _yapartStoreContext.Pictures.Include("Brand");
                 });
             }
             catch (Exception e)

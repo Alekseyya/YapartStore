@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using YapartStore.DAL.Repositories.Base;
 using YapartStore.DL.Context;
@@ -20,10 +21,18 @@ namespace YapartStore.DAL.Repositories
 
         public Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            return Task.Run(() =>
+            {
+                var item = _yapartStoreContext.OrderItems.First(i => i.Id == id);
+                if (item != null)
+                {
+                    _yapartStoreContext.OrderItems.Remove(item);
+                    _yapartStoreContext.SaveChangesAsync();
+                }
+            });
         }
 
-        public Task<List<OrderItem>> GetAllAsync()
+        public Task<IQueryable<OrderItem>> GetAllAsync()
         {
             throw new System.NotImplementedException();
         }

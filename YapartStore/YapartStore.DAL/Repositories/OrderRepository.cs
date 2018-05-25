@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using YapartStore.DAL.Repositories.Base;
 using YapartStore.DL.Context;
@@ -16,7 +19,15 @@ namespace YapartStore.DAL.Repositories
 
         public Task CreateAsync(Order item)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                _yapartStoreContext.Orders.Add(item);
+               return _yapartStoreContext.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public Task DeleteAsync(int id)
@@ -24,14 +35,34 @@ namespace YapartStore.DAL.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task<List<Order>> GetAllAsync()
+        public async Task<IQueryable<Order>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return await Task.Run(() =>
+                {
+                    return _yapartStoreContext.Orders.Include(orderItems=> orderItems.OrderItems);
+                });
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
-        public Task<Order> GetItemByIdAsync(int id)
+        public async Task<Order> GetItemByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return await Task.Run(() =>
+                {
+                    return _yapartStoreContext.Orders.FirstOrDefault(i => i.Id == id);
+                });
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public Task UpdateAsync(Order item)

@@ -16,6 +16,8 @@ namespace YapartStore.BL.MapperConfig
                 cfg.AddProfile(new GroupProfile());
                 cfg.AddProfile(new SectionProfile());  
                 cfg.AddProfile(new PictureProfile());
+                cfg.AddProfile(new OrderProfile());
+                cfg.AddProfile(new OrderItemProfile());
             });
 
         }
@@ -70,6 +72,22 @@ namespace YapartStore.BL.MapperConfig
             {
                 CreateMap<Product, ProductDTO>()
                     .ForMember(x => x.Category, opt => opt.Ignore()).PreserveReferences();
+            }
+        }
+        public class OrderProfile : Profile
+        {
+            public OrderProfile()
+            {
+                CreateMap<Order, OrderDTO>();
+                CreateMap<OrderDTO, Order>();
+            }
+        }
+        public class OrderItemProfile : Profile
+        {
+            public OrderItemProfile()
+            {
+                CreateMap<OrderItem, OrderItemDTO>();
+                CreateMap<OrderItemDTO, OrderItem>();
             }
         }
 
