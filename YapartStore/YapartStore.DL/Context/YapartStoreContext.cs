@@ -19,6 +19,8 @@ namespace YapartStore.DL.Context
         public DbSet<Picture> Pictures { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartLine> CartLines { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -33,8 +35,11 @@ namespace YapartStore.DL.Context
             modelBuilder.Configurations.Add(new LoginConfiguration());
             modelBuilder.Configurations.Add(new RoleConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
+
             modelBuilder.Configurations.Add(new OrderConfiguration());
             modelBuilder.Configurations.Add(new OrderItemConfiguration());
+            modelBuilder.Configurations.Add(new CartConfiguration());
+            modelBuilder.Configurations.Add(new CartLineConfiguration());
         }
         public class DatabaseInitializer
             : CreateDatabaseIfNotExists<YapartStoreContext>

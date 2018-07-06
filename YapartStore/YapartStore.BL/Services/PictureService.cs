@@ -44,7 +44,7 @@ namespace YapartStore.BL.Services
             {
                 var pictures = await _unitOfWork.PictureRepository.GetAllAsync();
                 if (pictures != null)
-                   return Mapper.Map<List<Picture>,List<PictureDTO>>(pictures);
+                   return Mapper.Map<IQueryable<Picture>,List<PictureDTO>>(pictures);
                 else
                     return null;
             }

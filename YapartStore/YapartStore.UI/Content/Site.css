@@ -1,23 +1,78 @@
-﻿.header__autorization-ul{
+﻿.header {
+    width: 100%;
+    background: url("/Content/Images/clouds.jpg")
+}
+
+.header__autorization-ul {
     list-style-type: none;
     padding: 0;
 }
-.header__autorization ul div{
+
+.header__autorization ul div {
     padding: 0;
 }
 
-.cart-image{
-    background: url("/Content/Images/icons-new.png") -5px -232px no-repeat;
+.header__bottom-logo {
+    padding: 0;
+    position: relative;
 }
 
-.cart-text{
-    padding: 0;
-    vertical-align: text-bottom;
+.header__bottom-logo-text{
+    position: absolute;
+    top: 47px;
+    left: 67px;
+    text-transform: uppercase;
+    font-weight: 745;
+    font-size: 13px;
 }
-.header-search_submit{
+
+.header-search{
+    padding: 0;
+    display: flex;
+    align-self: center;
+}
+.header-search__text {
+    color: #0b5ed7;
+    font-size: medium;
+}
+
+.header-search__input {
+    padding: 0 0 0 10px;
+}
+
+.cart {
+    display: flex;
+    padding: 0;
+    justify-content: center;
+}
+
+.cart__image {
+    background: url("/Content/Images/cart.png") no-repeat !important;
+    padding: 35px 35px 15px 15px;
+    background-size: cover;
+}
+
+.cart__info {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart__text {
+    color: black;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.cart__number-items span, .cart__total-cost span {
+    color: #0b5ed7;
+}
+
+/*.header-search_submit {
     background: url("/Content/Images/icons-new.png") -4px -1133px no-repeat;
-    background-color: midnightblue;  
-}
+    background-color: midnightblue;
+}*/
 
 .container-fluid {
     padding: 0;

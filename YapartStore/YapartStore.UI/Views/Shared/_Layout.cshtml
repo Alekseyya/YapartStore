@@ -10,52 +10,70 @@
     <link type="text/css" rel="stylesheet" href="../../Content/site.css" />
 </head>
 <body>
-    <div class="header">
-        <div class="header__top container">
-            <div class="row">
-                <div class="shop-data col-md-6 row">
-                    <div class="shop-data__shop-icon col-md-1">
-                        <img src="" alt="">
-                    </div>
-                    <div class="shop-data__shop-region cold-md-3">
-                        <span>Санкт-Петербург</span>
-                    </div>
-                    <a href="" class="shop-data__shop-adress col-md-4">Петроградская</a>
-                    <div class="shop-data__shop-phone col-md-4">
-                        <p>+7(952)1488-1488</p>
-                    </div>
+<div class="header">
+    <div class="header__top container">
+        <div class="row">
+            <div class="shop-data col-md-6 row">
+                <div class="shop-data__shop-icon col-md-1">
+                    <img src="" alt="">
                 </div>
-                <div class="header__autorization col-md-6">@Html.Partial("_LoginPartial")</div>
+                <div class="shop-data__shop-region cold-md-3">
+                    <span>Санкт-Петербург</span>
+                </div>
+                <a href="" class="shop-data__shop-adress col-md-4">Петроградская</a>
+                <div class="shop-data__shop-phone col-md-4">
+                    <p>+7(952)1488-1488</p>
+                </div>
             </div>
+            <div class="header__autorization col-md-6">@Html.Partial("_LoginPartial")</div>
         </div>
-        <div class="header__bottom container">
-            <div class="row">
-                <div class="header__bottom-logo col-md-3">
-                    <img src="/Content/Images/a_logo.png" alt="">
+    </div>
+    <div class="header__bottom container">
+        <div class="row">
+            <div class="header__bottom-logo col-md-4 mb-3">
+                <img src="/Content/Images/logo.png" alt=""/>
+                <div class="header__bottom-logo-text">
+                    интернет-магазин автоаксессуаров
                 </div>
-                <div class="header-search col-md-6 row align-items-center">
-                    <div class="header-search-button">
-                        @using (Html.BeginForm("Find", "Home", FormMethod.Get, new { @class = "row" }))
-                        {
-                            <div class="header-search__input col-md-10">
-                                @Html.TextBox("query", "Введите название колпака")
-                            </div>
-                            <div class="header-search_submit col-md-2">
-                                <a href="" class="header-search__submitt-img"></a>
-                            </div>
-                        }
+            </div>
+            <div class="header-search col-md-5 align-items-center mb-3">
+                <div class="header-search__text">Поиск</div>
+                <div class="header-search__input input-group">
+                    <input type="text" class="form-control" placeholder="Введите артикул">
+                    <div class="header-search__button input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Поиск</button>
                     </div>
                 </div>
-                <div class="shop-function col-md-3 row align-items-center">
-                    <div class="shop-function-cart row">
-                        <a href="@Url.Action("Index", "Cart")" class="cart-image col-md-1"></a>
-                        <a href="@Url.Action("Index", "Cart")" class="cart-text col-md-3">Корзина</a>
+
+                @*<div class="header-search-button">
+                    @using (Html.BeginForm("Find", "Home", FormMethod.Get, new {@class = "row"}))
+                    {
+                        <div class="header-search__input col-md-10">
+                            @Html.TextBox("query", "Введите название колпака")
+                        </div>
+                        <div class="header-search_submit col-md-2">
+                            <a href="" class="header-search__submitt-img"></a>
+                        </div>
+                    }
+                </div>*@
+            </div>
+            <div class="cart col-md-3 align-items-start">
+                <a class="cart__image" href="@Url.Action("Index", "Cart")"></a>
+                <div class="cart__info">
+                    <a class="cart__text" href="@Url.Action("Index", "Cart")" >Корзина</a>
+                    <div class="cart__number-items">
+                        Товаров 
                         <span>@Session["CountInCart"]</span>
+                     </div>
+                    <div class="cart__total-cost">
+                        Сумма 
+                        <span>1000</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
     <div class="main-menu">
         <div class="main-manu__inner container">
             <div class="row">
