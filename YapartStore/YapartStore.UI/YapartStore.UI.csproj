@@ -249,7 +249,10 @@
     <Content Include="Content\Images\Caps\Glory ring.jpg" />
     <Content Include="Content\Images\Caps\Meridian ring.jpg" />
     <Content Include="Content\Images\Caps\Raven ring.jpg" />
+    <Content Include="Content\Images\cart.png" />
+    <Content Include="Content\Images\clouds.jpg" />
     <Content Include="Content\Images\icons-new.png" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />

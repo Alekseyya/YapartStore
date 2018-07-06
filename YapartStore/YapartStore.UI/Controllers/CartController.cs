@@ -38,6 +38,7 @@ namespace YapartStore.UI.Controllers
                 Session["CountInCart"] = 1;
                 var product = await _productService.GetProductByArticle(article);
                 product.Quantity = 1;
+                Session["TotalConstInCart"] = product.Price;
                 cart.Lines.Add(product);
             }
             else
@@ -47,12 +48,14 @@ namespace YapartStore.UI.Controllers
                 {
                     var product = inCart.Lines.First(res => res.Article == article);
                     product.Quantity++;
+                    Session["TotalConstInCart"] = (decimal)Session["TotalConstInCart"] + product.Price;
                 }
                 else
                 {
                     var product = await _productService.GetProductByArticle(article);
                     product.Quantity++;
                     inCart.Lines.Add(product);
+                    Session["TotalConstInCart"] = (decimal)Session["TotalConstInCart"] + product.Price;
                 }
 
                 Session["CountInCart"] = Convert.ToInt32(Session["CountInCart"]) + 1;
@@ -67,17 +70,21 @@ namespace YapartStore.UI.Controllers
             var cart = (CartViewModel) Session["Cart"];
             var product = cart.Lines.First(res => res.Article == article);
             var countInCart = (int)Session["CountInCart"];
+            var totalPrice = (decimal) Session["TotalConstInCart"];
             if (product.Quantity >= 2)
             {
                 product.Quantity--;
                 countInCart--;
+                totalPrice -= product.Price;
             }
             else
             {
+                totalPrice -= product.Price;
                 cart.Lines.Remove(product);
                 countInCart--;
             }
 
+            Session["TotalConstInCart"] = totalPrice;
             Session["CountInCart"] = countInCart;
             return RedirectToAction("Index", "Cart");
         }

@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-
+    <title>Yapart - интернет-магазин автоаксессуаров</title>
+    <link rel="icon" href="/Content/Images/favicon.ico" type="image/x-icon"> 
+    <link rel="shortcut icon" href="/Content/Images/favicon.ico" type="image/x-icon">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link type="text/css" rel="stylesheet" href="../../Content/site.css" />
@@ -67,7 +68,7 @@
                      </div>
                     <div class="cart__total-cost">
                         Сумма 
-                        <span>1000</span>
+                        <span>@Session["TotalConstInCart"]</span>
                     </div>
                 </div>
             </div>
