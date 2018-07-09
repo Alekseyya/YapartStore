@@ -251,6 +251,7 @@
     <Content Include="Content\Images\Caps\Raven ring.jpg" />
     <Content Include="Content\Images\cart.png" />
     <Content Include="Content\Images\clouds.jpg" />
+    <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\icons-new.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="favicon.ico" />
