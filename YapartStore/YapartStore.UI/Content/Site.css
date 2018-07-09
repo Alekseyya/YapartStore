@@ -13,12 +13,20 @@
 .shop-data__register {
     margin-right: 10px;
 }
+
+.shop-data {
+    display: flex;
+}
+
 .shop-data__shop-icon img {
-    padding: 0 0 3px 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
 }
 
 .shop-data__shop-region span {
     position: relative;
+    margin-left: 5px;
 }
 
 .shop-data__shop-region span::after {
@@ -28,12 +36,18 @@
     right: -13px;
 }
 
+.shop-data__shop-current-region {
+    margin-left: 20px;
+}
+
 .shop-data__shop-adress {
     margin-left: 20px;
 }
 
 .shop-data__shop-phone {
     display: flex;
+    padding: 0;
+    margin-left: 30px;
 }
 .shop-data__shop-phone img{
     margin: 3px 3px 0 0;

@@ -14,21 +14,23 @@
     <div class="header">
         <div class="header__top container">
             <div class="wrapper row">
-                <div class="shop-data col-md-6 row">
-                    <div class="shop-data__shop-icon col-md-1 align-self-lg-start">
+                <div class="shop-data col-md-9">
+                    <div class="shop-data__shop-icon">
                         <img src="/Content/Images/map-marker.svg" alt="" />
                     </div>
-                    <div class="shop-data__shop-region cold-md-6">
+                    <div class="shop-data__shop-region">
                         <span>Санкт-Петербург</span>
-                        <a href="" class="shop-data__shop-adress">Петроградская</a>
+                        <a href="" class="shop-data__shop-current-region">Петроградская</a>
                     </div>
-
-                    <div class="shop-data__shop-phone col-md-5">
+                    <div class="shop-data__shop-adress">
+                        <span>ул.Инструментальная 3</span>
+                    </div>
+                    <div class="shop-data__shop-phone">
                         <img src="/Content/Images/phone.svg" alt="Alternate Text" />
                         <p>+7(952)1488-1488</p>
                     </div>
                 </div>
-                <div class="header__autorization col-md-6">@Html.Partial("_LoginPartial")</div>
+                <div class="header__autorization col-md-3">@Html.Partial("_LoginPartial")</div>
             </div>
         </div>
         <div class="header__bottom container">
