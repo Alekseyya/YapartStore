@@ -2,22 +2,21 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
+
 namespace YapartStore.DL.Entities
 {
-    public class Section
+    public class Mark
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool Show { get; set; }
-        public int Sort { get; set; }
-        public int? GroupId { get; set; }
-        public Group Group { get; set; }
-        public ICollection<Category> Categories { get; set; } = new List<Category>();
+        //show on main window
+        public bool Show{ get; set; }
+        public ICollection<Model> Models { get; set; } = new List<Model>();
     }
 
-    public class SectionConfiguration : EntityTypeConfiguration<Section>
+    public class MarkConfiguration : EntityTypeConfiguration<Mark>
     {
-        public SectionConfiguration()
+        public MarkConfiguration()
         {
             HasKey(x => x.Id);
 
@@ -26,7 +25,7 @@ namespace YapartStore.DL.Entities
                 .IsRequired();
 
             Property(x => x.Name).IsRequired();
-            HasMany(x => x.Categories);
+            HasMany(x => x.Models);
         }
     }
 }

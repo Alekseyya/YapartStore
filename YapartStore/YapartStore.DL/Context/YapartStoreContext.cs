@@ -40,6 +40,14 @@ namespace YapartStore.DL.Context
             modelBuilder.Configurations.Add(new OrderItemConfiguration());
             modelBuilder.Configurations.Add(new CartConfiguration());
             modelBuilder.Configurations.Add(new CartLineConfiguration());
+
+            modelBuilder.Configurations.Add(new MarkConfiguration());
+            modelBuilder.Configurations.Add(new ModelConfiguration());
+            modelBuilder.Configurations.Add(new ModificationConfiguration());
+            modelBuilder.Configurations.Add(new VariantConfiguration());
+
+            modelBuilder.Entity<Variant>()
+                .HasMany(x => x.Products).WithMany(x => x.Variants);
         }
         public class DatabaseInitializer
             : CreateDatabaseIfNotExists<YapartStoreContext>

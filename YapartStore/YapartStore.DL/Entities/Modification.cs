@@ -4,22 +4,18 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace YapartStore.DL.Entities
 {
-    public class Category
+    public class Modification
     {
-        public int Id { get; set; }
+        public int Id{ get; set; }
         public string Name { get; set; }
-        //true sort on window
+        public int? ModelId { get; set; }
+        public Model Model { get; set; }
         public int Sort { get; set; }
-
-        public bool Show { get; set; }
-        public int? SectionId { get; set; }
-        public Section Section { get; set; }
-
-        public ICollection<Product> Products { get; set; } = new List<Product>();
+        public ICollection<Variant> Variants { get; set; } = new List<Variant>();
     }
-    public class CategoryConfiguration : EntityTypeConfiguration<Category>
+    public class ModificationConfiguration : EntityTypeConfiguration<Modification>
     {
-        public CategoryConfiguration()
+        public ModificationConfiguration()
         {
             HasKey(x => x.Id);
 
@@ -29,8 +25,7 @@ namespace YapartStore.DL.Entities
 
             Property(x => x.Name)
                 .IsRequired();
-
-            HasMany(x => x.Products);
+            HasMany(x => x.Variants);
         }
     }
 }

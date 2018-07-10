@@ -2,24 +2,23 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
+
 namespace YapartStore.DL.Entities
 {
-    public class Category
+    public class Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        //true sort on window
-        public int Sort { get; set; }
+        public int Years { get; set; }
 
-        public bool Show { get; set; }
-        public int? SectionId { get; set; }
-        public Section Section { get; set; }
-
-        public ICollection<Product> Products { get; set; } = new List<Product>();
+        public int? MarkId { get; set; }
+        public Mark Mark { get; set; }
+        
+        public ICollection<Modification> Modifications { get; set; } = new List<Modification>();
     }
-    public class CategoryConfiguration : EntityTypeConfiguration<Category>
+    public class ModelConfiguration : EntityTypeConfiguration<Model>
     {
-        public CategoryConfiguration()
+        public ModelConfiguration()
         {
             HasKey(x => x.Id);
 
@@ -29,8 +28,7 @@ namespace YapartStore.DL.Entities
 
             Property(x => x.Name)
                 .IsRequired();
-
-            HasMany(x => x.Products);
+            HasMany(x => x.Modifications);
         }
     }
 }
