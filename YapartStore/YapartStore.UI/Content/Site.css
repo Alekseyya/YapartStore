@@ -157,3 +157,44 @@
     max-width: 100%;
     height: auto;
 }*/
+
+
+/*-------------------------- SELECT CAR---------------------------*/
+
+.select-car__wrap{
+    background: url("/Content/Images/points.png") repeat-x center center;
+    margin-bottom: 5px;
+    padding: 0;
+
+}
+.select-car__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.select-car__title {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    background: white;
+    padding-right: 10px;
+    padding-top: 6px;
+}
+.select-car__buttons {
+    text-align: center;
+    height: 35px;
+}
+.select-car__show-all, .select-car__show-popular {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0b5ed7;
+    background: white url("/Content/Images/open_all_catalog.png") no-repeat top right;
+    padding: 0 40px 10px 10px;
+}
+
+.select-car__main {
+    background: #f4f7ff;
+    font-family: Arial;
+}

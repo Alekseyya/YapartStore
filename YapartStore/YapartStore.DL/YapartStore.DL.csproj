@@ -81,6 +81,9 @@
     <Compile Include="Entities\Identity\CustomUserStore.cs" />
     <Compile Include="Entities\Identity\Login.cs" />
     <Compile Include="Entities\Identity\Role.cs" />
+    <Compile Include="Entities\Mark.cs" />
+    <Compile Include="Entities\Model.cs" />
+    <Compile Include="Entities\Modification.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />
     <Compile Include="Entities\Picture.cs" />
@@ -88,6 +91,7 @@
     <Compile Include="Entities\Section.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Identity\User.cs" />
+    <Compile Include="Entities\Variant.cs" />
     <Compile Include="Migrations\201804121852155_init1.cs" />
     <Compile Include="Migrations\201804121852155_init1.Designer.cs">
       <DependentUpon>201804121852155_init1.cs</DependentUpon>

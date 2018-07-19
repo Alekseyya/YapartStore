@@ -37,7 +37,7 @@
             <div class=" wrapper row">
                 <div class="header__bottom-logo col-md-4 mb-3">
                     <a href="@Url.Action("Index", "Caps")">
-                        <img src="/Content/Images/logo.png" alt=""/>
+                        <img src="/Content/Images/logo.png" alt="" />
                     </a>
                     <div class="header__bottom-logo-text">
                         интернет-магазин автоаксессуаров
@@ -110,6 +110,60 @@
             </ul>
         </div>
     </div>
+
+    <div class="select-car">
+        <div class="select-car__wrap container">
+            <div class="select-car__header">
+                <div class="select-car__title">Выберите свой автомобиль</div>
+                <div class="select-car__buttons">
+                    <span class="select-car__show-all" style="display: inline">Показать полный список</span>
+                    <span class="select-car__show-popular" style="display: none">Скрыть полный список</span>
+                </div>
+            </div>
+        </div>
+        <div class="select-car__main">
+            <div class="select-car__list">
+                <ul id="enum">
+                    <li>A</li>
+                    <li>B</li>
+                    <li>C</li>
+                    <li>D</li>
+                    <li>E</li>
+                    <li>F</li>
+                    <li>G</li>
+                    <li>H</li>
+                    <li>I</li>
+                    <li>J</li>
+                    <li>K</li>
+                    <li>L</li>
+                    <li>M</li>
+                    <li>N</li>
+                    <li>O</li>
+                    <li>P</li>
+                    <li>R</li>
+                    <li>S</li>
+                    <li>T</li>
+                    <li>V</li>
+                    <li>Г</li>
+                    <li>З</li>
+                    <li>И</li>
+                    <li>Л</li>
+                    <li>М</li>
+                    <li>О</li>
+                    <li>У</li>
+                </ul>
+            </div>
+            <div class="parts">
+                <a href="#" style="display:none">Audi</a>
+                <a href="#" style="display:none">Acura</a>
+                <a href="#" style="display:none">BMV</a>
+                <a href="#" style="display:none">Caddilac</a>
+                <a href="#" style="display:none">Changan</a>
+                <a href="#" style="display:none">Cherry</a>
+            </div>
+        </div>
+    </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -120,6 +174,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/JS/myScript.js")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
