@@ -1,6 +1,7 @@
 ﻿'use strict';
 
 let liArray = document.getElementById("select-car__enum").children;
+console.log(liArray);
 let tmpList = ["Audi", "Acura", "BMW", "Caddilac", "Changan", "Cherry", "Citroen", "Chevrolet"];
 
 let popularList = ["Audi", "Acura", "BMW", "Caddilac", "Changan"];
