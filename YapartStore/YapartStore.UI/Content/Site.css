@@ -3,7 +3,7 @@
     background: url("/Content/Images/clouds.jpg")
 }
 
-.header__autorization-ul{
+.header__autorization-ul {
     list-style-type: none;
     display: flex;
     padding: 0;
@@ -29,12 +29,12 @@
     margin-left: 5px;
 }
 
-.shop-data__shop-region span::after {
-    content: '|';
-    position: absolute;
-    color: #bfbfbf;
-    right: -13px;
-}
+    .shop-data__shop-region span::after {
+        content: '|';
+        position: absolute;
+        color: #bfbfbf;
+        right: -13px;
+    }
 
 .shop-data__shop-current-region {
     margin-left: 20px;
@@ -49,11 +49,12 @@
     padding: 0;
     margin-left: 30px;
 }
-.shop-data__shop-phone img{
-    margin: 3px 3px 0 0;
-    height: 20px;
-    width: 20px;
-}
+
+    .shop-data__shop-phone img {
+        margin: 3px 3px 0 0;
+        height: 20px;
+        width: 20px;
+    }
 
 .header__bottom-logo {
     padding: 0;
@@ -61,7 +62,7 @@
 }
 
 
-.header__bottom-logo-text{
+.header__bottom-logo-text {
     position: absolute;
     top: 47px;
     left: 67px;
@@ -70,11 +71,12 @@
     font-size: 13px;
 }
 
-.header-search{
+.header-search {
     padding: 0;
     display: flex;
     align-self: center;
 }
+
 .header-search__text {
     color: #0b5ed7;
     font-size: medium;
@@ -140,18 +142,18 @@
     height: 100%;
 }
 
-.main-menu__ul a {
-    color: white;
-    text-transform: uppercase;
-    font-size: 14px;
-    line-height: 40px;
-    text-decoration: none;
-}
+    .main-menu__ul a {
+        color: white;
+        text-transform: uppercase;
+        font-size: 14px;
+        line-height: 40px;
+        text-decoration: none;
+    }
 
-.main-menu__ul li a:hover {
-    color: aquamarine;
-    /*background: yellow;*/
-}
+    .main-menu__ul li a:hover {
+        color: aquamarine;
+        /*background: yellow;*/
+    }
 
 /*.caps__image img {
     max-width: 100%;
@@ -161,12 +163,12 @@
 
 /*-------------------------- SELECT CAR---------------------------*/
 
-.select-car__wrap{
+.select-car__wrap {
     background: url("/Content/Images/points.png") repeat-x center center;
     margin-bottom: 5px;
     padding: 0;
-
 }
+
 .select-car__header {
     display: flex;
     justify-content: space-between;
@@ -181,10 +183,12 @@
     padding-right: 10px;
     padding-top: 6px;
 }
+
 .select-car__buttons {
     text-align: center;
     height: 35px;
 }
+
 .select-car__show-all, .select-car__show-popular {
     text-transform: uppercase;
     font-size: 14px;
@@ -210,39 +214,55 @@
     flex-direction: row;
 }
 
-#select-car__enum li:not(.all-car){
-    margin-right: 4px;
-    border: 1px solid black;
-    cursor: pointer;
-    background-color: white;
-    width: 26px;
-    height: 26px;
-    line-height: 24px;
-    text-align: center;
 
+#select-car__enum li:not(#all-cars) {
+        margin-right: 4px;
+        border: 1px solid black;
+        cursor: pointer;
+        background-color: white;
+        width: 26px;
+        height: 26px;
+        line-height: 24px;
+        text-align: center;
 }
-#select-car__enum li.all-car {
+
+#select-car__enum li#all-cars {
+        line-height: 24px;
+        height: 26px;
+        border: 1px solid red;
+        font-size: smaller;
+        padding: 0px 2px;
+}
+
+#select-car__enum li.active:not(#all-cars) {
+        background-color: red;
+        border: 1px solid #727272;
+}
+
+#select-car__enum li.active#all-cars {
+    background-color: red;
     line-height: 24px;
     height: 26px;
     border: 1px solid red;
     font-size: smaller;
     padding: 0px 2px;
 }
+
 .select-car__selected {
     display: flex;
     flex-wrap: wrap;
     margin: -10px 0 0 -10px;
 }
 
-.select-car__selected a{
-    text-transform: uppercase;
-    font-size: 15px;
-    text-decoration: underline;
-    font-weight: bold;
-    color: black;
-    margin: 10px 0 0 10px;
-    flex-grow: 1;
-    height: 100%;
-    width: calc(100% * (1 / 4) - 10px - 1px);
-    padding-left: 40px;
+.select-car__selected a {
+        text-transform: uppercase;
+        font-size: 15px;
+        text-decoration: underline;
+        font-weight: bold;
+        color: black;
+        margin: 10px 0 0 10px;
+        flex-grow: 1;
+        height: 100%;
+        width: calc(100% * (1 / 4) - 10px - 1px);
+        padding-left: 40px;
 }
