@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using YapartStore.API.Helpers;
 using YapartStore.BL.Entities;
 using YapartStore.BL.Services.Base;
 
 namespace YapartStore.API.Controllers
 {
+    [EnableCors(origins: "http://localhost:58823", headers: "*", methods: "*")]
     public class ProductController : ApiController
     {
         private readonly IProductService _productService;

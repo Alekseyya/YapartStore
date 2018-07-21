@@ -230,6 +230,7 @@
     <Compile Include="ViewModels\CapsCatalogViewModel.cs" />
     <Compile Include="ViewModels\CapViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
+    <Compile Include="ViewModels\CarViewModel.cs" />
     <Compile Include="ViewModels\PictureViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>

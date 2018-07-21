@@ -1,7 +1,9 @@
-﻿
+﻿@model IEnumerable<YapartStore.UI.ViewModels.CarViewModel>
+
 @{
     ViewBag.Title = "Cars";
 }
+
 
 
 <div class="catalog-model container">
@@ -25,12 +27,32 @@
     </div>
     <div class="catalog-model__list row">
         <div class="catalog-model__item car-info">
-            <div class="car-info__car-image"></div>
-            <div class="car-info__descriptions">
-                <div class="car-info__car-name"></div>
-                <div class="car-info__car-model"></div>
-                <div class="car-info__years"></div>
-            </div>
+            @foreach (var car in Model)
+            {
+                <div class="car-info__car-image">
+                    <img src="@car.Image" alt="Alternate Text" />
+                </div>
+                <div class="car-info__descriptions">
+                    <div class="car-info__car-name"></div>
+                    <div class="car-info__car-model">@car.Model</div>
+                    <div class="car-info__years">@car.Years</div>
+                </div>
+            }
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: 'http://localhost:64612/api/product/GetAllCaps',
+            type: 'GET',
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error in Operation');
+            }
+        });
+    });
+</script>
