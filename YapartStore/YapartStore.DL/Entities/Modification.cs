@@ -13,19 +13,21 @@ namespace YapartStore.DL.Entities
         public int Sort { get; set; }
         public ICollection<Variant> Variants { get; set; } = new List<Variant>();
     }
-    public class ModificationConfiguration : EntityTypeConfiguration<Modification>
-    {
-        public ModificationConfiguration()
-        {
-            HasKey(x => x.Id);
 
-            Property(x => x.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
-                .IsRequired();
+    //public class ModificationConfiguration : EntityTypeConfiguration<Modification>
+    //{
+    //    public ModificationConfiguration()
+    //    {
+    //        HasKey(x => x.Id);
+            
 
-            Property(x => x.Name)
-                .IsRequired();
-            HasMany(x => x.Variants);
-        }
-    }
+    //        Property(x => x.Id)
+    //            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+    //            .IsRequired();
+
+    //        Property(x => x.Name)
+    //            .IsRequired();
+    //        HasMany(x => x.Variants);
+    //    }
+    //}
 }

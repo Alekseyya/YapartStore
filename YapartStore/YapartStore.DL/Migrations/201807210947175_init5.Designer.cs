@@ -13,7 +13,7 @@ namespace YapartStore.DL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201805260220592_init5"; }
+            get { return "201807210947175_init5"; }
         }
         
         string IMigrationMetadata.Source

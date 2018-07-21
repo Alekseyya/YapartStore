@@ -53,6 +53,14 @@ namespace YapartStore.DL.Entities
                 .IsRequired().HasMaxLength(50);
             Property(x => x.Descriptions).IsRequired();
             Property(x => x.Price).HasPrecision(10, 2);
+            HasMany(x => x.Variants).WithMany(x => x.Products).Map(
+                x =>
+                {
+                    x.MapLeftKey("ProductId");
+                    x.MapRightKey("VariantId");
+                    x.ToTable("ProductVariants");
+                }
+            );
         }
     }
 }

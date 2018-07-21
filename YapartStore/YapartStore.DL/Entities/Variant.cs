@@ -23,7 +23,6 @@ namespace YapartStore.DL.Entities
 
             Property(x => x.Name)
                 .IsRequired();
-            
         }
     }
 }

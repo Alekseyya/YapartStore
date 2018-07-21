@@ -28,5 +28,10 @@ namespace YapartStore.UI.Controllers
             var catalog = new CapsCatalogViewModel() { PageInfo = pageInfo, Products = productPerPage };
             return View(catalog);
         }
+
+        public async Task<ActionResult> Cars()
+        {
+            return View();
+        }
     }
 }

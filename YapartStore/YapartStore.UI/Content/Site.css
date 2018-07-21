@@ -375,3 +375,11 @@
     padding-top: 3px;
     float: left;
 }
+
+.year-dropdown-menu {
+    display: flex;
+}
+
+.year-dropdown-menu a {
+
+}

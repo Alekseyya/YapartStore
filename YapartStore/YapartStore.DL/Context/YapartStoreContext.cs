@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using YapartStore.DL.Entities;
@@ -43,11 +44,9 @@ namespace YapartStore.DL.Context
 
             modelBuilder.Configurations.Add(new MarkConfiguration());
             modelBuilder.Configurations.Add(new ModelConfiguration());
-            modelBuilder.Configurations.Add(new ModificationConfiguration());
             modelBuilder.Configurations.Add(new VariantConfiguration());
+            modelBuilder.Entity<Modification>().HasKey(x => x.Id).HasMany(x=>x.Variants);
 
-            modelBuilder.Entity<Variant>()
-                .HasMany(x => x.Products).WithMany(x => x.Variants);
         }
         public class DatabaseInitializer
             : CreateDatabaseIfNotExists<YapartStoreContext>
