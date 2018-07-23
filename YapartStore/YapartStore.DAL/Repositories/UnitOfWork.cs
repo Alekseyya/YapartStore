@@ -20,6 +20,9 @@ namespace YapartStore.DAL.Repositories
             PictureRepository = new PictureRepository(_yapartStoreContext);
             OrderRepository = new OrderRepository(_yapartStoreContext);
             OrderItemRepository = new OrderItemRepository(_yapartStoreContext);
+            MarkRepository = new MarkRepository(_yapartStoreContext);
+            ModelRepository = new ModelRepository(_yapartStoreContext);
+            ModificationRepository = new ModificationRepository(_yapartStoreContext);
 
             UserRepository = new UserRepository(_yapartStoreContext,
                 new UserManager<User, Guid>
@@ -43,7 +46,9 @@ namespace YapartStore.DAL.Repositories
 
         public IUserRepository UserRepository { get; set; }
         public IRoleRepository RoleRepository { get; set; }
-        
+        public IMarkRepository MarkRepository { get; set; }
+        public IModelRepository ModelRepository { get; set; }
+        public IModificationRepository ModificationRepository { get; set; }
 
         public void Save()
         {

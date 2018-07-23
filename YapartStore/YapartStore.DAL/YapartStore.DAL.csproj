@@ -31,10 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -55,6 +55,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Base\IBaseAsyncRepository.cs" />
+    <Compile Include="Repositories\Base\IMarkRepository.cs" />
+    <Compile Include="Repositories\Base\IModelRepository.cs" />
+    <Compile Include="Repositories\Base\IModificationRepository.cs" />
     <Compile Include="Repositories\Base\IOrderItemRepository.cs" />
     <Compile Include="Repositories\Base\IOrderRepository.cs" />
     <Compile Include="Repositories\Base\IPictureRepository.cs" />
@@ -70,6 +73,9 @@
     <Compile Include="Repositories\Base\IUnitOfWork.cs" />
     <Compile Include="Repositories\BrandRepository.cs" />
     <Compile Include="Repositories\GroupRepository.cs" />
+    <Compile Include="Repositories\MarkRepository.cs" />
+    <Compile Include="Repositories\ModelRepository.cs" />
+    <Compile Include="Repositories\ModificationRepository.cs" />
     <Compile Include="Repositories\OrderItemRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\PictureRepository.cs" />

@@ -80,8 +80,10 @@
     <Compile Include="API\HelperTest.cs" />
     <Compile Include="BL\BLUnitTest.cs" />
     <Compile Include="BL\ProductUnitTest.cs" />
+    <Compile Include="BL\ModelUnitTest.cs" />
     <Compile Include="DAL\PictureUnitTest.cs" />
     <Compile Include="DAL\ProductUnitTest.cs" />
+    <Compile Include="DAL\UnitTest1.cs" />
     <Compile Include="UI\HomeTestUI.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

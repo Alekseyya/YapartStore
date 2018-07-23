@@ -13,6 +13,9 @@
 
         IUserRepository UserRepository { get; set; }
         IRoleRepository RoleRepository { get; set; }
+        IMarkRepository MarkRepository { get; set; }
+        IModelRepository ModelRepository { get; set; }
+        IModificationRepository ModificationRepository { get; set; }
 
         void Save();
     }

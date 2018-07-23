@@ -22,7 +22,10 @@ namespace YapartStore.DL.Context
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartLine> CartLines { get; set; }
-
+        public DbSet<Mark> Marks { get; set; }
+        public DbSet<Model> Models { get; set; }
+        public DbSet<Modification> Modifications { get; set; }
+     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new CategoryConfiguration());

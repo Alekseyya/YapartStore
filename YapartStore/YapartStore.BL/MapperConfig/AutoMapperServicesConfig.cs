@@ -18,6 +18,9 @@ namespace YapartStore.BL.MapperConfig
                 cfg.AddProfile(new PictureProfile());
                 cfg.AddProfile(new OrderProfile());
                 cfg.AddProfile(new OrderItemProfile());
+                cfg.AddProfile(new MarkProfile());
+                cfg.AddProfile(new ModelProfile());                    
+                cfg.AddProfile(new ModificationProfile());
             });
 
         }
@@ -108,6 +111,50 @@ namespace YapartStore.BL.MapperConfig
             {
                 CreateMap<GroupDTO, Group>();
                 CreateMap<Group, GroupDTO>();
+            }
+        }
+
+        public class MarkProfile : Profile
+        {
+            public MarkProfile()
+            {
+                CreateMap<MarkDTO, Mark>();
+            }
+        }
+
+        public class MarkDTOProfile : Profile
+        {
+            public MarkDTOProfile()
+            {
+                CreateMap<Mark, MarkDTO>()
+                    .ForMember(x => x.PicturePath, opt => opt.MapFrom(x => x.Picture.Path));
+            }
+        }
+
+        public class ModelProfile : Profile
+        {
+            public ModelProfile()
+            {
+                CreateMap<ModelDTO, Model>();
+                CreateMap<Model, ModelDTO>()
+                    .ForMember(x=>x.PicturePath, opt=>opt.MapFrom(x=>x.Picture.Path));
+            }
+        }
+
+        public class ModificationProfile : Profile
+        {
+            public ModificationProfile()
+            {
+                CreateMap<ModificationDTO, Modification>();
+                CreateMap<Modification, ModificationDTO>();
+            }
+        }
+        public class VariantProfile : Profile
+        {
+            public VariantProfile()
+            {
+                CreateMap<VariantDTO, Variant>();
+                CreateMap<Variant, VariantDTO>();
             }
         }
 

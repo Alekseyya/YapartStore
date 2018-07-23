@@ -3,9 +3,6 @@
 @{
     ViewBag.Title = "Cars";
 }
-
-
-
 <div class="catalog-model container">
     <div class="catalog-model__filter">
         <div class="catalog-model__filter-year">
@@ -45,7 +42,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $.ajax({
-            url: 'http://localhost:64612/api/product/GetAllCaps',
+            url: 'http://localhost:64612/api/model/GetModelsByMarkName?markName=audi',
             type: 'GET',
             success: function (data) {
                 console.log(data);

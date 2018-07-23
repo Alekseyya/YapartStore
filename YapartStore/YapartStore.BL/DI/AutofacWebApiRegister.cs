@@ -19,6 +19,9 @@ namespace YapartStore.BL.DI
             builder.RegisterType<PictureService>().As<IPictureService>();
             builder.RegisterType<OrderService>().As<IOrderService>();
             builder.RegisterType<OrderItemService>().As<IOrderItemService>();
+            builder.RegisterType<MarkService>().As<IMarkService>();
+            builder.RegisterType<ModelService>().As<IModelService>();
+            builder.RegisterType<ModificationService>().As<IModificationService>();
         }
 
     }

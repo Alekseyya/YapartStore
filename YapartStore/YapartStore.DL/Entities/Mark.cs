@@ -11,6 +11,9 @@ namespace YapartStore.DL.Entities
         public string Name { get; set; }
         //show on main window
         public bool Show{ get; set; }
+        public int? PictureId { get; set; }
+        public virtual Picture Picture { get; set; }
+
         public ICollection<Model> Models { get; set; } = new List<Model>();
     }
 
@@ -23,7 +26,7 @@ namespace YapartStore.DL.Entities
             Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
-
+            HasOptional(x => x.Picture).WithRequired(x=>x.Mark);
             Property(x => x.Name).IsRequired();
             HasMany(x => x.Models);
         }
