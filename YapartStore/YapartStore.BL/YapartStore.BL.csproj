@@ -70,6 +70,7 @@
     <Compile Include="Entities\ProductDTO.cs" />
     <Compile Include="Entities\SectionDTO.cs" />
     <Compile Include="Entities\VariantDTO.cs" />
+    <Compile Include="Helpers\ChangePath.cs" />
     <Compile Include="Helpers\MapperExtensions.cs" />
     <Compile Include="MapperConfig\AutoMapperServicesConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

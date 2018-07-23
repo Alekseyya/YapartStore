@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using YapartStore.BL.Entities;
+using YapartStore.BL.Helpers;
 using YapartStore.BL.MapperConfig;
 using YapartStore.BL.Services.Base;
 using YapartStore.DAL.Repositories.Base;
@@ -48,15 +49,27 @@ namespace YapartStore.BL.Services
             {
                 var models = await _unitOfWork.ModelRepository.GetAll()
                     .Where(x => x.Mark.Name == markName).ToListAsync();
-
+                
                 var config = new MapperConfiguration(cfg =>
                 {
-                    cfg.AddProfile(new AutoMapperServicesConfig.MarkDTOProfile());
+                    cfg.AddProfile(new AutoMapperServicesConfig.ModelDTOProfile());
                 });
                 
                 var mapper = config.CreateMapper();
-                return mapper.Map<List<Model>, List<ModelDTO>>(models);
+
+                var modelsDTO = mapper.Map<List<Model>, List<ModelDTO>>(models);
+                var list = new List<int>();
+                foreach (var model in modelsDTO)
+                {
+                    list.Add(model.Id);
+                }
+
+                var bb = await _unitOfWork.PictureRepository.GetAll().ToListAsync();
+                var a = await _unitOfWork.PictureRepository.GetAll()
+                    .Where(x => modelsDTO.Any(y => x.Model.Id == y.Id)).ToListAsync();
                 
+                modelsDTO.ChangePathImage();
+                return null;
             }
             catch (Exception e)
             {

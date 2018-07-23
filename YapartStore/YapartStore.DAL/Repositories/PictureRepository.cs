@@ -17,58 +17,33 @@ namespace YapartStore.DAL.Repositories
         {
             _yapartStoreContext = yapartStoreContext;
         }
-        public Task CreateAsync(Picture item)
-        {
-            try
-            {
-                _yapartStoreContext.Pictures.Add(item);
-                return _yapartStoreContext.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        
 
-        public Task DeleteAsync(int id)
+        public void Create(Picture item)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IQueryable<Picture>> GetAllAsync()
-        {
-            try
-            {
-                return await Task.Run(() =>
-                {
-                    return _yapartStoreContext.Pictures.Include("Brand");
-                });
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public async Task<Picture> GetItemByIdAsync(int id)
-        {
-            try
-            {
-                return await Task.Run(() =>
-                {
-                    return _yapartStoreContext.Pictures.FirstOrDefault(i=> i.Id == id);
-                });
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        
-        public Task UpdateAsync(Picture item)
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }
+
+        public IQueryable<Picture> GetAll()
+        {
+            return _yapartStoreContext.Pictures
+                .Include(x=>x.Model)
+                .AsQueryable();
+        }
+
+        public Picture GetItemById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Picture item)
+        {
+            throw new NotImplementedException();
+        }
+        
     }
 }

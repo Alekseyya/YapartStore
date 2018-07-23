@@ -11,7 +11,6 @@ namespace YapartStore.DL.Entities
         public string Name { get; set; }
         //show on main window
         public bool Show{ get; set; }
-        public int? PictureId { get; set; }
         public virtual Picture Picture { get; set; }
 
         public ICollection<Model> Models { get; set; } = new List<Model>();

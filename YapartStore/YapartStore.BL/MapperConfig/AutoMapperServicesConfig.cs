@@ -127,7 +127,7 @@ namespace YapartStore.BL.MapperConfig
             public MarkDTOProfile()
             {
                 CreateMap<Mark, MarkDTO>()
-                    .ForMember(x => x.PicturePath, opt => opt.MapFrom(x => x.Picture.Path));
+                    .ForMember(x => x.PicturePath, opt => opt.MapFrom(x => x.Picture.Path)).PreserveReferences();
             }
         }
 
@@ -136,8 +136,17 @@ namespace YapartStore.BL.MapperConfig
             public ModelProfile()
             {
                 CreateMap<ModelDTO, Model>();
+                //CreateMap<Model, ModelDTO>()
+                //    .ForMember(x=>x.PicturePath, opt=>opt.MapFrom(x=>x.Picture.Path)).PreserveReferences();
+            }
+        }
+        public class ModelDTOProfile : Profile
+        {
+            public ModelDTOProfile()
+            {
                 CreateMap<Model, ModelDTO>()
-                    .ForMember(x=>x.PicturePath, opt=>opt.MapFrom(x=>x.Picture.Path));
+                    .ForMember(x => x.PicturePath,
+                        opt => opt.MapFrom(x => x.Picture.Path)).PreserveReferences();
             }
         }
 

@@ -13,8 +13,7 @@ namespace YapartStore.DL.Entities
 
         public int? MarkId { get; set; }
         public Mark Mark { get; set; }
-
-        public int? PictureId { get; set; }
+        
         public virtual Picture Picture { get; set; }
         
         public ICollection<Modification> Modifications { get; set; } = new List<Modification>();

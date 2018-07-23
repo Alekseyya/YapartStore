@@ -13,11 +13,9 @@ namespace YapartStore.DL.Entities
 
         public int? ProductId { get; set; }
         public virtual Product Product { get; set; }
-
-        public int? MarkId { get; set; }
+        
         public Mark Mark { get; set; }
-
-        public int? ModelId { get; set; }
+        
         public Model Model { get; set; }
        
         

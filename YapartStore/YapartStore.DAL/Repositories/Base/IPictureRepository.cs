@@ -7,7 +7,7 @@ using YapartStore.DL.Entities;
 
 namespace YapartStore.DAL.Repositories.Base
 {
-    public interface IPictureRepository : IBaseAsyncRepository<Picture>
+    public interface IPictureRepository : IBaseRepository<Picture>
     {
     }
 }
