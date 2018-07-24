@@ -1,4 +1,4 @@
-﻿@model IEnumerable<YapartStore.UI.ViewModels.CarViewModel>
+﻿@model List<YapartStore.UI.ViewModels.ModelViewModel>
 
 @{
     ViewBag.Title = "Cars";
@@ -23,33 +23,38 @@
         <div class="catalog-model__sort"></div>
     </div>
     <div class="catalog-model__list row">
-        <div class="catalog-model__item car-info">
-            @foreach (var car in Model)
-            {
-                <div class="car-info__car-image">
-                    <img src="@car.Image" alt="Alternate Text" />
+        @foreach (var carModel in Model)
+        {
+            <div class="catalog-model__item model-info">
+                <div class="model-info__model-image">
+                    <img src="@carModel.PicturePath" alt="Alternate Text" />
                 </div>
-                <div class="car-info__descriptions">
-                    <div class="car-info__car-name"></div>
-                    <div class="car-info__car-model">@car.Model</div>
-                    <div class="car-info__years">@car.Years</div>
+                <div class="model-info__descriptions">
+                    <div class="model-info__model-name">
+                        @*@Html.ActionLink(@carModel.Name, "Cars", new {})*@
+                        <a href="#">@carModel.Name</a>
+                    </div>
+                    <div class="model-info__model-model"></div>
+                    <div class="model-info__model-years">@carModel.Years</div>
                 </div>
-            }
-        </div>
+            </div>
+
+        }
     </div>
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $.ajax({
-            url: 'http://localhost:64612/api/model/GetModelsByMarkName?markName=audi',
-            type: 'GET',
-            success: function (data) {
-                console.log(data);
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                console.log('Error in Operation');
-            }
-        });
-    });
+    //$(document).ready(function () {
+    //    $.ajax({
+    //        url: 'http://localhost:64612/api/model/GetModelsByMarkName?markName=audi',
+    //        type: 'GET',
+    //        success: function (data) {
+    //            console.log(data);
+    //            aa = data;
+    //        },
+    //        error: function (xhr, textStatus, errorThrown) {
+    //            console.log('Error in Operation');
+    //        }
+    //    });
+    //});
 </script>

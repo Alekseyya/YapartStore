@@ -383,3 +383,33 @@
 .year-dropdown-menu a {
 
 }
+
+.catalog-model__list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.catalog-model__item {
+    display: inline-flex;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    height: 100px;
+    width: calc(100% * (1 / 2) - 10px);
+}
+
+.model-info__descriptions {
+    margin-left: 10px;
+}
+
+.model-info__model-model a {
+    color: #256892;
+    text-decoration: none;
+}
+
+.catalog-model__item:hover {
+    display: inline-flex;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    height: 100px;
+    width: calc(100% * (1 / 2) - 10px);
+    background: #eee;
+}

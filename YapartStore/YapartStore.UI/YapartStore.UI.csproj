@@ -222,8 +222,10 @@
     <Compile Include="Services\Base\IBrandService.cs" />
     <Compile Include="Services\Base\ICategoryService.cs" />
     <Compile Include="Services\Base\IGroupService.cs" />
+    <Compile Include="Services\Base\IModelService.cs" />
     <Compile Include="Services\Base\IProductService.cs" />
     <Compile Include="Services\BrandService.cs" />
+    <Compile Include="Services\ModelService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BrandViewModel.cs" />
@@ -231,6 +233,7 @@
     <Compile Include="ViewModels\CapViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\CarViewModel.cs" />
+    <Compile Include="ViewModels\ModelViewModel.cs" />
     <Compile Include="ViewModels\PictureViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
@@ -250,6 +253,12 @@
     <Content Include="Content\Images\Caps\Glory ring.jpg" />
     <Content Include="Content\Images\Caps\Meridian ring.jpg" />
     <Content Include="Content\Images\Caps\Raven ring.jpg" />
+    <Content Include="Content\Images\Cars\Audi\A1.png" />
+    <Content Include="Content\Images\Cars\Audi\A3.png" />
+    <Content Include="Content\Images\Cars\Audi\A4.png" />
+    <Content Include="Content\Images\Cars\Audi\A5.png" />
+    <Content Include="Content\Images\Cars\Audi\A6.png" />
+    <Content Include="Content\Images\Cars\Audi\A8.png" />
     <Content Include="Content\Images\cart.png" />
     <Content Include="Content\Images\clouds.jpg" />
     <Content Include="Content\Images\favicon.ico" />

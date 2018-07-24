@@ -85,6 +85,7 @@
     <Compile Include="DAL\ProductUnitTest.cs" />
     <Compile Include="DAL\UnitTest1.cs" />
     <Compile Include="UI\HomeTestUI.cs" />
+    <Compile Include="UI\Services\ModelServiceUnitTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

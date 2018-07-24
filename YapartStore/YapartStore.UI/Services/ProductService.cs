@@ -42,7 +42,8 @@ namespace YapartStore.UI.Services
             try
             {
                 string url = ConfigurationManager.AppSettings["WebApiUrl"];
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + "/product/GetProductsOfBrand?brand=" + brand);
+                HttpWebRequest request = (HttpWebRequest)WebRequest
+                    .Create(url + "/product/GetProductsOfBrand?brand=" + brand);
                 request.ContentType = "application/json; charset=utf-8";
                 request.Method = "GET";
 
