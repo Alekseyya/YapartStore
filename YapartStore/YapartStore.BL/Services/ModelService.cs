@@ -57,19 +57,26 @@ namespace YapartStore.BL.Services
                 
                 var mapper = config.CreateMapper();
 
-                var modelsDTO = mapper.Map<List<Model>, List<ModelDTO>>(models);
-                var list = new List<int>();
-                foreach (var model in modelsDTO)
+                var modelsDTOs = mapper.Map<List<Model>, List<ModelDTO>>(models);
+                
+                var pictureIds = await _unitOfWork.PictureRepository.GetAll()
+                    .Select(x => new {x.Id, x.Path}).ToListAsync();
+
+                var newModelsDTO = new List<ModelDTO>();
+
+                foreach (var pictureId in pictureIds)
                 {
-                    list.Add(model.Id);
+                    foreach (var modelDTO in modelsDTOs)
+                    {
+                        if (pictureId.Id == modelDTO.Id)
+                        {
+                            modelDTO.PicturePath = pictureId.Path;
+                            newModelsDTO.Add(modelDTO);
+                        }
+                    }
                 }
 
-                var bb = await _unitOfWork.PictureRepository.GetAll().ToListAsync();
-                var a = await _unitOfWork.PictureRepository.GetAll()
-                    .Where(x => modelsDTO.Any(y => x.Model.Id == y.Id)).ToListAsync();
-                
-                modelsDTO.ChangePathImage();
-                return null;
+                return newModelsDTO.ChangePathImage();
             }
             catch (Exception e)
             {
