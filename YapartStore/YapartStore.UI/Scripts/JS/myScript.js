@@ -1,13 +1,22 @@
 ﻿'use strict';
 
 let liArray = document.getElementById("select-car__enum").children;
-console.log(liArray);
-let tmpList = ["Audi", "Acura", "BMW", "Caddilac", "Changan", "Cherry", "Citroen", "Chevrolet"];
-
-let popularList = ["Audi", "Acura", "BMW", "Caddilac", "Changan"];
+let AllCar = [];
+let PopularCars = [];
 
 let createClassName = "select-car__selected";
 let appendClassName = "select-car__list";
+
+$(document).ready(function () {
+    $.getJSON("http://localhost:58823/home/getallmarks", function (data) {
+        $.each(JSON.parse(data), function (i, item) {
+            AllCar.push(item.Name);
+            if (item.Show === true) {
+                PopularCars.push(item.Name);
+            }
+        });
+    });
+});
 
 function AddEventListner() {
     //for char cars
@@ -26,19 +35,19 @@ function AddEventListner() {
 }
 
 function ShowPopularCars() {
-    CreateDivCarList(createClassName, appendClassName, popularList);
+    CreateDivCarList(createClassName, appendClassName, PopularCars);
 }
 
 function ShowPopulerOrNotCars(span) {
     if (span.className === "select-car__show-all") {
         ResetSelection();
         span.style = "display: none";
-        CreateDivCarList(createClassName, appendClassName, tmpList);
+        CreateDivCarList(createClassName, appendClassName, AllCar);
         document.querySelector('.select-car__show-popular').style = "display: initial";
     } else {
         span.style = "display: none";
         ResetSelection();
-        CreateDivCarList(createClassName, appendClassName, popularList);
+        CreateDivCarList(createClassName, appendClassName, PopularCars);
         document.querySelector('.select-car__show-all').style = "display: initial";
     }
 }
@@ -55,9 +64,9 @@ function DeleteSelectedList(className){
 
 function CreateCarList(event) {
     let charCar = event.target.innerHTML;
-    if (tmpList.length != 0) {
+    if (AllCar.length != 0) {
         if (event.target.id === "all-cars") {
-            CreateDivCarList(createClassName, appendClassName, tmpList);
+            CreateDivCarList(createClassName, appendClassName, AllCar);
         } else {
             let carsNameArray = FilterCarsList(charCar);
             CreateDivCarList(createClassName, appendClassName, carsNameArray);
@@ -95,7 +104,7 @@ function CreateDivCarList(className, appendClassName, carsArray) {
 
 function FilterCarsList(charCar){
     let carsNameArray = [];
-        for (let carName of tmpList) {
+        for (let carName of AllCar) {
             if (carName.charAt(0) === charCar) {
                 carsNameArray.push(carName);
             }
@@ -103,12 +112,17 @@ function FilterCarsList(charCar){
     return carsNameArray;
 }
 
+function GetAllMarks() {
+   
+}
 
 
 (function() {
     AddEventListner();
     ShowPopularCars();
+    
 }());
+
 
 
 

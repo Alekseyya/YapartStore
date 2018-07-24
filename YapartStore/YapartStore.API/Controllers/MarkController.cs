@@ -20,7 +20,7 @@ namespace YapartStore.API.Controllers
         }
 
         [HttpGet]
-        public async Task<List<MarkDTO>> GetMarks()
+        public async Task<List<MarkDTO>> GetAllMarks()
         {
           return await _markService.GetAllAsync();
         }

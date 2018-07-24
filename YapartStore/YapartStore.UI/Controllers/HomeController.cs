@@ -19,11 +19,13 @@ namespace YapartStore.UI.Controllers
     public class HomeController : Controller
     {
         private readonly IProductService _productService;
-        public HomeController(IProductService productService)
+        private readonly IMarkService _markService;
+        public HomeController(IProductService productService, IMarkService markService)
         {
             _productService = productService;
+            _markService = markService;
         }
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             return View();
         }
@@ -34,7 +36,7 @@ namespace YapartStore.UI.Controllers
 
             return View();
         }
-
+        
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -68,6 +70,14 @@ namespace YapartStore.UI.Controllers
             {
                 throw e;
             }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetAllMarks()
+        {
+            var marks = await _markService.GetAllMarks();
+            var listmarksForJson = marks.Select(x => new {x.Name, x.Show});
+            return Json(JsonConvert.SerializeObject(listmarksForJson), JsonRequestBehavior.AllowGet);
         }
     }
 }

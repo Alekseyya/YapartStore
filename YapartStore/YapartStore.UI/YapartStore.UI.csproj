@@ -222,9 +222,11 @@
     <Compile Include="Services\Base\IBrandService.cs" />
     <Compile Include="Services\Base\ICategoryService.cs" />
     <Compile Include="Services\Base\IGroupService.cs" />
+    <Compile Include="Services\Base\IMarkService.cs" />
     <Compile Include="Services\Base\IModelService.cs" />
     <Compile Include="Services\Base\IProductService.cs" />
     <Compile Include="Services\BrandService.cs" />
+    <Compile Include="Services\MarkService.cs" />
     <Compile Include="Services\ModelService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Startup.cs" />
@@ -233,6 +235,7 @@
     <Compile Include="ViewModels\CapViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\CarViewModel.cs" />
+    <Compile Include="ViewModels\MarkViewModel.cs" />
     <Compile Include="ViewModels\ModelViewModel.cs" />
     <Compile Include="ViewModels\PictureViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />

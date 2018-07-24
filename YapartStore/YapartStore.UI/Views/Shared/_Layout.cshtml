@@ -37,7 +37,7 @@
         <div class="header__bottom container">
             <div class=" wrapper row">
                 <div class="header__bottom-logo col-md-4 mb-3">
-                    <a href="@Url.Action("Index", "Caps")">
+                    <a href="@Url.Action("Index", "Home")">
                         <img src="/Content/Images/logo.png" alt="" />
                     </a>
                     <div class="header__bottom-logo-text">
@@ -122,8 +122,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/JS/myScript.js")
-    
     @RenderSection("scripts", required: false)
 
 </body>

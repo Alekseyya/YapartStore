@@ -18,6 +18,7 @@ namespace YapartStore.UI.DI
             builder.RegisterType<ProductService>().As<IProductService>();
             builder.RegisterType<BrandService>().As<IBrandService>();
             builder.RegisterType<ModelService>().As<IModelService>();
+            builder.RegisterType<MarkService>().As<IMarkService>();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
