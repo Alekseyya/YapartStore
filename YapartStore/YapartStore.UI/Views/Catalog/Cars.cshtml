@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Cars";
 }
+
 <div class="catalog-model container">
     <div class="catalog-model__filter">
         <div class="catalog-model__filter-year">
@@ -31,8 +32,7 @@
                 </div>
                 <div class="model-info__descriptions">
                     <div class="model-info__model-name">
-                        @*@Html.ActionLink(@carModel.Name, "Cars", new {})*@
-                        <a href="#">@carModel.Name</a>
+                        <a href="/Catalog/Cars/@ViewBag.Mark/@carModel.Name">@carModel.Name</a>
                     </div>
                     <div class="model-info__model-model"></div>
                     <div class="model-info__model-years">@carModel.Years</div>
@@ -44,17 +44,5 @@
 </div>
 
 <script type="text/javascript">
-    //$(document).ready(function () {
-    //    $.ajax({
-    //        url: 'http://localhost:64612/api/model/GetModelsByMarkName?markName=audi',
-    //        type: 'GET',
-    //        success: function (data) {
-    //            console.log(data);
-    //            aa = data;
-    //        },
-    //        error: function (xhr, textStatus, errorThrown) {
-    //            console.log('Error in Operation');
-    //        }
-    //    });
-    //});
+    
 </script>

@@ -1,0 +1,35 @@
+﻿@model List<YapartStore.UI.ViewModels.ModificationViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="model-info row">
+    <div class="model-info-wraper col-md-3">
+        <div class="model-info__model-image">
+            <img src="@ViewBag.Model.PicturePath" alt="Alternate Text"/>
+        </div>
+        <div class="model-info__descriptions">
+
+            <div class="model-info__model-name">
+                <a href="#">@ViewData["Car"]</a>
+            </div>
+            <div class="model-info__model-model">@ViewBag.Model.Name</div>
+            <div class="model-info__model-years">@ViewBag.Model.Years</div>
+        </div>
+    </div>
+</div>
+
+
+@foreach (var mofification in Model)
+{
+    <div>
+        <div>@mofification.Name</div>
+    </div>
+}
+
+@Styles.Render("~/Content/CSS/site.css")
+@Styles.Render("~/Content/CSS/Catalog/modifications.css")
+

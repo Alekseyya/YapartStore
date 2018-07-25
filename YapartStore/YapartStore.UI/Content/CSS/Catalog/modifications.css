@@ -1,0 +1,36 @@
+﻿.model-info {
+    padding: 0;
+    margin: 20px 0;
+}
+
+.model-info-wraper {
+    background: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    
+}
+
+.model-info__model-image {
+    float: left;
+    margin-right: 15px;
+    min-width: 150px;
+}
+
+.model-info__descriptions {
+    float: left;
+    max-width: 290px;
+}
+
+.model-info__model-name {
+    font-family: Arial, Tahoma, sans-serif;
+    text-transform: none;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #363636;
+}
+
+.model-info__model-model {
+    float: left;
+    clear: both;
+}

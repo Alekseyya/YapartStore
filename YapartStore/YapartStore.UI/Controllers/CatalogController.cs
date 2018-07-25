@@ -46,6 +46,7 @@ namespace YapartStore.UI.Controllers
         public async Task<ActionResult> Cars(string car)
         {
             var listModels = await _modelService.GetModelByMarkName(car);
+            ViewBag.Mark = car;
             return View(listModels);
         }
 
@@ -55,17 +56,12 @@ namespace YapartStore.UI.Controllers
         public async Task<ActionResult> Cars(string car, string model)
         {
             //достать фотку автомобиля
-
+            var carModel = await _modelService.GetModelByName(model);
+            ViewBag.Model = carModel;
+            ViewData["Model"] = carModel;
+            ViewData["Car"] = car;
             var modifictions = await _modificationService.GetModificationByModelName(model);
-            return View("~/Views/Catalog/Models.cshtml", modifictions); //изменить путь к вьюшке, поставить другой
+            return View("~/Views/Catalog/Modifications.cshtml", modifictions); //изменить путь к вьюшке, поставить другой
         }
     }
 }
-
-
-
-//сделай два акшна
-//[Route("car/cars/{name?}")]
-//GetCarsByName
-//[Route("car/cars/{model?}")]
-//GetCarsByModel

@@ -7,5 +7,6 @@ namespace YapartStore.BL.Services.Base
     public interface IModelService : IBaseAsyncService<ModelDTO>
     {
         Task<List<ModelDTO>> GetModelsByMarkName(string markName);
+        Task<ModelDTO> GetModelByName(string modelName);
     }
 }

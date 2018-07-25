@@ -35,5 +35,20 @@ namespace YapartStore.BL.Helpers
                 throw e;
             }
         }
+
+        public static ModelDTO ChangePathImage(this ModelDTO item)
+        {
+            try
+            {
+                item.PicturePath = item.PicturePath.Substring(item.PicturePath.IndexOf(@"\Cont"),
+                                 item.PicturePath.Length - item.PicturePath.IndexOf(@"\Cont"))
+                             .Replace("\\", "/");
+                return item;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

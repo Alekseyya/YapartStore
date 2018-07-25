@@ -43,6 +43,16 @@ namespace YapartStore.BL.Services
             throw new System.NotImplementedException();
         }
 
+        public async Task<ModelDTO> GetModelByName(string modelName)
+        {
+            return Mapper.Map<Model, ModelDTO>
+                (await Task.Run(() =>
+                    {
+                        return _unitOfWork.ModelRepository.GetItemByName(modelName);
+                    }
+                )).ChangePathImage();
+        }
+
         public async Task<List<ModelDTO>> GetModelsByMarkName(string markName)
         {
             try

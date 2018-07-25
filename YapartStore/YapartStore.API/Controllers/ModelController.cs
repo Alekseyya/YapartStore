@@ -30,5 +30,11 @@ namespace YapartStore.API.Controllers
         {
             return await _modelService.GetModelsByMarkName(markName);
         }
+
+        [HttpGet]
+        public async Task<ModelDTO> GetModelByName(string modelName)
+        {
+            return await _modelService.GetModelByName(modelName);
+        }
     }
 }

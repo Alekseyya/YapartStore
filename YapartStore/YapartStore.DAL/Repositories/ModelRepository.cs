@@ -38,6 +38,11 @@ namespace YapartStore.DAL.Repositories
             throw new System.NotImplementedException();
         }
 
+        public Model GetItemByName(string name)
+        {
+            return _yapartStoreContext.Models.FirstOrDefault(x => x.Name == name);
+        }
+
         public void Update(Model item)
         {
             throw new System.NotImplementedException();
