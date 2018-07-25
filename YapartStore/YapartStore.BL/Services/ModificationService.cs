@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using YapartStore.BL.Entities;
@@ -31,6 +32,13 @@ namespace YapartStore.BL.Services
         {
             return Mapper.Map<List<Modification>, List<ModificationDTO>>(
                 await _unitOfWork.ModificationRepository.GetAll().ToListAsync());
+        }
+
+        public async Task<List<ModificationDTO>> GetAllModificationByModelName(string modelName)
+        {
+            return Mapper.Map<List<Modification>, List<ModificationDTO>>(
+               await _unitOfWork.ModificationRepository.GetAll().Where(x=>x.Model.Name == modelName)
+                    .ToListAsync());
         }
 
         public Task<ModificationDTO> GetItemByIdAsync(int id)

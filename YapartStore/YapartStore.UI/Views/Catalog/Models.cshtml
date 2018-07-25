@@ -1,0 +1,13 @@
+﻿@model List<YapartStore.UI.ViewModels.ModificationViewModel>
+@{
+    ViewBag.Title = "Models";
+}
+
+<h2>Models</h2>
+@foreach (var mofification in Model)
+{
+    <div>
+        <div>@mofification.Name</div>
+    </div> 
+}
+

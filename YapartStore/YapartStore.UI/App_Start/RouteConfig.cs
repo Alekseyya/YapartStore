@@ -15,13 +15,21 @@ namespace YapartStore.UI
 
             routes.MapRoute(
                 name: "Cars",
+                url: "{controller}/{action}/{car}",
+                defaults: new
+                {
+                    controller = "Catalog",
+                    action = "Cars"
+                }
+            );
+
+            routes.MapRoute(
+                name: "Models",
                 url: "{controller}/{action}/{car}/{model}",
                 defaults: new
                 {
-                    controller = "Home",
-                    action = "Index",
-                    car = UrlParameter.Optional,
-                    model = UrlParameter.Optional
+                    controller = "Catalog",
+                    action = "Cars"
                 }
             );
 

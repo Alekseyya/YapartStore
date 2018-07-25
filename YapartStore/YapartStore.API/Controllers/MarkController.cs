@@ -12,11 +12,15 @@ namespace YapartStore.API.Controllers
     {
         private readonly IMarkService _markService;
         private readonly IModelService _modelService;
+        private readonly IModificationService _modificationService;
 
-        public MarkController(IMarkService markService, IModelService modelService)
+        public MarkController(IMarkService markService, 
+                              IModelService modelService,
+                              IModificationService modificationService )
         {
             _markService = markService;
             _modelService = modelService;
+            _modificationService = modificationService;
         }
 
         [HttpGet]

@@ -224,10 +224,12 @@
     <Compile Include="Services\Base\IGroupService.cs" />
     <Compile Include="Services\Base\IMarkService.cs" />
     <Compile Include="Services\Base\IModelService.cs" />
+    <Compile Include="Services\Base\IModificationService.cs" />
     <Compile Include="Services\Base\IProductService.cs" />
     <Compile Include="Services\BrandService.cs" />
     <Compile Include="Services\MarkService.cs" />
     <Compile Include="Services\ModelService.cs" />
+    <Compile Include="Services\ModificationService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BrandViewModel.cs" />
@@ -237,6 +239,7 @@
     <Compile Include="ViewModels\CarViewModel.cs" />
     <Compile Include="ViewModels\MarkViewModel.cs" />
     <Compile Include="ViewModels\ModelViewModel.cs" />
+    <Compile Include="ViewModels\ModificationViewModel.cs" />
     <Compile Include="ViewModels\PictureViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
@@ -375,6 +378,7 @@
     <Content Include="Views\Caps\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Catalog\Cars.cshtml" />
+    <Content Include="Views\Catalog\Models.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
