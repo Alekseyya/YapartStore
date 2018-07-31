@@ -1,9 +1,10 @@
-﻿using YapartStore.BL.Entities;
+﻿using System.Threading.Tasks;
+using YapartStore.BL.Entities;
 
 namespace YapartStore.BL.Services.Base
 {
-    public interface ICategoryService : IBaseService<CategoryDTO>
+    public interface ICategoryService : IBaseAsyncService<CategoryDTO>
     {
-        void DeleteItem(string categoryName);
+        Task DeleteItem(string categoryName);
     }
 }

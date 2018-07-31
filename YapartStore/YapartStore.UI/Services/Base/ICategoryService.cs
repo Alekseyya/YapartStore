@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using YapartStore.UI.Models;
 
 namespace YapartStore.UI.Services.Base
 {
-    interface ICategoryService
-    {
-    }
+   public interface ICategoryService
+   {
+       Task<List<CategoryModel>> GetCategories();
+   }
 }

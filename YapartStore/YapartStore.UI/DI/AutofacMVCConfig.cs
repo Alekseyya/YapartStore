@@ -20,7 +20,7 @@ namespace YapartStore.UI.DI
             builder.RegisterType<ModelService>().As<IModelService>();
             builder.RegisterType<MarkService>().As<IMarkService>();
             builder.RegisterType<ModificationService>().As<IModificationService>();
-
+            builder.RegisterType<CategoryService>().As<ICategoryService>();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

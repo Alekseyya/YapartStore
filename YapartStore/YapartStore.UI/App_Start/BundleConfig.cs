@@ -25,6 +25,7 @@ namespace YapartStore.UI
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css"));
+            
         }
     }
 }

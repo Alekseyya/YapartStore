@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using YapartStore.BL.Entities;
+using YapartStore.BL.MapperConfig;
 using YapartStore.BL.Services.Base;
 using YapartStore.DAL.Repositories.Base;
 using YapartStore.DL.Entities;
@@ -16,17 +19,11 @@ namespace YapartStore.BL.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public void AddItem(CategoryDTO item)
+
+        public async Task AddItemAsync(CategoryDTO item)
         {
-            try
-            {
-                var category = Mapper.Map<CategoryDTO, Category>(item);
-                _unitOfWork.CategoryRepository.Create(category);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var category = await Task.Run(() => { return Mapper.Map<CategoryDTO, Category>(item); });
+            await Task.Run(() => { _unitOfWork.CategoryRepository.Create(category); }); 
         }
 
         public void DeleteItem(CategoryDTO item)
@@ -62,6 +59,11 @@ namespace YapartStore.BL.Services
             }
         }
 
+        public Task DeleteItemAsync(CategoryDTO item)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<CategoryDTO> GetAll()
         {
             try
@@ -71,6 +73,28 @@ namespace YapartStore.BL.Services
                     return categories;
                 else
                     return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<CategoryDTO>> GetAllAsync()
+        {
+            try
+            {
+                var categories = await _unitOfWork.CategoryRepository.GetAll().ToListAsync();
+                if (categories != null)
+                {
+                    var configurate = new MapperConfiguration(cfg =>
+                    {
+                        cfg.AddProfile(new AutoMapperServicesConfig.CategoryWithoutProductsProfile());
+                    }).CreateMapper();
+
+                    return configurate.Map<List<Category>, List<CategoryDTO>>(categories);
+                }
+                return null;
             }
             catch (Exception ex)
             {
@@ -94,10 +118,25 @@ namespace YapartStore.BL.Services
             }
         }
 
+        public Task<CategoryDTO> GetItemByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateItem(CategoryDTO item)
         {
             var category = Mapper.Map<CategoryDTO, Category>(item);
             _unitOfWork.CategoryRepository.Update(category);
+        }
+
+        public Task UpdateItemAsync(CategoryDTO item)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task ICategoryService.DeleteItem(string categoryName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

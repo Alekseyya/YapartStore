@@ -20,12 +20,15 @@ namespace YapartStore.UI.Controllers
         private readonly IModelService _modelService;
 
         private readonly IModificationService _modificationService;
+        private readonly ICategoryService _categoryService;
         //private readonly IBrandService _brandService;
         public CatalogController(IProductService productService, 
                                 IModelService modelService,
-                                IModificationService modificationService)
+                                IModificationService modificationService,
+                                ICategoryService categoryService)
         {
             _productService = productService;
+            _categoryService = categoryService;
             //_brandService = brandService;
             _modelService = modelService;
             _modificationService = modificationService;
@@ -60,6 +63,7 @@ namespace YapartStore.UI.Controllers
             ViewBag.Model = carModel;
             ViewData["Model"] = carModel;
             ViewData["Car"] = car;
+            ViewBag.Categories = await _categoryService.GetCategories();
             var modifictions = await _modificationService.GetModificationByModelName(model);
             return View("~/Views/Catalog/Modifications.cshtml", modifictions); //изменить путь к вьюшке, поставить другой
         }

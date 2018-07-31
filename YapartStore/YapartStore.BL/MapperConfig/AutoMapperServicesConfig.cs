@@ -43,6 +43,13 @@ namespace YapartStore.BL.MapperConfig
                 CreateMap<Category, CategoryDTO>();
             }
         }
+        public class CategoryWithoutProductsProfile : Profile
+        {
+            public CategoryWithoutProductsProfile()
+            {
+                CreateMap<Category, CategoryDTO>().ForMember(cat=> cat.Products, opt=>opt.Ignore());
+            }
+        }
 
         public class PictureProfile : Profile
         {
@@ -60,23 +67,23 @@ namespace YapartStore.BL.MapperConfig
             }
         }
 
-        public class ProductWithoutBrandProfile : Profile
-        {
-            public ProductWithoutBrandProfile()
-            {
-                CreateMap<Product, ProductDTO>()
-                    .ForMember(x => x.Brand, opt => opt.Ignore());
-            }
-        }
+        //public class ProductWithoutBrandProfile : Profile
+        //{
+        //    public ProductWithoutBrandProfile()
+        //    {
+        //        CreateMap<Product, ProductDTO>()
+        //            .ForMember(x => x.Brand, opt => opt.Ignore());
+        //    }
+        //}
 
-        public class ProductWithoutCategoryProfile : Profile
-        {
-            public ProductWithoutCategoryProfile()
-            {
-                CreateMap<Product, ProductDTO>()
-                    .ForMember(x => x.Category, opt => opt.Ignore()).PreserveReferences();
-            }
-        }
+        //public class ProductWithoutCategoryProfile : Profile
+        //{
+        //    public ProductWithoutCategoryProfile()
+        //    {
+        //        CreateMap<Product, ProductDTO>()
+        //            .ForMember(x => x.Category, opt => opt.Ignore()).PreserveReferences();
+        //    }
+        //}
         public class OrderProfile : Profile
         {
             public OrderProfile()
@@ -94,16 +101,16 @@ namespace YapartStore.BL.MapperConfig
             }
         }
 
-        public class ProductWithoutBrandAndCategoryProfile: Profile
-        {
-            public ProductWithoutBrandAndCategoryProfile()
-            {
-                CreateMap<Product, ProductDTO>()
-                    .ForMember(x => x.Brand, opt => opt.Ignore())
-                    .ForMember(x => x.Category, opt => opt.Ignore())
-                    .PreserveReferences();
-            }
-        }
+        //public class ProductWithoutBrandAndCategoryProfile: Profile
+        //{
+        //    public ProductWithoutBrandAndCategoryProfile()
+        //    {
+        //        CreateMap<Product, ProductDTO>()
+        //            .ForMember(x => x.Brand, opt => opt.Ignore())
+        //            .ForMember(x => x.Category, opt => opt.Ignore())
+        //            .PreserveReferences();
+        //    }
+        //}
 
         public class GroupProfile : Profile
         {

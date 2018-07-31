@@ -34,12 +34,12 @@ namespace YapartStore.BL.Services
         {
             try
             {
-                var product = Mapper.Map<ProductDTO, Product>(item);
-                var findProduct = _unitOfWork.ProductRepository.GetAll().FirstOrDefault(prod => prod.Article == item.Article && prod.Brand.Name == item.Brand.Name);
-                if (findProduct != null)
-                {
-                    _unitOfWork.ProductRepository.Delete(findProduct.Id);
-                }
+                //var product = Mapper.Map<ProductDTO, Product>(item);
+                //var findProduct = _unitOfWork.ProductRepository.GetAll().FirstOrDefault(prod => prod.Article == item.Article && prod.Brand.Name == item.Brand.Name);
+                //if (findProduct != null)
+                //{
+                //    _unitOfWork.ProductRepository.Delete(findProduct.Id);
+                //}
             }
             catch (Exception ex)
             {
@@ -110,15 +110,15 @@ namespace YapartStore.BL.Services
         {
             try
             {
-                var configurate = new MapperConfiguration(cfg =>
-                {
-                    cfg.AddProfile(new AutoMapperServicesConfig.ProductWithoutCategoryProfile());
-                }).CreateMapper();
-                var products = Mapper.Map<IQueryable<Product>, IList<ProductDTO>>
-                                        (_unitOfWork.ProductRepository.GetAllProductsIncludeBrand());
-                if (products != null)
-                    return products;
-                else
+                //var configurate = new MapperConfiguration(cfg =>
+                //{
+                //    cfg.AddProfile(new AutoMapperServicesConfig.ProductWithoutCategoryProfile());
+                //}).CreateMapper();
+                //var products = Mapper.Map<IQueryable<Product>, IList<ProductDTO>>
+                //                        (_unitOfWork.ProductRepository.GetAllProductsIncludeBrand());
+                //if (products != null)
+                //    return products;
+                //else
                     return null;
             }
             catch (Exception ex)
@@ -131,17 +131,17 @@ namespace YapartStore.BL.Services
         {
             try
             {
-                var products =_unitOfWork.ProductRepository.GetAll().Where(br => br.Brand.Name == nameBrand);
-                if (products != null)
-                {
-                    var configurate = new MapperConfiguration(cfg =>
-                    {
-                        cfg.AddProfile(new AutoMapperServicesConfig.ProductWithoutBrandAndCategoryProfile());
-                    }).CreateMapper();
+                //var products =_unitOfWork.ProductRepository.GetAll().Where(br => br.Brand.Name == nameBrand);
+                //if (products != null)
+                //{
+                //    var configurate = new MapperConfiguration(cfg =>
+                //    {
+                //        cfg.AddProfile(new AutoMapperServicesConfig.ProductWithoutBrandAndCategoryProfile());
+                //    }).CreateMapper();
 
-                    var productsDTO = configurate.Map<IQueryable<Product>, IList<ProductDTO>>(products);
-                    return productsDTO;
-                }
+                //    var productsDTO = configurate.Map<IQueryable<Product>, IList<ProductDTO>>(products);
+                //    return productsDTO;
+                //}
 
                 return null;
 

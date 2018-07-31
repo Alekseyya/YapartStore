@@ -314,14 +314,6 @@
     float: left;
 }
 
-.discount__wrap {
-    
-}
-
-
-.discount__slider {
-       
-}
 
 
 .discount__section {
@@ -380,9 +372,7 @@
     display: flex;
 }
 
-.year-dropdown-menu a {
 
-}
 
 .catalog-model__list {
     display: flex;

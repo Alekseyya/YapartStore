@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using YapartStore.BL.Entities;
 using YapartStore.BL.Services.Base;
 
 namespace YapartStore.API.Controllers
 {
+    [EnableCors(origins: "http://localhost:58823", headers: "*", methods: "*")]
     public class CategoryController : ApiController
     {
         private readonly ICategoryService _categoryService;
@@ -18,18 +21,18 @@ namespace YapartStore.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<CategoryDTO> GetCategories()
+        public async Task<IEnumerable<CategoryDTO>> GetCategories()
         {
-            var categories = _categoryService.GetAll();
+            var categories = await _categoryService.GetAllAsync();
             return categories;
         }
 
         [HttpPost]
-        public IHttpActionResult AddCategory(CategoryDTO category)
+        public async Task<IHttpActionResult> AddCategory(CategoryDTO category)
         {
             if (ModelState.IsValid)
             {
-                _categoryService.AddItem(category);
+                await _categoryService.AddItemAsync(category);
                 return Ok();
             }
             else

@@ -19,9 +19,6 @@ namespace YapartStore.BL.Entities
         [StringLength(30, ErrorMessage = "Item article limit exceeded!")]
         public string Article { get; set; }
 
-        public BrandDTO Brand { get; set; }
-        public CategoryDTO Category { get; set; }
-
         public ICollection<PictureDTO> Pictures { get; set; } = new List<PictureDTO>();
     }
 

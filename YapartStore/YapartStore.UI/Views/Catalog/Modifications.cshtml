@@ -1,15 +1,20 @@
 ﻿@model List<YapartStore.UI.ViewModels.ModificationViewModel>
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-
-
+<div class="category-data container">
+    @foreach (var category in @ViewBag.Categories)
+    {
+        <div>
+            <a href="/catalog/accessories/@ViewData[" Car "]/@ViewBag.Model.Name">@category.Name</a>
+        </div>
+    }
+</div>
+<h3>Подбор комплектующих @ViewData["Car"] @ViewBag.Model.Name</h3>
 <div class="model-info row">
     <div class="model-info-wraper col-md-3">
         <div class="model-info__model-image">
-            <img src="@ViewBag.Model.PicturePath" alt="Alternate Text"/>
+            <img src="@ViewBag.Model.PicturePath" alt="Alternate Text" />
         </div>
         <div class="model-info__descriptions">
 
@@ -30,6 +35,6 @@
     </div>
 }
 
+
 @Styles.Render("~/Content/CSS/site.css")
 @Styles.Render("~/Content/CSS/Catalog/modifications.css")
-
