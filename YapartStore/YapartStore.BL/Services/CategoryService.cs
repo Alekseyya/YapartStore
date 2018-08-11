@@ -102,6 +102,34 @@ namespace YapartStore.BL.Services
             }
         }
 
+        public async Task<CategoryDTO> GetCategoryByName(string cartegoryName)
+        {
+            try
+            {
+                var category = await Task.Run(() =>
+                {
+                     return _unitOfWork.CategoryRepository.GetAll()
+                        .FirstOrDefault(cat => cat.EnglishName.ToLower() == cartegoryName.ToLower());
+                });
+
+                if (category != null)
+                {
+                    var configurate = new MapperConfiguration(cfg =>
+                    {
+                        cfg.AddProfile(new AutoMapperServicesConfig.CategoryWithoutProductsProfile());
+                    }).CreateMapper();
+
+                    return configurate.Map<Category, CategoryDTO>(category);
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public CategoryDTO GetItemById(int id)
         {
             try

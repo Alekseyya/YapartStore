@@ -6,7 +6,7 @@ namespace YapartStore.BL.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Years { get; set; }
+        public string Years { get; set; }
         public string PicturePath { get; set; }
         public IList<ModificationDTO> Modifications { get; set; } = new List<ModificationDTO>();
     }

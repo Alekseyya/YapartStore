@@ -6,10 +6,20 @@
     grid-gap: 7px;
 }
 .category-data div{
-    padding: 3px;  
+    padding: 3px; 
+    line-height: 0.9em;
+}
+
+.category-data a{
+    font-size: 15px;    
+    text-decoration: underline;
+    color: #2c3e50; 
+}
+
+.category-data a:hover{
+    color:darkcyan;
     font-size: 15px;
-    line-height: 1.5;
-    text-align: center;  
+    text-decoration: underline;
 }
 
 .model-info {

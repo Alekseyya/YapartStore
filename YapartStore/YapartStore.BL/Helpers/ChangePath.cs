@@ -19,13 +19,18 @@ namespace YapartStore.BL.Helpers
                     list = (IList<ModelDTO>)source;
                 if (type == typeof(MarkDTO))
                     list = (IList<MarkDTO>)source;
+                if (type == typeof(ModificationDTO))
+                    list = (IList<ModificationDTO>)source;
 
                 if (list != null)
                     foreach (var item in list)
                     {
-                        item.PicturePath = item.PicturePath.Substring(item.PicturePath.IndexOf(@"\Cont"),
-                                item.PicturePath.Length - item.PicturePath.IndexOf(@"\Cont"))
-                            .Replace("\\", "/");
+                        if (item.PicturePath != null)
+                        {
+                            item.PicturePath = item.PicturePath.Substring(item.PicturePath.IndexOf(@"\Cont"),
+                                    item.PicturePath.Length - item.PicturePath.IndexOf(@"\Cont"))
+                                .Replace("\\", "/");
+                        }
                     }
 
                 return source;

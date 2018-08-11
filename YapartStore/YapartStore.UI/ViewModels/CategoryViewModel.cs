@@ -1,6 +1,7 @@
-﻿namespace YapartStore.UI.Models
+﻿
+namespace YapartStore.UI.ViewModels
 {
-    public class CategoryModel
+    public class CategoryViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

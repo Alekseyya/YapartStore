@@ -32,13 +32,47 @@ namespace YapartStore.UI
                     action = "Cars"
                 }
             );
+            
+            routes.MapRoute(
+                name: "Accessories",
+                url: "{controller}/{action}/{accessories}",
+                defaults: new
+                {
+                    controller = "Catalog",
+                    action = "Accessories"
+                }
+            );
+
+            routes.MapRoute(
+                name: "AccessoriesAndMark",
+                url: "{controller}/{action}/{accessories}/{mark}",
+                defaults: new
+                {
+                    controller = "Catalog",
+                    action = "Accessories",
+                    accessories = UrlParameter.Optional,
+                    mark = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
+                name: "AccessoriesAndMarkAndModel",
+                url: "{controller}/{action}/{accessories}/{mark}/{model}",
+                defaults: new
+                {
+                    controller = "Catalog",
+                    action = "Accessories",
+                    accessories = UrlParameter.Optional,
+                    mark = UrlParameter.Optional,
+                    model = UrlParameter.Optional
+                }
+            );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
             
         }
     }

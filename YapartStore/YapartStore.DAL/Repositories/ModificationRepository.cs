@@ -27,7 +27,8 @@ namespace YapartStore.DAL.Repositories
 
         public IQueryable<Modification> GetAll()
         {
-            return _yapartStoreContext.Modifications.Include(x => x.Model).AsQueryable();
+            return _yapartStoreContext.Modifications.Include(x => x.Model)
+                .Include(x=>x.Picture).AsQueryable();
         }
 
         public Modification GetItemById(int id)

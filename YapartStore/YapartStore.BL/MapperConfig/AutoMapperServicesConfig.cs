@@ -67,6 +67,8 @@ namespace YapartStore.BL.MapperConfig
             }
         }
 
+       
+
         //public class ProductWithoutBrandProfile : Profile
         //{
         //    public ProductWithoutBrandProfile()
@@ -165,6 +167,16 @@ namespace YapartStore.BL.MapperConfig
                 CreateMap<Modification, ModificationDTO>();
             }
         }
+
+        public class ModificationDTOProfile : Profile
+        {
+            public ModificationDTOProfile()
+            {
+                CreateMap<Modification, ModificationDTO>()
+                    .ForMember(x=>x.PicturePath, opt => opt.MapFrom(x=>x.Picture.Path));
+            }
+        }
+
         public class VariantProfile : Profile
         {
             public VariantProfile()

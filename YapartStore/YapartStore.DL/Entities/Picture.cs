@@ -17,6 +17,7 @@ namespace YapartStore.DL.Entities
         public Mark Mark { get; set; }
         
         public Model Model { get; set; }
+        public Modification Modification { get; set; }
        
         
         public virtual Brand Brand { get; set; }

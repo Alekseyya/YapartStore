@@ -10,6 +10,7 @@ namespace YapartStore.DL.Entities
         public string Name { get; set; }
         //true sort on window
         public int Sort { get; set; }
+        public string EnglishName { get; set; }
 
         public bool Show { get; set; }
         public int? SectionId { get; set; }

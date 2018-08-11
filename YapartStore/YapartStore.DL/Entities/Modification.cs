@@ -11,6 +11,7 @@ namespace YapartStore.DL.Entities
         public int? ModelId { get; set; }
         public Model Model { get; set; }
         public int Sort { get; set; }
+        public virtual Picture Picture { get; set; }
         public ICollection<Variant> Variants { get; set; } = new List<Variant>();
     }
 
@@ -18,16 +19,7 @@ namespace YapartStore.DL.Entities
     //{
     //    public ModificationConfiguration()
     //    {
-    //        HasKey(x => x.Id);
             
-
-    //        Property(x => x.Id)
-    //            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
-    //            .IsRequired();
-
-    //        Property(x => x.Name)
-    //            .IsRequired();
-    //        HasMany(x => x.Variants);
     //    }
     //}
 }

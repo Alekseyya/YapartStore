@@ -63,9 +63,40 @@ namespace YapartStore.UI.Controllers
             ViewBag.Model = carModel;
             ViewData["Model"] = carModel;
             ViewData["Car"] = car;
-            ViewBag.Categories = await _categoryService.GetCategories();
+            ViewBag.Categories = await _categoryService.MappingCategoryModelToViewModel(await _categoryService.GetCategories());
             var modifictions = await _modificationService.GetModificationByModelName(model);
             return View("~/Views/Catalog/Modifications.cshtml", modifictions); //изменить путь к вьюшке, поставить другой
         }
+
+
+        [HttpGet]
+        [RequireRouteValues(new[] { "mark" })]
+        public async Task<ActionResult> Accessories(string mark)
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        [RequireRouteValues(new[] { "mark", "model" })]
+        public async Task<ActionResult> Accessories(string mark, string model)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [RequireRouteValues(new[] { "accessories", "mark", "model" })]
+        public async Task<ActionResult> Accessories(string accessories, string mark, string model)
+        {
+            ViewBag.Mark = mark;
+            ViewBag.Model = model;
+            ViewBag.Accessories = await Task.Run(() =>
+            {
+                return _categoryService.GetCategoryByName(accessories);
+            });
+            
+            return View();
+        }
+
     }
 }

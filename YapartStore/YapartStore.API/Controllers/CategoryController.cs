@@ -27,6 +27,13 @@ namespace YapartStore.API.Controllers
             return categories;
         }
 
+        [HttpGet]
+        public async Task<CategoryDTO> GetCategoryByName(string categoryName)
+        {
+            var category = await _categoryService.GetCategoryByName(categoryName);
+            return category;
+        }
+
         [HttpPost]
         public async Task<IHttpActionResult> AddCategory(CategoryDTO category)
         {

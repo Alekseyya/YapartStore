@@ -240,6 +240,7 @@
     <Compile Include="ViewModels\CapViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\CarViewModel.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\MarkViewModel.cs" />
     <Compile Include="ViewModels\ModelViewModel.cs" />
     <Compile Include="ViewModels\ModificationViewModel.cs" />
@@ -383,6 +384,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Catalog\Cars.cshtml" />
     <Content Include="Views\Catalog\Modifications.cshtml" />
+    <Content Include="Views\Catalog\Accessories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
