@@ -50,7 +50,7 @@ namespace YapartStore.DAL.Repositories
         public IMarkRepository MarkRepository { get; set; }
         public IModelRepository ModelRepository { get; set; }
         public IModificationRepository ModificationRepository { get; set; }
-        public IProductModificationsRepository ProductModificationsRepository { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IProductModificationsRepository ProductModificationsRepository { get; set; }
 
         public void Save()
         {

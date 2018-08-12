@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using YapartStore.BL.Services;
 using YapartStore.DAL.Repositories;
@@ -15,7 +16,7 @@ namespace YapartStore.Tests.BL
             var unitOfWork = (IUnitOfWork)new UnitOfWork();
             var productService = new ProductService(unitOfWork);
 
-            var result = productService.GetAll();
+            var result = productService.GetProductsByModification("4B/C5");
         }
 
         [TestMethod]
@@ -26,6 +27,16 @@ namespace YapartStore.Tests.BL
 
             var result = productService.GetSizeOfCaps(14);
 
+        }
+
+        [TestMethod]
+        public async Task GetProductsByModification()
+        {
+            var unitOfWork = (IUnitOfWork)new UnitOfWork();
+            var productService = new ProductService(unitOfWork);
+
+            var result = await productService.GetProductsByModification("4B/C5");
+            var aa = 0;
         }
 
     }

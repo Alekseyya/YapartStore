@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YapartStore.BL.Entities;
+using YapartStore.DL.Entities;
 
 namespace YapartStore.BL.Helpers
 {
@@ -33,6 +34,26 @@ namespace YapartStore.BL.Helpers
                         }
                     }
 
+                return source;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static List<ProductDTO> ChangePathImage(this List<ProductDTO> source)
+        {
+            try
+            {
+                foreach (var product in source)
+                {
+                    foreach (var picture in product.Pictures)
+                    {
+                        picture.Path = picture.Path.Substring(picture.Path.IndexOf(@"\Cont"), picture.Path.Length - picture.Path.IndexOf(@"\Cont"))
+                            .Replace("\\", "/");
+                    }
+                }
                 return source;
             }
             catch (Exception e)

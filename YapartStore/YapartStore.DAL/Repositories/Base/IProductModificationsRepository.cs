@@ -3,7 +3,7 @@ using YapartStore.DL.Entities;
 
 namespace YapartStore.DAL.Repositories.Base
 {
-    public interface IProductModificationsRepository : IBaseAsyncRepository<ProductModification>
+    public interface IProductModificationsRepository : IBaseRepository<ProductModification>
     {
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using YapartStore.API.Helpers;
@@ -40,9 +41,9 @@ namespace YapartStore.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ProductDTO> GetProductsByModification(string modificationName)
+        public async Task<IEnumerable<ProductDTO>> GetProductsByModification(string modificationName)
         {
-            return null;
+            return await _productService.GetProductsByModification(modificationName);
         }
 
         [HttpGet]

@@ -13,7 +13,7 @@ namespace YapartStore.DL.Entities
         public string Years { get; set; }
         public int Sort { get; set; }
         public virtual Picture Picture { get; set; }
-        public ICollection<Product> Products { get; set; } = new List<Product>();
+        public virtual ICollection<ProductModification> ProductModifications { get; set; } = new List<ProductModification>();
     }
 
     public class ModificationConfiguration : EntityTypeConfiguration<Modification>
@@ -21,6 +21,8 @@ namespace YapartStore.DL.Entities
         public ModificationConfiguration()
         {
             HasOptional(x => x.Picture).WithRequired(x => x.Modification);
+            HasMany(x => x.ProductModifications)
+                .WithRequired().HasForeignKey(x => x.ModificationId);
         }
     }
 }

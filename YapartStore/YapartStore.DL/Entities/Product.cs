@@ -36,7 +36,7 @@ namespace YapartStore.DL.Entities
         public Category Category { get; set; }
 
         public ICollection<Picture> Pictures { get; set; } = new List<Picture>();
-        public ICollection<Modification> Modifications { get; set; } = new List<Modification>();
+        public virtual ICollection<ProductModification> ProductModifications { get; set; } = new List<ProductModification>();
 
     }
     public class ProductConfiguration : EntityTypeConfiguration<Product>
@@ -53,14 +53,16 @@ namespace YapartStore.DL.Entities
                 .IsRequired().HasMaxLength(50);
             Property(x => x.Descriptions).IsRequired();
             Property(x => x.Price).HasPrecision(10, 2);
-            HasMany(x => x.Modifications).WithMany(x => x.Products).Map(
-                x =>
-                {
-                    x.MapLeftKey("ProductId");
-                    x.MapRightKey("ModificationId");
-                    x.ToTable("ProductModification");
-                }
-            );
+            HasMany(x => x.ProductModifications)
+                .WithRequired().HasForeignKey(x => x.ProductId);
+            //HasMany(x => x.Modifications).WithMany(x => x.Products).Map(
+            //    x =>
+            //    {
+            //        x.MapLeftKey("ProductId");
+            //        x.MapRightKey("ModificationId");
+            //        x.ToTable("ProductModifications");
+            //    }
+            //);
         }
     }
 }

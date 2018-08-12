@@ -49,9 +49,12 @@ namespace YapartStore.DL.Context
             modelBuilder.Configurations.Add(new MarkConfiguration());
             modelBuilder.Configurations.Add(new ModelConfiguration());
             modelBuilder.Configurations.Add(new ModificationConfiguration());
+            modelBuilder.Configurations.Add(new ProductModificationConfiguration());
+
+            
             //modelBuilder.Configurations.Add(new VariantConfiguration());
             //потом переделать, если станет на новую бд
-            //modelBuilder.Entity<Modification>().HasKey(x => x.Id).HasMany(x=>x.Variants);
+
             // modelBuilder.Entity<Modification>().HasOptional(x => x.Picture).WithRequired(x => x.Modification);
 
 

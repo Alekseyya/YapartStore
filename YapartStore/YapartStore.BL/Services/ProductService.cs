@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using YapartStore.BL.Entities;
+using YapartStore.BL.Helpers;
 using YapartStore.BL.MapperConfig;
 using YapartStore.BL.Services.Base;
 using YapartStore.DAL.Repositories.Base;
@@ -207,13 +209,28 @@ namespace YapartStore.BL.Services
 
         public async Task<List<ProductDTO>> GetProductsByModification(string modificationName)
         {
-            var modification = _unitOfWork.ModificationRepository.GetAll()
-                .FirstOrDefault(mod => mod.Name == modificationName);
+            var modification = await Task.Run(() =>
+            {
+                return _unitOfWork.ModificationRepository.GetAll()
+                    .FirstOrDefault(mod => mod.Name == modificationName);
+            });
+
             if (modification != null)
             {
-                //var products = _unitOfWork.ProductRepository.GetAll().Where()
+                var products = await Task.Run(() =>
+                    {
+                        return _unitOfWork.ModificationRepository.GetAll()
+                            .Where(modif => modif.Id == modification.Id)
+                            .SelectMany(prodModif => prodModif.ProductModifications)
+                            .Select(prod => prod.Product).ToList();
+                    });
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.AddProfile(new AutoMapperServicesConfig.ProductProfile());
+                });
+                var mapper = config.CreateMapper();
+                return mapper.Map<List<Product>, List<ProductDTO>>(products).ChangePathImage();
             }
-
             return null;
         }
 
