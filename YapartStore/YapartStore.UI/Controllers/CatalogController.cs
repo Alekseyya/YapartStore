@@ -22,7 +22,7 @@ namespace YapartStore.UI.Controllers
         private readonly IModificationService _modificationService;
         private readonly ICategoryService _categoryService;
         //private readonly IBrandService _brandService;
-        public CatalogController(IProductService productService, 
+        public CatalogController(IProductService productService,
                                 IModelService modelService,
                                 IModificationService modificationService,
                                 ICategoryService categoryService)
@@ -94,7 +94,13 @@ namespace YapartStore.UI.Controllers
             {
                 return _categoryService.GetCategoryByName(accessories);
             });
-            
+
+            ViewBag.Modifications = await Task.Run(() =>
+                {
+                    return _modificationService.GetModificationByModelName(model);
+                });
+
+
             return View();
         }
 

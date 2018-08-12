@@ -4,9 +4,9 @@
 
 
 <div class="descriptions">
-    <!-- name accessuares--> 
+    <!-- name accessuares-->
     <div class="descriptions__name">
-       <h1>@ViewBag.Accessories.Name @ViewBag.Mark @ViewBag.Model</h1>  
+        <h1>@ViewBag.Accessories.Name @ViewBag.Mark @ViewBag.Model</h1>
     </div>
 </div>
 <div class="selection-cars">
@@ -14,7 +14,7 @@
         Подбор по автомобилю @ViewBag.Mark @ViewBag.Model
     </div>
     <div class="generation-cars">
-        
+
         <a class="generation-cars__item">
             <img class="image">
             <div class="years"></div>
@@ -23,24 +23,28 @@
     </div>
 </div>
 <div class="sorting"></div>
-<div class="products">   
-    <div class="product__item">
-        <div class="product__image">
-            <img>
-        </div>
-        <div class="product__title">
-            <a></a>
-            <div class="product__title-article">
-                Артикул: 
+<div class="products">
+    @foreach (var modification in @ViewBag.Modification)
+    {
+        <div class="product__item">
+            <div class="product__image">
+                <img src="@modification.PicturePath">
+            </div>
+            <div class="product__title">
+                <a></a>
+                <div class="product__title-article">
+                    Артикул: 
+                </div>
+            </div>
+            <div class="product__offer">
+                <div class="product__price"></div>
+                <div class="product__available"></div>
+                <div class="product__pay">
+                    <button>Купить</button>
+                </div>
             </div>
         </div>
-        <div class="product__offer">
-            <div class="product__price"></div>
-            <div class="product__available"></div>
-            <div class="product__pay">
-                <button>Купить</button>
-            </div>
-        </div>
-    </div> 
+    }
+
 </div>
 

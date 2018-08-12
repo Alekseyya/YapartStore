@@ -28,7 +28,7 @@ namespace YapartStore.API.Controllers
         public async Task<IHttpActionResult> GetModificationsByModelName(string modelName)
         {
             var modifications = await _modificationService.GetAllModificationByModelName(modelName);
-            if (modifications.Count == 0 || modifications == null)
+            if (modifications == null)
             {
                 ModelState.AddModelError("Error", "Не найдено ничего по запросу");
                 return BadRequest(ModelState);

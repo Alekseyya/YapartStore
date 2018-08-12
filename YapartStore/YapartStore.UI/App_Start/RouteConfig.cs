@@ -44,6 +44,13 @@ namespace YapartStore.UI
             );
 
             routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+
+
+            routes.MapRoute(
                 name: "AccessoriesAndMark",
                 url: "{controller}/{action}/{accessories}/{mark}",
                 defaults: new
@@ -68,11 +75,7 @@ namespace YapartStore.UI
                 }
             );
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+           
             
         }
     }

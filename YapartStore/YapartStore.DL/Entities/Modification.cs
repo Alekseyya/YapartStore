@@ -10,6 +10,7 @@ namespace YapartStore.DL.Entities
         public string Name { get; set; }
         public int? ModelId { get; set; }
         public Model Model { get; set; }
+        public string Years { get; set; }
         public int Sort { get; set; }
         public virtual Picture Picture { get; set; }
         public ICollection<Variant> Variants { get; set; } = new List<Variant>();
