@@ -16,7 +16,7 @@
         IMarkRepository MarkRepository { get; set; }
         IModelRepository ModelRepository { get; set; }
         IModificationRepository ModificationRepository { get; set; }
-
+        IProductModificationsRepository ProductModificationsRepository { get; set; }
         void Save();
     }
 }

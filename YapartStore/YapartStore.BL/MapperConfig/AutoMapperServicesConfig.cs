@@ -177,14 +177,7 @@ namespace YapartStore.BL.MapperConfig
             }
         }
 
-        public class VariantProfile : Profile
-        {
-            public VariantProfile()
-            {
-                CreateMap<VariantDTO, Variant>();
-                CreateMap<Variant, VariantDTO>();
-            }
-        }
+        
 
         public class SectionProfile : Profile
         {

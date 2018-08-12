@@ -25,6 +25,7 @@ namespace YapartStore.DL.Context
         public DbSet<Mark> Marks { get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<Modification> Modifications { get; set; }
+        public DbSet<ProductModification> ProductModifications { get; set; }
      
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -47,10 +48,11 @@ namespace YapartStore.DL.Context
 
             modelBuilder.Configurations.Add(new MarkConfiguration());
             modelBuilder.Configurations.Add(new ModelConfiguration());
-            modelBuilder.Configurations.Add(new VariantConfiguration());
+            modelBuilder.Configurations.Add(new ModificationConfiguration());
+            //modelBuilder.Configurations.Add(new VariantConfiguration());
             //потом переделать, если станет на новую бд
-            modelBuilder.Entity<Modification>().HasKey(x => x.Id).HasMany(x=>x.Variants);
-            modelBuilder.Entity<Modification>().HasOptional(x => x.Picture).WithRequired(x => x.Modification);
+            //modelBuilder.Entity<Modification>().HasKey(x => x.Id).HasMany(x=>x.Variants);
+            // modelBuilder.Entity<Modification>().HasOptional(x => x.Picture).WithRequired(x => x.Modification);
 
 
         }

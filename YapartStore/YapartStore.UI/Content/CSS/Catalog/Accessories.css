@@ -1,0 +1,38 @@
+﻿.generation-cars{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 20px; 
+}
+.generation-cars__item{    
+    border: 1px solid grey;
+    border-radius: 15px;
+    color: black;
+}
+
+.generation-cars__item:hover{
+    border: 1px solid rgb(68, 66, 211);
+    border-radius: 15px;
+    color: rgb(68, 66, 211);
+    text-decoration: none;
+}
+
+.generation-cars__item img{
+    border-radius: 15px 15px 0 0;
+    object-fit: cover;
+    width: 100%;
+}
+
+.generation-cars .years{
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-left: 10px;    
+}
+.generation-cars .name{
+    font-size: 14px; 
+    padding-left: 10px;
+}
+
+.generation-cars__item:hover {
+    color: blue;
+}

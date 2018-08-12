@@ -23,6 +23,7 @@ namespace YapartStore.DAL.Repositories
             MarkRepository = new MarkRepository(_yapartStoreContext);
             ModelRepository = new ModelRepository(_yapartStoreContext);
             ModificationRepository = new ModificationRepository(_yapartStoreContext);
+            ProductModificationsRepository =new ProductModificationsRepository(_yapartStoreContext);
 
             UserRepository = new UserRepository(_yapartStoreContext,
                 new UserManager<User, Guid>
@@ -49,6 +50,7 @@ namespace YapartStore.DAL.Repositories
         public IMarkRepository MarkRepository { get; set; }
         public IModelRepository ModelRepository { get; set; }
         public IModificationRepository ModificationRepository { get; set; }
+        public IProductModificationsRepository ProductModificationsRepository { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void Save()
         {

@@ -88,10 +88,10 @@
     <Compile Include="Entities\OrderItem.cs" />
     <Compile Include="Entities\Picture.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProductModification.cs" />
     <Compile Include="Entities\Section.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Identity\User.cs" />
-    <Compile Include="Entities\Variant.cs" />
     <Compile Include="Migrations\201804121852155_init1.cs" />
     <Compile Include="Migrations\201804121852155_init1.Designer.cs">
       <DependentUpon>201804121852155_init1.cs</DependentUpon>
@@ -140,6 +140,10 @@
     <Compile Include="Migrations\201808121515598_init12.Designer.cs">
       <DependentUpon>201808121515598_init12.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808121846205_init13.cs" />
+    <Compile Include="Migrations\201808121846205_init13.Designer.cs">
+      <DependentUpon>201808121846205_init13.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -183,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808121515598_init12.resx">
       <DependentUpon>201808121515598_init12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808121846205_init13.resx">
+      <DependentUpon>201808121846205_init13.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -40,6 +40,12 @@ namespace YapartStore.API.Controllers
         }
 
         [HttpGet]
+        public IEnumerable<ProductDTO> GetProductsByModification(string modificationName)
+        {
+            return null;
+        }
+
+        [HttpGet]
         public IEnumerable<ProductDTO> GetSizeCaps()
         {
             return null;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using YapartStore.BL.Entities;
 using YapartStore.BL.MapperConfig;
@@ -28,6 +29,11 @@ namespace YapartStore.BL.Services
             {
                 throw ex;
             }
+        }
+
+        public Task AddItemAsync(ProductDTO item)
+        {
+            throw new NotImplementedException();
         }
 
         public void DeleteItem(ProductDTO item)
@@ -64,6 +70,11 @@ namespace YapartStore.BL.Services
             }
         }
 
+        public Task DeleteItemAsync(ProductDTO item)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<ProductDTO> GetAll()
         {
             try
@@ -83,6 +94,11 @@ namespace YapartStore.BL.Services
             {
                 throw ex;
             }
+        }
+
+        public Task<List<ProductDTO>> GetAllAsync()
+        {
+            throw new NotImplementedException();
         }
 
         public IList<ProductDTO> GetAllCaps()
@@ -168,6 +184,11 @@ namespace YapartStore.BL.Services
             }
         }
 
+        public Task<ProductDTO> GetItemByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public ProductDTO GetProductByArticle(string article)
         {
             try
@@ -182,6 +203,18 @@ namespace YapartStore.BL.Services
             {
                 throw ex;
             }
+        }
+
+        public async Task<List<ProductDTO>> GetProductsByModification(string modificationName)
+        {
+            var modification = _unitOfWork.ModificationRepository.GetAll()
+                .FirstOrDefault(mod => mod.Name == modificationName);
+            if (modification != null)
+            {
+                //var products = _unitOfWork.ProductRepository.GetAll().Where()
+            }
+
+            return null;
         }
 
         public IList<ProductDTO> GetSizeOfCaps(int size)
@@ -211,6 +244,11 @@ namespace YapartStore.BL.Services
         {
             var product = Mapper.Map<ProductDTO, Product>(item);
             _unitOfWork.ProductRepository.Update(product);
+        }
+
+        public Task UpdateItemAsync(ProductDTO item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

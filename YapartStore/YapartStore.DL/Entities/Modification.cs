@@ -13,14 +13,14 @@ namespace YapartStore.DL.Entities
         public string Years { get; set; }
         public int Sort { get; set; }
         public virtual Picture Picture { get; set; }
-        public ICollection<Variant> Variants { get; set; } = new List<Variant>();
+        public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 
-    //public class ModificationConfiguration : EntityTypeConfiguration<Modification>
-    //{
-    //    public ModificationConfiguration()
-    //    {
-            
-    //    }
-    //}
+    public class ModificationConfiguration : EntityTypeConfiguration<Modification>
+    {
+        public ModificationConfiguration()
+        {
+            HasOptional(x => x.Picture).WithRequired(x => x.Modification);
+        }
+    }
 }

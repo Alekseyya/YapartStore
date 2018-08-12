@@ -46,7 +46,7 @@ namespace YapartStore.BL.Services
             if (model != null)
             {
                 var modifications = await _unitOfWork.ModificationRepository.GetAll()
-                    .Where(x => x.ModelId == model.Id)
+                    .Where(x => x.ModelId == model.Id).OrderBy(x=>x.Sort)
                     .ToListAsync();
 
                 if (modifications.Count != 0)

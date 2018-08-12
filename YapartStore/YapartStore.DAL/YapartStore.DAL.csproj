@@ -61,6 +61,7 @@
     <Compile Include="Repositories\Base\IOrderItemRepository.cs" />
     <Compile Include="Repositories\Base\IOrderRepository.cs" />
     <Compile Include="Repositories\Base\IPictureRepository.cs" />
+    <Compile Include="Repositories\Base\IProductModificationsRepository.cs" />
     <Compile Include="Repositories\Base\IRoleRepository.cs" />
     <Compile Include="Repositories\Base\IUserRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Repositories\OrderItemRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\PictureRepository.cs" />
+    <Compile Include="Repositories\ProductModificationsRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
