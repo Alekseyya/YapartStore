@@ -70,7 +70,7 @@ namespace YapartStore.UI
 
             routes.MapRoute(
                 name: "CurrentAccessories",
-                url: "{controller}/{accessories}/{mark}/{model}/{modification}",
+                url: "{controller}/{accessories}/{mark}/{model}/{modification}/{brand}",
                 defaults: new
                 {
                     controller = "Catalog",
@@ -78,7 +78,8 @@ namespace YapartStore.UI
                     accessories = UrlParameter.Optional,
                     mark = UrlParameter.Optional,
                     model = UrlParameter.Optional,
-                    modification = UrlParameter.Optional
+                    modification = UrlParameter.Optional,
+                    brand = UrlParameter.Optional
                 }
             );
             

@@ -165,5 +165,16 @@ namespace YapartStore.UI.Controllers
             return View("~/Views/Catalog/Accessories.cshtml");
         }
 
+        [HttpGet]
+        //[Route("/{accessories}/{mark}/{model}")]
+        [RequireRouteValues(new[] { "accessories", "mark", "model", "modification", "brand" })]
+        public async Task<ActionResult> CurrentAccessories(string accessories,
+                                string mark, string model, string modification, string brand)
+        {
+            
+
+            return View("~/Views/Catalog/Accessories.cshtml");
+        }
+
     }
 }
