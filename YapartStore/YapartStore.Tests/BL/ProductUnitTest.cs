@@ -39,5 +39,16 @@ namespace YapartStore.Tests.BL
             var aa = 0;
         }
 
+
+        [TestMethod]
+        public async Task GetProductsByModel()
+        {
+            var unitOfWork = (IUnitOfWork)new UnitOfWork();
+            var productService = new ProductService(unitOfWork);
+
+            var result = await productService.GetProductsByModel("A6");
+            var aa = 0;
+        }
+
     }
 }

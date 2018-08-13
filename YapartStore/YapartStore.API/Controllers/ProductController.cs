@@ -41,6 +41,16 @@ namespace YapartStore.API.Controllers
         }
 
         [HttpGet]
+        public async Task<IEnumerable<ProductDTO>> GetProductsByModel(string modelName)
+        {
+            var products = await _productService.GetProductsByModel(modelName);
+            if (products == null)
+                return null;
+            return products;
+
+        }
+
+        [HttpGet]
         public async Task<IEnumerable<ProductDTO>> GetProductsByModification(string modificationName)
         {
             return await _productService.GetProductsByModification(modificationName);

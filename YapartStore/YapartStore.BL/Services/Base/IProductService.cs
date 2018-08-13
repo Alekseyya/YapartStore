@@ -14,5 +14,6 @@ namespace YapartStore.BL.Services.Base
         ProductDTO GetProductByArticle(string article);
 
         Task<List<ProductDTO>> GetProductsByModification(string modificationName);
+        Task<List<ProductDTO>> GetProductsByModel(string modelName);
     }
 }

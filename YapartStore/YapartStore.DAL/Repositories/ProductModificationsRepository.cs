@@ -4,6 +4,7 @@ using YapartStore.DAL.Repositories.Base;
 using YapartStore.DL.Context;
 using YapartStore.DL.Entities;
 using System.Data.Entity;
+using System.Collections.Generic;
 
 namespace YapartStore.DAL.Repositories
 {
@@ -36,6 +37,13 @@ namespace YapartStore.DAL.Repositories
         public ProductModification GetItemById(int id)
         {
             throw new System.NotImplementedException();
+        }
+
+        public IQueryable<Product> GetProductsByModificationId(int id)
+        {
+           return _yapartStoreContext.ProductModifications
+                .Where(modId => modId.ModificationId == id)
+               .Select(prod=> prod.Product);
         }
 
         public void Update(ProductModification item)

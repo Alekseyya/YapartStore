@@ -8,38 +8,55 @@
         if (@category.Show == true)
         {
             <div>
-                <a href="/catalog/accessories/@category.EnglishName/@ViewData["Car"]/@ViewBag.Model.Name">@category.Name</a>
+                <a href="/catalog/@category.EnglishName/@ViewData["Car"]/@ViewBag.Model.Name">@category.Name</a>
             </div>
         }
     }
 </div>
 
-<h3>Подбор комплектующих @ViewData["Car"] @ViewBag.Model.Name</h3>
 
-<div class="model-info row">
-    <div class="model-info-wraper col-md-3">
-        <div class="model-info__model-image">
-            <img src="@ViewBag.Model.PicturePath" alt="Alternate Text" />
-        </div>
-        <div class="model-info__descriptions">
 
-            <div class="model-info__model-name">
-                <a href="#">@ViewData["Car"]</a>
-            </div>
-            <div class="model-info__model-model">@ViewBag.Model.Name</div>
-            <div class="model-info__model-years">@ViewBag.Model.Years</div>
-        </div>
+
+<div class="selection-cars">
+    <div class="selection-cars__descriptions">
+        <h3>Подбор комплектующих @ViewData["Car"] @ViewBag.Model.Name</h3>
+    </div>
+    <div class="generation-cars">
+        @foreach (var modification in Model)
+        {
+            <a class="generation-cars__item" href="#">
+                <img class="image" src="@modification.PicturePath">
+                <div class="years">@modification.Years</div>
+                <div class="name">@modification.Name</div>
+            </a>
+        }
     </div>
 </div>
 
-
-
-@foreach (var mofification in Model)
-{
-    <div>
-        <div>@mofification.Name</div>
-    </div>
-}
+<div class="sorting"></div>
+<div class="products">
+    @foreach (var accessory in @ViewBag.Accessories)
+    {
+        <div class="product__item">
+            <div class="product__image">
+                <img src="#">
+            </div>
+            <div class="product__title">
+                <a>@accessory.Descriptions</a>
+                <div class="product__title-article">
+                    Артикул: @accessory.Article
+                </div>
+            </div>
+            <div class="product__offer">
+                <div class="product__price">@accessory.Price</div>
+                <div class="product__available"></div>
+                <div class="product__pay">
+                    <button>Купить</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
 
 @Styles.Render("~/Content/CSS/site.css")

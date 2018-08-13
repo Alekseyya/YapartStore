@@ -45,6 +45,12 @@ namespace YapartStore.UI.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult> AllCars()
+        {
+            return View();
+        }
+
+        [HttpGet]
         [RequireRouteValues(new[] { "car" })]
         public async Task<ActionResult> Cars(string car)
         {
@@ -58,18 +64,26 @@ namespace YapartStore.UI.Controllers
         [RequireRouteValues(new[] { "car", "model" })]
         public async Task<ActionResult> Cars(string car, string model)
         {
-            //достать фотку автомобиля
             var carModel = await _modelService.GetModelByName(model);
             ViewBag.Model = carModel;
             ViewData["Model"] = carModel;
             ViewData["Car"] = car;
-            ViewBag.Categories = await _categoryService.MappingCategoryModelToViewModel(await _categoryService.GetCategories());
+            ViewBag.Categories = await _categoryService
+                .MappingCategoryModelToViewModel(await _categoryService.GetCategories());
             var modifictions = await _modificationService.GetModificationByModelName(model);
+            ViewBag.Accessories = await _productService.GetProductsByModel(model);
             return View("~/Views/Catalog/Modifications.cshtml", modifictions); //изменить путь к вьюшке, поставить другой
         }
 
 
         [HttpGet]
+        public async Task<ActionResult> AllAccessories()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        //[Route("/{mark}")]
         [RequireRouteValues(new[] { "mark" })]
         public async Task<ActionResult> Accessories(string mark)
         {
@@ -78,6 +92,7 @@ namespace YapartStore.UI.Controllers
 
 
         [HttpGet]
+        //[Route("/{mark}/{model}")]
         [RequireRouteValues(new[] { "mark", "model" })]
         public async Task<ActionResult> Accessories(string mark, string model)
         {
@@ -85,8 +100,34 @@ namespace YapartStore.UI.Controllers
         }
 
         [HttpGet]
+        //[Route("/{mark}/{model}/{modification}")]
+        [RequireRouteValues(new[] { "mark", "model", "modification" })]
+        public async Task<ActionResult> Accessories(string mark, string model, string modification)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        //[Route("/{accessories}/{mark}/{model}")]
+        [RequireRouteValues(new[] { "accessories" })]
+        public async Task<ActionResult> CurrentAccessories(string accessories)
+        {
+
+            return View("~/Views/Catalog/Accessories.cshtml");
+        }
+
+        [HttpGet]
+        //[Route("/{accessories}/{mark}/{model}")]
+        [RequireRouteValues(new[] { "accessories", "mark" })]
+        public async Task<ActionResult> CurrentAccessories(string accessories, string mark)
+        {
+            return View("~/Views/Catalog/Accessories.cshtml");
+        }
+
+        [HttpGet]
+        //[Route("/{accessories}/{mark}/{model}")]
         [RequireRouteValues(new[] { "accessories", "mark", "model" })]
-        public async Task<ActionResult> Accessories(string accessories, string mark, string model)
+        public async Task<ActionResult> CurrentAccessories(string accessories, string mark, string model)
         {
             ViewBag.Mark = mark;
             ViewBag.Model = model;
@@ -101,7 +142,27 @@ namespace YapartStore.UI.Controllers
                 });
 
 
-            return View();
+            return View("~/Views/Catalog/Accessories.cshtml");
+        }
+
+        [HttpGet]
+        //[Route("/{accessories}/{mark}/{model}")]
+        [RequireRouteValues(new[] { "accessories", "mark", "model", "modification" })]
+        public async Task<ActionResult> CurrentAccessories(string accessories, string mark, string model, string modification)
+        {
+            ViewBag.Mark = mark;
+            ViewBag.Model = model;
+            ViewBag.Accessories = await Task.Run(() =>
+            {
+                return _categoryService.GetCategoryByName(accessories);
+            });
+
+            ViewBag.Modifications = await Task.Run(() =>
+            {
+                return _modificationService.GetModificationByModelName(model);
+            });
+
+            return View("~/Views/Catalog/Accessories.cshtml");
         }
 
     }

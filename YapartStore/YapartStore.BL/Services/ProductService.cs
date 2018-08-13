@@ -234,6 +234,43 @@ namespace YapartStore.BL.Services
             return null;
         }
 
+        public async Task<List<ProductDTO>> GetProductsByModel(string modelName)
+        {
+            var model = await Task.Run(() =>
+            {
+                return _unitOfWork.ModelRepository.GetItemByName(modelName);
+            });
+
+            if (model != null)
+            {
+                var modificationsId = await Task.Run(() =>
+                    {
+                        return _unitOfWork.ModificationRepository.GetModificationsByModel(modelName)
+                            .Select(x=>x.Id)
+                            .ToList();
+                    });
+                if (modificationsId.Count != 0)
+                {
+                    var products = await Task.Run(() =>
+                    {
+                        return _unitOfWork.ProductModificationsRepository.GetAll()
+                            .Where(x => modificationsId.Any(y => y == x.ModificationId))
+                            .Select(prod=>prod.Product).ToList();
+                    });
+
+                    var config = new MapperConfiguration(cfg =>
+                    {
+                        cfg.AddProfile(new AutoMapperServicesConfig.ProductProfile());
+                    });
+                    var mapper = config.CreateMapper();
+                    return mapper.Map<List<Product>, List<ProductDTO>>(products).ChangePathImage();
+                }
+
+            }
+
+            return null;
+        }
+
         public IList<ProductDTO> GetSizeOfCaps(int size)
         {
             try

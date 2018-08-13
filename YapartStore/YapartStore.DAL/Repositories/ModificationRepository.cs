@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using YapartStore.DAL.Repositories.Base;
@@ -34,6 +35,12 @@ namespace YapartStore.DAL.Repositories
         public Modification GetItemById(int id)
         {
             throw new System.NotImplementedException();
+        }
+
+        public IQueryable<Modification> GetModificationsByModel(string modelName)
+        {
+            return _yapartStoreContext.Modifications.Include(x => x.Picture)
+                .Where(x => x.Model.Name == modelName).AsQueryable();
         }
 
         public void Update(Modification item)

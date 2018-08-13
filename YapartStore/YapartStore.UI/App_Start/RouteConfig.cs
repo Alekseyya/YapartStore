@@ -14,68 +14,73 @@ namespace YapartStore.UI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Cars",
-                url: "{controller}/{action}/{car}",
-                defaults: new
-                {
-                    controller = "Catalog",
-                    action = "Cars"
-                }
-            );
-
-            routes.MapRoute(
-                name: "Models",
-                url: "{controller}/{action}/{car}/{model}",
-                defaults: new
-                {
-                    controller = "Catalog",
-                    action = "Cars"
-                }
-            );
-            
-            routes.MapRoute(
-                name: "Accessories",
-                url: "{controller}/{action}/{accessories}",
-                defaults: new
-                {
-                    controller = "Catalog",
-                    action = "Accessories"
-                }
-            );
-
-            routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-
-
-            routes.MapRoute(
-                name: "AccessoriesAndMark",
-                url: "{controller}/{action}/{accessories}/{mark}",
+                url: "{controller}/{action}",
                 defaults: new
                 {
-                    controller = "Catalog",
-                    action = "Accessories",
-                    accessories = UrlParameter.Optional,
-                    mark = UrlParameter.Optional
+                    controller = "Home",
+                    action = "Index"
                 }
             );
 
             routes.MapRoute(
-                name: "AccessoriesAndMarkAndModel",
-                url: "{controller}/{action}/{accessories}/{mark}/{model}",
+                name: "AllCars",
+                url: "{controller}/Cars",
                 defaults: new
                 {
                     controller = "Catalog",
-                    action = "Accessories",
-                    accessories = UrlParameter.Optional,
-                    mark = UrlParameter.Optional,
+                    action = "AllCars"
+                }
+            );
+
+            routes.MapRoute(
+                name: "CarsAndCarAndModel",
+                url: "{controller}/Cars/{car}/{model}",
+                defaults: new
+                {
+                    controller = "Catalog",
+                    action = "Cars",
+                    car = UrlParameter.Optional,
                     model = UrlParameter.Optional
                 }
             );
 
-           
+            routes.MapRoute(
+                name: "AllAccessories",
+                url: "{controller}/Accessories",
+                defaults: new
+                {
+                    controller = "Catalog",
+                    action = "AllAccessories"
+                }
+            );
+
+            routes.MapRoute(
+                name: "Accessories",
+                url: "{controller}/Accessories/{mark}/{model}/{modification}",
+                defaults: new
+                {
+                    controller = "Catalog",
+                    action = "Accessories",
+                    mark = UrlParameter.Optional,
+                    model = UrlParameter.Optional,
+                    modification = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
+                name: "CurrentAccessories",
+                url: "{controller}/{accessories}/{mark}/{model}/{modification}",
+                defaults: new
+                {
+                    controller = "Catalog",
+                    action = "CurrentAccessories",
+                    accessories = UrlParameter.Optional,
+                    mark = UrlParameter.Optional,
+                    model = UrlParameter.Optional,
+                    modification = UrlParameter.Optional
+                }
+            );
             
         }
     }
