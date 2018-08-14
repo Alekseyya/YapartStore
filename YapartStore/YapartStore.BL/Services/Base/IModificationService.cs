@@ -7,5 +7,6 @@ namespace YapartStore.BL.Services.Base
    public interface IModificationService: IBaseAsyncService<ModificationDTO>
    {
        Task<List<ModificationDTO>> GetAllModificationByModelName(string modelName);
+       Task<ModificationDTO> GetModificationByModificationUrl(string modificationUrl);
    }
 }

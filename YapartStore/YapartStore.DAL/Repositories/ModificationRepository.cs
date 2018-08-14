@@ -16,6 +16,26 @@ namespace YapartStore.DAL.Repositories
             _yapartStoreContext = yapartStoreContext;
         }
 
+        public void ChangeNameForLink()
+        {
+            var nullModificationsUrl = _yapartStoreContext.Modifications;
+
+            if (nullModificationsUrl.Any())
+            {
+                foreach (var modification in nullModificationsUrl)
+                {
+                    modification.Url = modification.Name
+                        .Trim()
+                        .Replace("/", "")
+                        .Replace("рестайлинг", "restyling")
+                        .Replace(" ","-")
+                        .ToLower();
+                    _yapartStoreContext.Entry(modification).State = EntityState.Modified;
+                }
+                _yapartStoreContext.SaveChanges();
+            }
+        }
+
         public void Create(Modification item)
         {
             throw new System.NotImplementedException();
@@ -41,6 +61,11 @@ namespace YapartStore.DAL.Repositories
         {
             return _yapartStoreContext.Modifications.Include(x => x.Picture)
                 .Where(x => x.Model.Name == modelName).AsQueryable();
+        }
+
+        public Modification GetModificationByModificationName(string modificationUrl)
+        {
+            return _yapartStoreContext.Modifications.FirstOrDefault(modif => modif.Url == modificationUrl);
         }
 
         public void Update(Modification item)

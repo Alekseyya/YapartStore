@@ -28,6 +28,12 @@ namespace YapartStore.API.Controllers
         }
 
         [HttpGet]
+        public async Task<IEnumerable<CategoryDTO>> GetCategoriesByModification(string modificationName)
+        {
+            return await _categoryService.GetCategoryByModification(modificationName);
+        }
+
+        [HttpGet]
         public async Task<CategoryDTO> GetCategoryByName(string categoryName)
         {
             var category = await _categoryService.GetCategoryByName(categoryName);

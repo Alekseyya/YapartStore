@@ -22,5 +22,18 @@ namespace YapartStore.Tests.DAL
             //Assert
             var aa = 0;
         }
+
+        [TestMethod]
+        public void ChangeNameForLink()
+        {
+            //Arrage
+            var yapartContext = new YapartStoreContext();
+            var modifications = new ModificationRepository(yapartContext);
+            //Act
+            modifications.ChangeNameForLink();
+
+            //Assert
+            var aa = 0;
+        }
     }
 }

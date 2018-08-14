@@ -60,19 +60,32 @@ namespace YapartStore.UI.Controllers
         }
 
         [HttpGet]
-        //[RequireRequestValue("model")]
         [RequireRouteValues(new[] { "car", "model" })]
         public async Task<ActionResult> Cars(string car, string model)
         {
             var carModel = await _modelService.GetModelByName(model);
-            ViewBag.Model = carModel;
-            ViewData["Model"] = carModel;
-            ViewData["Car"] = car;
+            ViewBag.Mark = car;
+            ViewBag.Model = model;
             ViewBag.Categories = await _categoryService
                 .MappingCategoryModelToViewModel(await _categoryService.GetCategories());
             var modifictions = await _modificationService.GetModificationByModelName(model);
             ViewBag.Accessories = await _productService.GetProductsByModel(model);
-            return View("~/Views/Catalog/Modifications.cshtml", modifictions); //изменить путь к вьюшке, поставить другой
+            return View("~/Views/Catalog/Models.cshtml", modifictions);
+        }
+
+        [HttpGet]
+        [RequireRouteValues(new[] { "car", "model", "modification" })]
+        public async Task<ActionResult> Cars(string car, string model, string modification)
+        {
+            //тогда уже тут надо два параметра чтобы из базы вытянуло
+            var carModel = await _modelService.GetModelByName(model);
+            var modificationObject = await _modificationService.GetModificationByModificationUrl(modification);
+            ViewBag.Mark = car;
+            ViewBag.Model = model;
+            ViewBag.Modification = modification;
+            ViewBag.Categories = await _categoryService.GetCategoriesByModification(modificationObject.Name);
+            ViewBag.Accessories = await _productService.GetProductsByModification(modificationObject.Name);
+            return View("~/Views/Catalog/Modifications.cshtml");
         }
 
 

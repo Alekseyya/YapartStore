@@ -30,5 +30,6 @@ namespace YapartStore.Tests.DAL
             var result = productRepository.GetAllCaps().ToList();
         }
 
+        
     }
 }

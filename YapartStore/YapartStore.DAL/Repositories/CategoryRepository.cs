@@ -96,5 +96,18 @@ namespace YapartStore.DAL.Repositories
                 _yapartStoreContext.SaveChanges();
             }
         }
+
+        public IQueryable<Category> GetCategoriesByModification(string nameModification)
+        {
+
+            return from categories in _yapartStoreContext.Categories
+                join products in _yapartStoreContext.Products on categories.Id equals products.CategoryId
+                join productModif in _yapartStoreContext.ProductModifications on products.Id equals productModif
+                    .ProductId
+                join modification in _yapartStoreContext.Modifications on productModif.ModificationId equals
+                    modification.Id
+                where modification.Name == nameModification
+                select categories;
+        }
     }
 }

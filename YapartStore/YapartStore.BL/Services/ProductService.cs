@@ -209,21 +209,11 @@ namespace YapartStore.BL.Services
 
         public async Task<List<ProductDTO>> GetProductsByModification(string modificationName)
         {
-            var modification = await Task.Run(() =>
-            {
-                return _unitOfWork.ModificationRepository.GetAll()
-                    .FirstOrDefault(mod => mod.Name == modificationName);
-            });
+            var products = await _unitOfWork.ProductRepository.
+                GetProductsByModification(modificationName).ToListAsync();
 
-            if (modification != null)
+            if (products.Count > 0)
             {
-                var products = await Task.Run(() =>
-                    {
-                        return _unitOfWork.ModificationRepository.GetAll()
-                            .Where(modif => modif.Id == modification.Id)
-                            .SelectMany(prodModif => prodModif.ProductModifications)
-                            .Select(prod => prod.Product).ToList();
-                    });
                 var config = new MapperConfiguration(cfg =>
                 {
                     cfg.AddProfile(new AutoMapperServicesConfig.ProductProfile());

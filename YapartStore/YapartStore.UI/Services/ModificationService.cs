@@ -35,5 +35,28 @@ namespace YapartStore.UI.Services
                 throw e;
             }
         }
+
+        public async Task<ModificationViewModel> GetModificationByModificationUrl(string modificationUrl)
+        {
+            try
+            {
+                string url = ConfigurationManager.AppSettings["WebApiUrl"];
+                HttpWebRequest request = (HttpWebRequest)WebRequest
+                    .Create(url + "/modification/GetModificationByModificationUrl?modificationUrl=" + modificationUrl);
+                request.ContentType = "application/json; charset=utf-8";
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return JsonConvert.DeserializeObject<ModificationViewModel>(await reader.ReadToEndAsync());
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

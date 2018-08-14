@@ -10,5 +10,6 @@ namespace YapartStore.UI.Services.Base
        Task<List<CategoryModel>> GetCategories();
        Task<List<CategoryViewModel>> MappingCategoryModelToViewModel(List<CategoryModel> categories);
        Task<CategoryViewModel> GetCategoryByName(string categoryName);
+       Task<List<CategoryModel>> GetCategoriesByModification(string modificationName);
    }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using YapartStore.BL.Entities;
 
 namespace YapartStore.BL.Services.Base
@@ -7,5 +8,6 @@ namespace YapartStore.BL.Services.Base
     {
         Task DeleteItem(string categoryName);
         Task<CategoryDTO> GetCategoryByName(string cartegoryName);
+        Task<List<CategoryDTO>> GetCategoryByModification(string modificationName);
     }
 }

@@ -7,5 +7,6 @@ namespace YapartStore.UI.Services.Base
     public interface IModificationService
     {
         Task<List<ModificationViewModel>> GetModificationByModelName(string modelName);
+        Task<ModificationViewModel> GetModificationByModificationUrl(string modificationUrl);
     }
 }

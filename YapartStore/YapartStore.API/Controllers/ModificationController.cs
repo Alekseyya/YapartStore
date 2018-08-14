@@ -25,6 +25,12 @@ namespace YapartStore.API.Controllers
         }
 
         [HttpGet]
+        public async Task<ModificationDTO> GetModificationByModificationUrl(string modificationUrl)
+        {
+            return await _modificationService.GetModificationByModificationUrl(modificationUrl);
+        }
+
+        [HttpGet]
         public async Task<IHttpActionResult> GetModificationsByModelName(string modelName)
         {
             var modifications = await _modificationService.GetAllModificationByModelName(modelName);

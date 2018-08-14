@@ -12,5 +12,6 @@ namespace YapartStore.UI.Services.Base
         Task<List<ProductViewModel>> GetSizeOfCaps(int size);
         Task<ProductViewModel> GetProductByArticle(string article);
         Task<List<ProductViewModel>> GetProductsByModel(string modelName);
+        Task<List<ProductViewModel>> GetProductsByModification(string modificationName);
     }
 }

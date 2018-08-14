@@ -12,6 +12,7 @@ namespace YapartStore.DL.Entities
         public Model Model { get; set; }
         public string Years { get; set; }
         public int Sort { get; set; }
+        public string Url { get; set; }
         public virtual Picture Picture { get; set; }
         public virtual ICollection<ProductModification> ProductModifications { get; set; } = new List<ProductModification>();
     }

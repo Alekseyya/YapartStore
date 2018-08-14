@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace YapartStore.UI
@@ -34,14 +30,15 @@ namespace YapartStore.UI
             );
 
             routes.MapRoute(
-                name: "CarsAndCarAndModel",
-                url: "{controller}/Cars/{car}/{model}",
+                name: "CarsAndCarAndModelAndModification",
+                url: "{controller}/Cars/{car}/{model}/{modification}",
                 defaults: new
                 {
                     controller = "Catalog",
                     action = "Cars",
                     car = UrlParameter.Optional,
-                    model = UrlParameter.Optional
+                    model = UrlParameter.Optional,
+                    modification = UrlParameter.Optional
                 }
             );
 

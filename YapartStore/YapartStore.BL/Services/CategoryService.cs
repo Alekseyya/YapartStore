@@ -43,22 +43,6 @@ namespace YapartStore.BL.Services
             }
         }
 
-        public void DeleteItem(string categoryName)
-        {
-            try
-            {
-                var findCategory = _unitOfWork.CategoryRepository.GetAll().FirstOrDefault(catName => catName.Name == categoryName);
-                if (findCategory != null)
-                {
-                    _unitOfWork.CategoryRepository.Delete(findCategory.Id);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         public Task DeleteItemAsync(CategoryDTO item)
         {
             throw new NotImplementedException();
@@ -100,6 +84,23 @@ namespace YapartStore.BL.Services
             {
                 throw ex;
             }
+        }
+
+        public async Task<List<CategoryDTO>> GetCategoryByModification(string modificationName)
+        {
+            var categories = await _unitOfWork.CategoryRepository.GetCategoriesByModification(modificationName)
+                .ToListAsync();
+
+            if (categories.Count > 0)
+            {
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.AddProfile(new AutoMapperServicesConfig.CategoryProfile());
+                });
+                var mapper = config.CreateMapper();
+                return mapper.Map<List<Category>, List<CategoryDTO>>(categories);
+            }
+            return null;
         }
 
         public async Task<CategoryDTO> GetCategoryByName(string cartegoryName)
@@ -162,9 +163,22 @@ namespace YapartStore.BL.Services
             throw new NotImplementedException();
         }
 
-        Task ICategoryService.DeleteItem(string categoryName)
+        public Task DeleteItem(string categoryName)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var findCategory = _unitOfWork.CategoryRepository.GetAll().FirstOrDefault(catName => catName.Name == categoryName);
+                if (findCategory != null)
+                {
+                    _unitOfWork.CategoryRepository.Delete(findCategory.Id);
+                    
+                }
+                return Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

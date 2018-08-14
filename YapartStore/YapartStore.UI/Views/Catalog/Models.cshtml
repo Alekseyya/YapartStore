@@ -1,4 +1,6 @@
-﻿@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+﻿@model List<YapartStore.UI.ViewModels.ModificationViewModel>
+
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <div class="category-data container">
     @foreach (var category in @ViewBag.Categories)
@@ -6,10 +8,29 @@
         if (@category.Show == true)
         {
             <div>
-                <a href="/catalog/@category.EnglishName/@ViewBag.Mark/@ViewBag.Model/@ViewBag.Modification">@category.Name</a>
+                <a href="/catalog/@category.EnglishName/@ViewBag.Mark/@ViewBag.Model">@category.Name</a>
             </div>
         }
     }
+</div>
+
+
+
+
+<div class="selection-cars">
+    <div class="selection-cars__descriptions">
+        <h3>Подбор комплектующих @ViewBag.Mark @ViewBag.Model</h3>
+    </div>
+    <div class="generation-cars">
+        @foreach (var modification in Model)
+        {
+            <a class="generation-cars__item" href="/Catalog/Cars/@ViewBag.Mark/@ViewBag.Model/@modification.Url">
+                <img class="image" src="@modification.PicturePath">
+                <div class="years">@modification.Years</div>
+                <div class="name">@modification.Name</div>
+            </a>
+        }
+    </div>
 </div>
 
 <div class="sorting"></div>
@@ -36,3 +57,7 @@
         </div>
     }
 </div>
+
+
+@Styles.Render("~/Content/CSS/site.css")
+@Styles.Render("~/Content/CSS/Catalog/modifications.css")

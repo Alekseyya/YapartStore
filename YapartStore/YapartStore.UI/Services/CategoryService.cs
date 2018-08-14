@@ -37,6 +37,30 @@ namespace YapartStore.UI.Services
         }
 
 
+        public async Task<List<CategoryModel>> GetCategoriesByModification(string modificationName)
+        {
+            try
+            {
+                string url = ConfigurationManager.AppSettings["WebApiUrl"];
+                HttpWebRequest request = (HttpWebRequest)WebRequest
+                    .Create(url + "/category/GetCategoriesByModification?modificationName=" + modificationName);
+                request.ContentType = "application/json; charset=utf-8";
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return JsonConvert.DeserializeObject<List<CategoryModel>>(await reader.ReadToEndAsync());
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
         public async Task<List<CategoryViewModel>> MappingCategoryModelToViewModel(List<CategoryModel> categories)
         {
             return await Task.Run(() => {

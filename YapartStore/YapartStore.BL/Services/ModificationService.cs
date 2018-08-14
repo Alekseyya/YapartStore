@@ -73,6 +73,27 @@ namespace YapartStore.BL.Services
             throw new System.NotImplementedException();
         }
 
+        public async Task<ModificationDTO> GetModificationByModificationUrl(string modificationUrl)
+        {
+            var modification = await Task.Run(() =>
+            {
+                return _unitOfWork.ModificationRepository.GetModificationByModificationName(modificationUrl);
+            });
+
+            if (modification != null)
+            {
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.AddProfile(new AutoMapperServicesConfig.ModificationDTOProfile());
+                });
+
+                var mapper = config.CreateMapper();
+
+                return mapper.Map<Modification, ModificationDTO>(modification);
+            }
+            return null;
+        }
+
         public Task UpdateItemAsync(ModificationDTO item)
         {
             throw new System.NotImplementedException();

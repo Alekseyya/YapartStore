@@ -196,6 +196,16 @@ namespace YapartStore.DAL.Repositories
         {
             throw new NotImplementedException();
         }
-        
+
+        public IQueryable<Product> GetProductsByModification(string nameModification)
+        {
+            return from products in _yapartStoreContext.Products
+                join productModif in _yapartStoreContext.ProductModifications on products.Id equals productModif
+                    .ProductId
+                join modification in _yapartStoreContext.Modifications on productModif.ModificationId equals
+                    modification.Id
+                where modification.Name == nameModification
+                select products;
+        }
     }
 }
