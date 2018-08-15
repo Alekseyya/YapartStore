@@ -7,13 +7,13 @@ namespace YapartStore.DL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class unit16 : IMigrationMetadata
+    public sealed partial class init19 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(unit16));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init19));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808141712444_unit16"; }
+            get { return "201808150048382_init19"; }
         }
         
         string IMigrationMetadata.Source

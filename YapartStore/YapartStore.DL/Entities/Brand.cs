@@ -26,7 +26,8 @@ namespace YapartStore.DL.Entities
                 .IsRequired();
 
             HasMany(x => x.Products);
-            HasOptional(p => p.Picture).WithOptionalPrincipal(p=>p.Brand);
+           // HasOptional(p => p.Picture).WithOptionalPrincipal(p=>p.Brand);
+            HasOptional(s => s.Picture).WithRequired(ad => ad.Brand);
         }
     }
 }

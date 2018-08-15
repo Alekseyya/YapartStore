@@ -3,16 +3,16 @@ namespace YapartStore.DL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class unit16 : DbMigration
+    public partial class init19 : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Modifications", "Url", c => c.String());
+            //DropColumn("dbo.Pictures", "BrandId");
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Modifications", "Url");
+            AddColumn("dbo.Pictures", "BrandId", c => c.Int());
         }
     }
 }

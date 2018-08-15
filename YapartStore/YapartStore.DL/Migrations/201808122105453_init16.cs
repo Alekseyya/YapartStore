@@ -7,8 +7,9 @@ namespace YapartStore.DL.Migrations
     {
         public override void Up()
         {
-            AddForeignKey("dbo.ProductModifications", "ModificationId", "dbo.Modifications", "Id", cascadeDelete: true);
-            AddForeignKey("dbo.ProductModifications", "ProductId", "dbo.Products", "Id", cascadeDelete: true);
+            //AddForeignKey("dbo.ProductModifications", "ModificationId", "dbo.Modifications", "Id", cascadeDelete: true);
+            //AddForeignKey("dbo.ProductModifications", "ProductId", "dbo.Products", "Id", cascadeDelete: true);
+           
         }
         
         public override void Down()
