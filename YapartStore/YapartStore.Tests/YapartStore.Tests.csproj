@@ -88,6 +88,7 @@
     <Compile Include="DAL\ModificationUnitTest.cs" />
     <Compile Include="DAL\ProductModificationsUnitTest.cs" />
     <Compile Include="DAL\CategoryUnitTest.cs" />
+    <Compile Include="DAL\ModelUnitTest.cs" />
     <Compile Include="UI\HomeTestUI.cs" />
     <Compile Include="UI\Services\ModelServiceUnitTest.cs" />
     <Compile Include="UnitTest1.cs" />

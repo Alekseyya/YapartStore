@@ -43,6 +43,14 @@ namespace YapartStore.DAL.Repositories
             return _yapartStoreContext.Models.FirstOrDefault(x => x.Name == name);
         }
 
+        public IQueryable<Model> GetModelsByMarkName(string markName)
+        {
+            return from models in _yapartStoreContext.Models
+                join marks in _yapartStoreContext.Marks on models.MarkId equals marks.Id
+                where marks.Name.ToLower() == markName.ToLower()
+                select models;
+        }
+
         public void Update(Model item)
         {
             throw new System.NotImplementedException();

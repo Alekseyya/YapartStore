@@ -9,7 +9,9 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/site.css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/Scripts/jquery-3.0.0.min.js")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
     @*<link type="text/css" rel="stylesheet" href="../../Content/site.css" />*@
 
 
@@ -126,14 +128,14 @@
     @*@Scripts.Render("~/Script/Bundles")
     @Scripts.Render("~/Content/Styles")*@
 
-        <script type="text/javascript" src="~/Bundles/runtime.js"></script>
+        @*<script type="text/javascript" src="~/Bundles/runtime.js"></script>
         <script type="text/javascript" src="~/Bundles/polyfills.js"></script>
         <script type="text/javascript" src="~/Bundles/styles.js"></script>
         <script type="text/javascript" src="~/Bundles/vendor.js"></script>
-        <script type="text/javascript" src="~/Bundles/main.js"></script>
+        <script type="text/javascript" src="~/Bundles/main.js"></script>*@
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    
+    
     @RenderSection("scripts", required: false)
 
 </body>

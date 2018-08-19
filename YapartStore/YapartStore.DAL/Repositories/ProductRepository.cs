@@ -207,5 +207,19 @@ namespace YapartStore.DAL.Repositories
                 where modification.Name == nameModification
                 select products;
         }
+
+        public IQueryable<Product> GetProductsByModel(string modelName)
+        {
+            return from products in _yapartStoreContext.Products
+                join productModification in _yapartStoreContext.ProductModifications on products.Id equals
+                    productModification.ProductId
+                join modifications in _yapartStoreContext.Modifications on productModification.ModificationId equals
+                    modifications.Id
+                join models in _yapartStoreContext.Models on modifications.ModelId equals models.Id
+                group products by products.Id
+                into groupProducts
+                select groupProducts.FirstOrDefault();
+        }
+        
     }
 }

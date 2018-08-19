@@ -57,36 +57,14 @@ namespace YapartStore.BL.Services
         {
             try
             {
-                var models = await _unitOfWork.ModelRepository.GetAll()
-                    .Where(x => x.Mark.Name == markName).ToListAsync();
+                var models = await _unitOfWork.ModelRepository.GetModelsByMarkName(markName).ToListAsync();
                 
                 var config = new MapperConfiguration(cfg =>
                 {
                     cfg.AddProfile(new AutoMapperServicesConfig.ModelDTOProfile());
                 });
-                
                 var mapper = config.CreateMapper();
-
-                var modelsDTOs = mapper.Map<List<Model>, List<ModelDTO>>(models);
-                
-                var pictureIds = await _unitOfWork.PictureRepository.GetAll()
-                    .Select(x => new {x.Id, x.Path}).ToListAsync();
-
-                var newModelsDTO = new List<ModelDTO>();
-
-                foreach (var pictureId in pictureIds)
-                {
-                    foreach (var modelDTO in modelsDTOs)
-                    {
-                        if (pictureId.Id == modelDTO.Id)
-                        {
-                            modelDTO.PicturePath = pictureId.Path;
-                            newModelsDTO.Add(modelDTO);
-                        }
-                    }
-                }
-
-                return newModelsDTO.ChangePathImage();
+                return mapper.Map<List<Model>, List<ModelDTO>>(models).ChangePathImage();
             }
             catch (Exception e)
             {

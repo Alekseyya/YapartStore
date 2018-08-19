@@ -11,15 +11,14 @@ namespace YapartStore.DL.Entities
         public string Path { get; set; }
         public DateTime UpdateTimestamp { get; set; }
 
-        public int ProductId { get; set; }
+        public int? ProductId { get; set; }
         public virtual Product Product { get; set; }
         
         public Mark Mark { get; set; }
-        
+
         public Model Model { get; set; }
         public Modification Modification { get; set; }
-
-        public int BrandId { get; set; }
+        
         public virtual Brand Brand { get; set; }
     }
     public class PictureConfiguration : EntityTypeConfiguration<Picture>
@@ -27,10 +26,13 @@ namespace YapartStore.DL.Entities
         public PictureConfiguration()
         {
             HasKey(x => x.Id);
-
+            
             Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
+
+            HasRequired(p => p.Model).WithOptional();
+            HasRequired(p => p.Mark).WithOptional();
 
             Property(x => x.Name)
                 .IsRequired();
@@ -41,7 +43,6 @@ namespace YapartStore.DL.Entities
             Property(x => x.UpdateTimestamp)
                 .IsRequired();
             Property(x => x.ProductId).IsOptional();
-            Property(x => x.BrandId).IsOptional();
             HasOptional(x => x.Product);
         }
     }

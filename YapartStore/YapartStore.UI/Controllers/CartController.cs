@@ -27,6 +27,7 @@ namespace YapartStore.UI.Controllers
             return View(cart);
         }
 
+        [HttpPost]
         public async Task<ActionResult> AddToCart(string article)
         {
             CartViewModel cart = Session["Cart"] as CartViewModel;

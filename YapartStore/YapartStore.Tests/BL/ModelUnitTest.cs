@@ -16,7 +16,7 @@ namespace YapartStore.Tests.BL
             var unitOfWork = (IUnitOfWork)new UnitOfWork();
             var modelService = new ModelService(unitOfWork);
 
-            var result = await modelService.GetModelsByMarkName("audi");
+            var result = await modelService.GetModelsByMarkName("Audi");
             
         }
     }

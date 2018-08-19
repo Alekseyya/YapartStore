@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using YapartStore.UI.App_Start;
 using YapartStore.UI.Models;
 using YapartStore.UI.Services.Base;
@@ -187,6 +188,19 @@ namespace YapartStore.UI.Controllers
             
 
             return View("~/Views/Catalog/Accessories.cshtml");
+        }
+
+        
+        //[HttpGet]
+
+        public ActionResult GetAccessoriesByModel(string model)
+        {
+            var products = Task.Run(async () =>
+            {
+                return await _productService.GetProductsByModel(model);
+            }).Result;
+
+            return Json(products, JsonRequestBehavior.AllowGet);
         }
 
     }

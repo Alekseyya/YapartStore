@@ -35,29 +35,132 @@
 
 <div class="sorting"></div>
 <div class="products">
-    @foreach (var accessory in @ViewBag.Accessories)
-    {
-        <div class="product__item">
-            <div class="product__image">
-                <img src="#">
-            </div>
-            <div class="product__title">
-                <a>@accessory.Descriptions</a>
-                <div class="product__title-article">
-                    Артикул: @accessory.Article
+    @*@foreach (var accessory in @ViewBag.Accessories)
+        {
+            <div class="product__item">
+                <div class="product__image">
+                    <img src="#">
+                </div>
+                <div class="product__title">
+                    <a>@accessory.Descriptions</a>
+                    <div class="product__title-article">
+                        Артикул: @accessory.Article
+                    </div>
+                </div>
+                <div class="product__offer">
+                    <div class="product__price">@accessory.Price</div>
+                    <div class="product__available"></div>
+                    <div class="product__pay">
+                        <button>Купить</button>
+                    </div>
                 </div>
             </div>
-            <div class="product__offer">
-                <div class="product__price">@accessory.Price</div>
-                <div class="product__available"></div>
-                <div class="product__pay">
-                    <button>Купить</button>
-                </div>
-            </div>
-        </div>
-    }
+        }*@
 </div>
 
+<div class="pagination">
+    <ul id="pagination-demo" class="pagination-lg"></ul>
+</div>
 
-@Styles.Render("~/Content/CSS/site.css")
 @Styles.Render("~/Content/CSS/Catalog/modifications.css")
+@Scripts.Render("~/Scripts/jquery.twbsPagination.js")
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        GetAccessorsByName();
+    });
+
+    function GetAccessorsByName() {
+        var promice = new Promise(function (resolve, reject) {
+            $.getJSON("/Catalog/GetAccessoriesByModel?model=A6",
+                function (products) {
+                    console.log(products);
+                    $.each(products, function (key, value) {
+                        var item =
+                            '<div class="product__item"> ' +
+                            '<div class="product__image">' +
+                            '<img src="#">' +
+                            '</div>' +
+                            '<div class="product__title">' +
+                            '<a>' + value.Descriptions + '"</a>' +
+                            '<div class="product__title-article">' +
+                            'Артикул:' + value.Article +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="product__offer">' +
+                            '<div class="product__price">' + value.Price + '</div>' +
+                            '<div class="product__available"></div>' +
+                            '<div class="product__pay">' +
+                            '<button class="product__pay-button" id="' + value.Article + '">Купить</button>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+                        $(item).appendTo($(".products"));
+                        
+                    });
+                    resolve("result");
+                });
+        });
+        promice.then(result => {
+            CreatePagination();
+            $(".product__pay-button").click(function() {
+                let article = $(this).attr('id');
+                console.log(article);
+
+                $.ajax({
+                    url: "/Cart/AddToCart?article="+ article,
+                    type: "Post",
+                    contentType: 'application/json; charset=utf-8',
+                    error: (error)=>{console.log("Error" + error.statusText)},
+                    success: (result)=>{console.log("Success!!")}
+                }); 
+            });
+        }, error => {
+            console.log("ERROR!!");
+        });
+    };
+
+
+    function CreatePagination() {
+        var showProductsOnPage = 2;
+        var numberProducts = $('.products').children().length;
+        var numberOfPages = Math.ceil(numberProducts / showProductsOnPage);
+
+        $('#pagination-demo').twbsPagination({
+            totalPages: numberOfPages,
+            // the current page that show on start
+            //startPage: 1,
+
+            // maximum visible pages
+            visiblePages: 5,
+            initiateStartPageClick: true,
+            hideOnlyOnePage: false,
+
+            first: 'First',
+            prev: '<',
+            next: '>',
+            last: numberOfPages.toString(),
+
+
+            // callback function
+            onPageClick: function (event, page) {
+                $('#page-content').text('Page ' + page);
+                ShowProductsOnPage(page, showProductsOnPage);
+            }
+        });
+    }
+
+    function ShowProductsOnPage(page, showProductsOnPage) {
+        firstClient = page - 1; //page  2..
+        numberFirstProduct = firstClient * showProductsOnPage;
+        numberEndProduct = numberFirstProduct + showProductsOnPage;
+        $('.product__item').css('display', 'none')
+            .slice(numberFirstProduct, numberEndProduct).css('display', 'grid');
+    }
+
+   
+
+
+</script>

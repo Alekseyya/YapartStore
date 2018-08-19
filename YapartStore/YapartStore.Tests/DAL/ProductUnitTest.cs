@@ -30,6 +30,14 @@ namespace YapartStore.Tests.DAL
             var result = productRepository.GetAllCaps().ToList();
         }
 
-        
+        [TestMethod]
+        public void GetProductsByModel()
+        {
+            var productRepository = new ProductRepository(new YapartStoreContext());
+            var result = productRepository.GetProductsByModel("A6").ToList();
+
+        }
+
+
     }
 }

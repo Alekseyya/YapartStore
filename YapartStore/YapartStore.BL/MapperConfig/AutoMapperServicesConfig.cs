@@ -154,8 +154,7 @@ namespace YapartStore.BL.MapperConfig
             public ModelDTOProfile()
             {
                 CreateMap<Model, ModelDTO>()
-                    .ForMember(x => x.PicturePath,
-                        opt => opt.MapFrom(x => x.Picture.Path)).PreserveReferences();
+                    .ForMember(x => x.PicturePath, opt => opt.MapFrom(x => x.Picture.Path));
             }
         }
 

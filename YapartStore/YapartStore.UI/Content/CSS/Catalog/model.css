@@ -1,0 +1,102 @@
+﻿/* ----------------------- CategoryList--------- */
+.category-data {
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-gap: 7px;
+}
+
+    .category-data div {
+        padding: 3px;
+        line-height: 0.9em;
+    }
+
+    .category-data a {
+        font-size: 15px;
+        text-decoration: underline;
+        color: #2c3e50;
+    }
+
+        .category-data a:hover {
+            color: darkcyan;
+            font-size: 15px;
+            text-decoration: underline;
+        }
+
+.model-info {
+    padding: 0;
+    margin: 20px 0;
+}
+
+.model-info-wraper {
+    background: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.model-info__model-image {
+    float: left;
+    margin-right: 15px;
+    min-width: 150px;
+}
+
+.model-info__descriptions {
+    float: left;
+    max-width: 290px;
+}
+
+.model-info__model-name {
+    font-family: Arial, Tahoma, sans-serif;
+    text-transform: none;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #363636;
+}
+
+.model-info__model-model {
+    float: left;
+    clear: both;
+}
+
+
+.generation-cars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 20px;
+}
+
+.generation-cars__item {
+    border: 1px solid grey;
+    border-radius: 15px;
+    color: black;
+}
+
+    .generation-cars__item:hover {
+        border: 1px solid rgb(68, 66, 211);
+        border-radius: 15px;
+        color: rgb(68, 66, 211);
+        text-decoration: none;
+    }
+
+    .generation-cars__item img {
+        border-radius: 15px 15px 0 0;
+        object-fit: cover;
+        width: 100%;
+    }
+
+.generation-cars .years {
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.generation-cars .name {
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.generation-cars__item:hover {
+    color: blue;
+}

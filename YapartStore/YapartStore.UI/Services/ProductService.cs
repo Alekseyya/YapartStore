@@ -86,6 +86,31 @@ namespace YapartStore.UI.Services
 
         }
 
+        public async Task<string> GetProductsByModelJson(string modelName)
+        {
+            try
+            {
+                string url = ConfigurationManager.AppSettings["WebApiUrl"];
+                HttpWebRequest request =
+                    (HttpWebRequest)WebRequest.Create(url + "/product/GetProductsByModel?modelName=" + modelName);
+                request.ContentType = "application/json; charset=utf-8";
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return await reader.ReadToEndAsync();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         public async Task<List<ProductViewModel>> GetProductsOfBrand(string brand)
         {
             try

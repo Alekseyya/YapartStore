@@ -233,31 +233,20 @@ namespace YapartStore.BL.Services
 
             if (model != null)
             {
-                var modificationsId = await Task.Run(() =>
+
+                var products = await Task.Run(() =>
                     {
-                        return _unitOfWork.ModificationRepository.GetModificationsByModel(modelName)
-                            .Select(x=>x.Id)
-                            .ToList();
+                        return _unitOfWork.ProductRepository.GetProductsByModel(model.Name)
+                            .ToListAsync();
                     });
-                if (modificationsId.Count != 0)
+
+                var config = new MapperConfiguration(cfg =>
                 {
-                    var products = await Task.Run(() =>
-                    {
-                        return _unitOfWork.ProductModificationsRepository.GetAll()
-                            .Where(x => modificationsId.Any(y => y == x.ModificationId))
-                            .Select(prod=>prod.Product).ToList();
-                    });
-
-                    var config = new MapperConfiguration(cfg =>
-                    {
-                        cfg.AddProfile(new AutoMapperServicesConfig.ProductProfile());
-                    });
-                    var mapper = config.CreateMapper();
-                    return mapper.Map<List<Product>, List<ProductDTO>>(products).ChangePathImage();
-                }
-
+                    cfg.AddProfile(new AutoMapperServicesConfig.ProductProfile());
+                });
+                var mapper = config.CreateMapper();
+                return mapper.Map<List<Product>, List<ProductDTO>>(products).ChangePathImage();
             }
-
             return null;
         }
 

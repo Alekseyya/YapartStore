@@ -13,5 +13,7 @@ namespace YapartStore.UI.Services.Base
         Task<ProductViewModel> GetProductByArticle(string article);
         Task<List<ProductViewModel>> GetProductsByModel(string modelName);
         Task<List<ProductViewModel>> GetProductsByModification(string modificationName);
+
+        Task<string> GetProductsByModelJson(string modelName);
     }
 }
